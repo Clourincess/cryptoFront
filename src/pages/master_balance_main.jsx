@@ -1,0 +1,100 @@
+import { HStack, Stack, VStack } from "@chakra-ui/react";
+import MasterBalance from "../components/master_balance";
+import BlackButtonIcon from "../components/black_button_icon";
+import Note from "../components/note";
+import deposit from "./../assets/images/deposit.svg";
+import withdraw from "./../assets/images/withdraw.svg";
+import { useNavigate } from "react-router";
+import tg from "../tg_vars";
+import stats from "./../assets/images/stats.svg";
+import { useStores } from "../store/store_context";
+import redact from "../redact";
+
+const MasterMain = () => {
+  const navigate = useNavigate();
+  const backButton = tg.BackButton;
+  backButton.show();
+  backButton.onClick(back_page);
+  function back_page() {
+    navigate("/");
+    backButton.hide();
+  }
+  const { GlobalVars } = useStores();
+  return (
+    <VStack width={"100%"} justify={"flex-start"} spacing={0}>
+      <HStack width={"100%"} height={"212px"}>
+        <VStack width={"230px"} height={"inherit"} justify={"space-between"}>
+          <MasterBalance
+            balance={GlobalVars.masterBalance}
+            width="100%"
+            height="118px"
+            // className={"animated"}
+          />
+          <HStack width={"100%"}>
+            <BlackButtonIcon
+              text={"DEPOSIT"}
+              icon={deposit}
+              left={"50px"}
+              route="/master_deposit1"
+              additionalTextIcon={
+                <svg
+                  width="7"
+                  height="7"
+                  viewBox="0 0 7 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="3.5" cy="3.5" r="3.5" fill="#1EB85B" />
+                  <circle cx="3.5" cy="3.5" r="2.625" fill="#1EB85B" />
+                </svg>
+              }
+            />
+            <BlackButtonIcon
+              text={"WITHDRAW"}
+              icon={withdraw}
+              left={"65px"}
+              route="/master_withdraw1"
+              additionalTextIcon={
+                <svg
+                  width="7"
+                  height="7"
+                  viewBox="0 0 7 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="3.5" cy="3.5" r="3.5" fill="#ED0E0E" />
+                  <circle cx="3.5" cy="3.5" r="2.625" fill="#ED0E0E" />
+                </svg>
+              }
+            />
+          </HStack>
+        </VStack>
+        <BlackButtonIcon
+          width="100%"
+          text={"STATS"}
+          height="inherit"
+          route="/master_stats"
+          icon={stats}
+          stats={true}
+        />
+      </HStack>
+      <HStack marginTop={"0.5rem"} w={"100%"}>
+        <Note
+          text={redact(`IT IS THE PREMIUM ACCOUNT PAGE.
+HERE, YOU CAN GENERATE MORE USDT THAN IN THE STANDARD ACCOUNT BY FREEZING YOUR DEPOSIT FOR A CERTAIN PERIOD (1, 2, OR 4 MONTHS).
+
+MODS:
+x1.25 OF YOUR DEPOSIT (FREEZE FOR 1 MONTH)
+x1.55 OF YOUR DEPOSIT (FREEZE FOR 2 MONTHS)
+x2.25 OF YOUR DEPOSIT (FREEZE FOR 4 MONTHS)
+ 
+ON THIS PAGE, YOU CAN CREATE DEPOSITS, GENERATE USDT, AND WITHDRAW IT BACK.
+ 
+ALL DEPOSITS YOU CREATE WILL BE DISPLAYED HERE.`)}
+        />
+      </HStack>
+    </VStack>
+  );
+};
+
+export default MasterMain;
