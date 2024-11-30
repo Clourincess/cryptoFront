@@ -5,7 +5,7 @@ class GlobalVarsStore {
   tgInfo = "asdasd";
   tg_id = null;
   registered = false;
-  username = "";
+  username = "leniviy_sid";
   standartBalance = 0;
   masterBalance = 0;
   rank = "";
@@ -109,6 +109,17 @@ class GlobalVarsStore {
   };
   updateRank = (newRank) => {
     this.rank = newRank;
+  };
+
+  getAllReferralPrograms = async () => {
+    const response = await fetch(baseurl + "/getAllReferalProgramms", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const result = await response.json();
+    return result;
   };
 }
 

@@ -21,9 +21,14 @@ const MasterMain = () => {
   }
   const { GlobalVars } = useStores();
   return (
-    <VStack width={"100%"} justify={"flex-start"} spacing={0}>
-      <HStack width={"100%"} height={"212px"}>
-        <VStack width={"230px"} height={"inherit"} justify={"space-between"}>
+    <VStack width={"100%"} justify={"flex-start"}>
+      <HStack
+        width={"100%"}
+        height={"212px"}
+        align={"flex-start"}
+        marginBottom={"14px"}
+      >
+        <VStack width={"230px"} justify={"space-between"}>
           <MasterBalance
             balance={GlobalVars.masterBalance}
             width="100%"
@@ -35,7 +40,7 @@ const MasterMain = () => {
               text={"DEPOSIT"}
               icon={deposit}
               left={"50px"}
-              route="/master_deposit1"
+              route="/st_deposit_1"
               additionalTextIcon={
                 <svg
                   width="7"
@@ -53,7 +58,7 @@ const MasterMain = () => {
               text={"WITHDRAW"}
               icon={withdraw}
               left={"65px"}
-              route="/master_withdraw1"
+              route="/st_withdraw_1"
               additionalTextIcon={
                 <svg
                   width="7"
@@ -72,13 +77,13 @@ const MasterMain = () => {
         <BlackButtonIcon
           width="100%"
           text={"STATS"}
-          height="inherit"
-          route="/master_stats"
+          height="225px"
+          route="/standart_stats"
           icon={stats}
           stats={true}
         />
       </HStack>
-      <HStack marginTop={"0.5rem"} w={"100%"}>
+      <HStack w={"100%"}>
         <Note
           text={redact(`IT IS THE PREMIUM ACCOUNT PAGE.
 HERE, YOU CAN GENERATE MORE USDT THAN IN THE STANDARD ACCOUNT BY FREEZING YOUR DEPOSIT FOR A CERTAIN PERIOD (1, 2, OR 4 MONTHS).

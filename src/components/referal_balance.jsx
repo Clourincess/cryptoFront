@@ -1,7 +1,8 @@
-import { VStack, HStack, Text, Image, keyframes, Box } from "@chakra-ui/react";
+import { VStack, HStack, Text, Image, Box } from "@chakra-ui/react";
 import ColoredComponent from "./colored_component_wrapper";
 import usdt_green from "./../assets/images/usdt_green.svg";
 import "./styles.css";
+import { keyframes } from "@emotion/react";
 
 const ReferalBalance = ({
   balance,
@@ -27,7 +28,7 @@ const ReferalBalance = ({
         bottom="-8px"
         transform={"skewX(-5deg)"}
         background="linear-gradient(105deg, rgba(255, 126, 95, 0) 5%,#8DC7D6 40%, #74C6B2 60%, rgba(255, 126, 95, 0) 95%)"
-        filter="blur(10px)"
+        filter="blur(15px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <VStack

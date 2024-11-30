@@ -13,6 +13,7 @@ const ReferalCode2 = () => {
     navigate("/referal_code2");
     backButton.hide();
   }
+
   return (
     <VStack width={"100%"}>
       <HStack
@@ -21,6 +22,8 @@ const ReferalCode2 = () => {
         justify={"space-between"}
         padding={"10px"}
         zIndex={100}
+        backgroundColor={"rgba(20,20,20,0.6)"}
+        borderRadius={"14px"}
       >
         <Text
           background={

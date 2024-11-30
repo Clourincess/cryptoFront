@@ -37,7 +37,7 @@ const BlackButtonIcon = ({
       // background={
       //   "linear-gradient(216deg, #131315 0%, #000 50.6%, #131315 100%)"
       // }
-      backgroundColor={"rgba(20, 20, 20, 0.4)"}
+      backgroundColor={"rgba(20, 20, 20, 0.6)"}
       borderRadius={"14px"}
       padding={"7px 10px"}
       onClick={() => navigate(route)}

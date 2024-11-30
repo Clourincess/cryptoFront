@@ -12,6 +12,9 @@ import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import DepositCard from "../components/deposit_card";
 
+import { useStores } from "../store/store_context";
+import { useEffect, useState } from "react";
+
 const arrow = (
   <svg
     width="7"
@@ -35,6 +38,48 @@ const ReferalCode1 = () => {
     navigate("/referal_main");
     backButton.hide();
   }
+
+  const [allReferrals, setAllReferrals] = useState([]);
+
+  const [inputValue, setInputValue] = useState("");
+  const { GlobalVars } = useStores();
+
+  const allRefs = async () => {
+    setAllReferrals(await GlobalVars.getAllReferralPrograms());
+  };
+
+  useEffect(() => {
+    allRefs();
+  }, []);
+
+  const isRef = allReferrals.some((item) => {
+    return item.code == inputValue;
+  });
+  console.log(GlobalVars.tg_id, GlobalVars.username);
+  const updateReferalCodeAppUser = async (tg_id, username, ref_code) => {
+    const response = await fetch(
+      "https://osiriscrypto.su:8008/updateReferalCodeAppUser",
+      {
+        method: "PUT",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          telegramm_id: tg_id,
+          user_name: username,
+          count_bonuses: 0,
+          used_referal_code: `${ref_code}`,
+          is_blocked: false,
+        }),
+      }
+    );
+  };
+
+  const apply = () => {
+    navigate("/referal_code2");
+    updateReferalCodeAppUser(GlobalVars.tg_id, GlobalVars.username, inputValue);
+  };
   return (
     <VStack width={"100%"}>
       <VStack
@@ -43,7 +88,7 @@ const ReferalCode1 = () => {
         height={"98px"}
         padding={"10px"}
         align={"center"}
-        background={"black"}
+        background={"rgba(20,20,20,0.6)"}
         justify={"space-between"}
         zIndex={100}
       >
@@ -71,18 +116,23 @@ const ReferalCode1 = () => {
             style={{
               backgroundColor: "black",
               fontSize: "10px",
-
               borderRadius: "28px",
               width: "100%",
               padding: "5px 20px",
               color: "white",
+            }}
+            value={inputValue}
+            onChange={(event) => {
+              setInputValue(event.target.value);
             }}
           />
           <Button
             borderRadius={"28px"}
             height={"34px"}
             width={"114px"}
-            onClick={() => navigate("/referal_code2")}
+            onClick={() => {
+              isRef ? apply() : navigate("/referal_code4");
+            }}
             background={
               "linear-gradient(82.94deg, #2AB0D0 5.51%, #9B71D9 64.24%, #7F7FD7 94.49%)"
             }

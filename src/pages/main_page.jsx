@@ -36,8 +36,6 @@ const Main = observer(() => {
     GlobalVars.getStandart();
     GlobalVars.getMaster();
   }, []);
-
-  console.log(GlobalVars.standartBalance, GlobalVars.masterBalance);
   return (
     <VStack width="100%">
       <InfoHeaderMainPage username={GlobalVars.username} />
@@ -46,7 +44,7 @@ const Main = observer(() => {
           width={"113px"}
           height={"100px"}
           spacing={"10px"}
-          backgroundColor={"rgba(10, 10, 10, 0.3)"}
+          backgroundColor={"rgba(20, 20, 20, 0.6)"}
           borderRadius={"14px"}
           padding={"10px"}
           justify={"space-between"}

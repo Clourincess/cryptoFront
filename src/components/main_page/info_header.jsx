@@ -15,11 +15,9 @@ const InfoHeaderMainPage = observer(() => {
   let url = "";
   const tg = window.Telegram.WebApp;
   if (tg.initDataUnsafe.user != undefined) {
-    first_name = tg.initDataUnsafe.user.first_name;
-    last_name = tg.initDataUnsafe.user.last_name;
+    first_name = tg.initDataUnsafe?.user?.first_name;
+    last_name = tg.initDataUnsafe?.user?.last_name;
   }
-
-  console.log(url);
   return (
     <HStack width={"100%"} justify={"space-between"}>
       <HStack align={"center"} onClick={() => navigate("/profile")}>
@@ -57,7 +55,7 @@ const InfoHeaderMainPage = observer(() => {
       </HStack>
       <a href="#">
         <HStack
-          background={"#101010"}
+          backgroundColor={"rgba(20, 20, 20, 0.6)"}
           borderRadius={"32px"}
           width={"105px"}
           height={"35px"}

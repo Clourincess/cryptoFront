@@ -9,6 +9,8 @@ import tg from "../tg_vars";
 import stats from "./../assets/images/stats.svg";
 import redact from "../redact";
 import "./../components/styles.css";
+import { useStores } from "../store/store_context";
+import { useEffect, useState } from "react";
 
 const ReferalMain = () => {
   const navigate = useNavigate();
@@ -19,6 +21,29 @@ const ReferalMain = () => {
     navigate("/");
     backButton.hide();
   }
+  const { GlobalVars } = useStores();
+
+  console.log("tg_id", GlobalVars.tg_id);
+
+  const [userInfo, setUserInfo] = useState([]);
+
+  useEffect(() => {
+    const getOneUser = async (tgId) => {
+      const response = await fetch(
+        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${tgId}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      );
+      const result = await response.json();
+      setUserInfo(result);
+    };
+    getOneUser(GlobalVars.tg_id);
+  }, []);
+  console.log(userInfo.used_referal_code);
   return (
     <VStack width={"100%"}>
       <HStack width={"100%"}>
@@ -33,7 +58,11 @@ const ReferalMain = () => {
             <BlackButtonIcon
               text={"ACTIVATE CODE"}
               icon={deposit}
-              route="/referal_code1"
+              route={
+                userInfo?.used_referal_code == "None"
+                  ? "/referal_code1"
+                  : "/referal_code3"
+              }
               predictionalIcon={
                 <svg
                   width="10"

@@ -12,7 +12,7 @@ const CalcIncome = () => {
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/referal_main");
+    navigate("/");
     backButton.hide();
   }
   return (

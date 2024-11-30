@@ -30,6 +30,8 @@ import ReferalCode2 from "./pages/referal_code2";
 import PerehodPage from "./pages/perehod";
 import tg from "./tg_vars";
 import { useEffect } from "react";
+import ReferalCode3 from "./pages/referal_code3";
+import ReferalCode4 from "./pages/referal_code4";
 
 const router = createMemoryRouter([
   { path: "/", element: <Main /> },
@@ -59,6 +61,8 @@ const router = createMemoryRouter([
   { path: "/referal_withdraw3", element: <ReferalWithdraw3 /> },
   { path: "/referal_code1", element: <ReferalCode1 /> },
   { path: "/referal_code2", element: <ReferalCode2 /> },
+  { path: "/referal_code3", element: <ReferalCode3 /> },
+  { path: "/referal_code4", element: <ReferalCode4 /> },
   { path: "/perehod", element: <PerehodPage /> },
 ]);
 

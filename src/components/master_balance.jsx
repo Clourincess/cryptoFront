@@ -14,7 +14,7 @@ const MasterBalance = ({
   return (
     <VStack
       width={width}
-      background={"black"}
+      backgroundColor={"rgba(20, 20, 20, 0.6)"}
       borderRadius={"14px"}
       padding={"10px"}
       onClick={onClick}

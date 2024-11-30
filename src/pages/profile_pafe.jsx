@@ -36,8 +36,8 @@ const ProfilePage = () => {
   if (tg.initDataUnsafe.user != undefined) {
     userId = GlobalVars.tg_id;
   }
-  console.log(userId);
   const [userInfo, setUserInfo] = useState([]);
+
   useEffect(() => {
     const getOneUser = async (tgId) => {
       const response = await fetch(
@@ -51,11 +51,9 @@ const ProfilePage = () => {
       );
       const result = await response.json();
       setUserInfo(result);
-      console.log("result", result);
     };
     getOneUser(userId);
   }, []);
-  console.log("user", userInfo);
   let counter = 0;
   let first_standart_deposit =
     userInfo?.achievements?.first_standart_deposit == "Y" ? 20 : 0;
@@ -159,7 +157,7 @@ const ProfilePage = () => {
               h={"15px"}
               background={
                 counter == 0
-                  ? "rgba(84, 84, 84, 1)"
+                  ? "rgba(25, 25, 25, 1)"
                   : "linear-gradient(90deg, rgba(5,177,221,1) 0%, rgba(50,132,222,1) 100%)"
               }
               borderRadius={"8px"}
@@ -171,7 +169,7 @@ const ProfilePage = () => {
                 // || counter == 40 || counter == 60 || counter == 80
                 counter > 20
                   ? "linear-gradient(90deg, rgba(50,132,222,1) 0%, rgba(103,78,222,1) 100%)"
-                  : "rgba(84, 84, 84, 1)"
+                  : "rgba(25, 25, 25, 1)"
               }
               borderRadius={"8px"}
             />
@@ -181,7 +179,7 @@ const ProfilePage = () => {
               background={
                 counter > 40
                   ? "linear-gradient(90deg, rgba(103,78,222,1) 0%, rgba(137,44,223,1) 100%)"
-                  : "rgba(84, 84, 84, 1)"
+                  : "rgba(25, 25, 25, 1)"
               }
               borderRadius={"8px"}
             />
@@ -191,7 +189,7 @@ const ProfilePage = () => {
               background={
                 counter > 60
                   ? "linear-gradient(90deg, rgba(137,44,223,1) 0%, rgba(171,10,223,1) 100%)"
-                  : "rgba(84, 84, 84, 1)"
+                  : "rgba(25, 25, 25, 1)"
               }
               borderRadius={"8px"}
             />
