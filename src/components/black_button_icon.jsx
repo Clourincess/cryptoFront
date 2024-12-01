@@ -72,7 +72,7 @@ const BlackButtonIcon = ({
             position={"absolute"}
             top={"-60px"}
             right={"20px"}
-            bottom={type == "referal" ? "-3px" : "0px"}
+            bottom={type == "referal" ? "-8px" : "0px"}
           />
         ) : isCalc ? (
           <Image
@@ -80,7 +80,7 @@ const BlackButtonIcon = ({
             width={iconWidth}
             height={iconHeight}
             position={"absolute"}
-            bottom={type == "referal" ? "-3px" : "-15px"}
+            bottom={type == "referal" ? "-8px" : "-15px"}
             right={type == "referal" ? "0px" : "-5px"}
           />
         ) : (
@@ -90,7 +90,8 @@ const BlackButtonIcon = ({
               width={iconWidth}
               height={iconHeight}
               position={"absolute"}
-              bottom={type == "referal" ? "-3px" : "0px"}
+              bottom={type == "referal" ? "-8px" : "0px"}
+              right={type == "referal" ? "-5px" : null}
             />
             {star ? (
               <Image
@@ -98,7 +99,7 @@ const BlackButtonIcon = ({
                 position={"absolute"}
                 top={"-40px"}
                 right={"-20px"}
-                bottom={type == "referal" ? "-3px" : "0px"}
+                bottom={type == "referal" ? "-8px" : "0px"}
                 width={"60px"}
                 height={"60px"}
               />

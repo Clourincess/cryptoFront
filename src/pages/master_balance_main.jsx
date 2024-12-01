@@ -40,7 +40,7 @@ const MasterMain = () => {
               text={"DEPOSIT"}
               icon={deposit}
               left={"30px"}
-              route="/st_deposit_1"
+              route="/master_deposit1"
               iconWidth={"47px"}
               iconHeight={"47px"}
               additionalTextIcon={
@@ -82,7 +82,7 @@ const MasterMain = () => {
           width="100%"
           text={"STATS"}
           height="225px"
-          route="/standart_stats"
+          route="/master_stats"
           icon={stats}
           stats={true}
           iconWidth={"47px"}
