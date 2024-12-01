@@ -3,7 +3,7 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import WithdrawalCard from "../components/withdrawal_card";
-
+import redact from "../redact";
 
 const ReferalWithDraw1 = () => {
   const navigate = useNavigate();
@@ -18,8 +18,9 @@ const ReferalWithDraw1 = () => {
     <VStack width={"100%"}>
       <WithdrawalCard route="/referal_withdraw2" />
       <Note
-        text={`THIS IS THE STANDARD BALANCE PAGE.
-        HERE YOU ARE ABLE TO GENERATE USDT WITH 0.66%/DAY RATE. ON THIS PAGE YOU CAN MAKE DEPOSITS, GENERATE USDT AND WITHDRAW IT BACK TO YOUR CRYPTO WALLET AT ANY TIME.`}
+        text={redact(`THIS IS THE REFERRAL BALANCE PAGE.
+          
+        ENTER YOUR CRYPTO WALLET ADDRESS SO THAT WE CAN TRACK THE TRANSACTION.`)}
       />
     </VStack>
   );

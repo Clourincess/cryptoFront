@@ -32,9 +32,7 @@ const MasterCalc = () => {
   return (
     <VStack
       borderRadius={"14px"}
-      background={
-        "black"
-      }
+      background={"rgba(20,20,20,0.6)"}
       width={"170px"}
       height={"356px"}
       padding={"10px"}
@@ -50,7 +48,8 @@ const MasterCalc = () => {
         fontSize={"10px"}
         textAlign={"center"}
       >
-        PREMIUN <br />ACCOUNT
+        PREMIUN <br />
+        ACCOUNT
       </Text>
       <HStack width={"100%"} justify={"flex-start"}>
         {arrow}
@@ -148,7 +147,6 @@ const MasterCalc = () => {
       </Button>
       <VStack width={"100%"} spacing={0}>
         <HStack width={"100%"} justify={"flex-start"}>
-          
           <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
             ESTIMATED GENERATION:
           </Text>

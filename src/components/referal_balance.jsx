@@ -3,9 +3,11 @@ import ColoredComponent from "./colored_component_wrapper";
 import usdt_green from "./../assets/images/usdt_green.svg";
 import "./styles.css";
 import { keyframes } from "@emotion/react";
+import tg from "../tg_vars";
+import { useEffect, useRef, useState } from "react";
+import { useStores } from "../store/store_context";
 
 const ReferalBalance = ({
-  balance,
   width = "178px",
   height,
   onClick = () => {
@@ -18,6 +20,71 @@ const ReferalBalance = ({
   50% { opacity: 1; }
   100% { opacity: 0.5; }
 `;
+
+  const { GlobalVars } = useStores();
+
+  // const [referralInfo, setReferralInfo] = useState([]);
+  // useEffect(() => {
+  //   const getReferalProgramm = async (tgId) => {
+  //     const response = await fetch(
+  //       `https://osiriscrypto.su:8008/getReferalProgramm?telegramm_id=${tgId}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           accept: "application/json",
+  //         },
+  //       }
+  //     );
+  //     const result = await response.json();
+  //     setReferralInfo(result);
+  //   };
+  //   getReferalProgramm(GlobalVars.tg_id);
+  // }, []);
+
+  // console.log("refInfo", referralInfo);
+
+  useEffect(() => {
+    GlobalVars.getReferalStats();
+  });
+
+  const textRef = useRef(null);
+
+  const handleCopy = async () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(GlobalVars.code);
+        alert("Текст скопирован в буфер обмена!");
+      } catch (err) {
+        console.error("Ошибка при копировании текста: ", err);
+        fallbackCopy();
+      }
+    } else {
+      fallbackCopy(); // Используем резервный метод для iOS и старых браузеров
+    }
+  };
+
+  const fallbackCopy = () => {
+    if (textRef.current) {
+      const range = document.createRange();
+      const selection = window.getSelection();
+
+      textRef.current.style.display = "block"; // Делаем текст видимым
+      range.selectNodeContents(textRef.current);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
+        document.execCommand("copy");
+        alert("Текст скопирован с использованием резервного метода!");
+      } catch (err) {
+        console.error("Не удалось скопировать текст: ", err);
+        alert("Копирование не поддерживается в вашем браузере.");
+      }
+
+      selection.removeAllRanges();
+      textRef.current.style.display = "none"; // Скрываем текст обратно
+    }
+  };
   return (
     <Box position="relative" width={width} h={height}>
       <Box
@@ -59,15 +126,35 @@ const ReferalBalance = ({
             >
               YOUR CODE:
             </Text>
-            <Text fontSize={"9px"} color={"white"}>
-              ASDKAS92
+            <Text
+              fontSize={"9px"}
+              color={"white"}
+              w={"50px"}
+              whiteSpace={"nowrap"}
+              textOverflow={"ellipsis"}
+              overflow={"hidden"}
+              onClick={handleCopy}
+              cursor={"pointer"}
+              textAlign={"end"}
+            >
+              {GlobalVars.referalStats.code ?? "00000000"}
             </Text>
+            <div
+              ref={textRef}
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                opacity: 0,
+              }}
+            >
+              {GlobalVars.code}
+            </div>
           </VStack>
         </HStack>
         <HStack width={"100%"} justify={"space-between"}>
           <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
             <Text fontSize={26} color={"white"} fontWeight={700}>
-              {balance}
+              {GlobalVars.referalStats.total_profit_referal ?? 0}
             </Text>
             <Text fontSize={"9px"} color={"white"}>
               USDT TRC20

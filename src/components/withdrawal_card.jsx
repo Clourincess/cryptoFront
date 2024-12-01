@@ -22,12 +22,11 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
       borderRadius={"14px"}
       width={"100%"}
       height={"220px"}
-      padding={"10px"}
+      padding={"7px 22px 22px 9px"}
       align={"center"}
-      background={
-        "black"
-      }
+      background={"rgba(20,20,20,0.6)"}
       justify={"space-between"}
+      zIndex={100}
     >
       <HStack width={"100%"} justify={"center"}>
         <HStack alignSelf={"center"} justify={"center"}>

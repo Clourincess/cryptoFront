@@ -19,11 +19,13 @@ const ReferalStats = () => {
 
   useEffect(() => {
     GlobalVars.getReferalStats();
-  });
+    GlobalVars.getAllReferralPrograms();
+  }, []);
+  console.log("glo", GlobalVars.referalStats);
   return (
     <VStack width={"100%"}>
       <Stats
-        withdrawn={GlobalVars.referalStats.code}
+        withdrawn={GlobalVars.referalStats.id} //заменить 
         deposited={GlobalVars.referalStats.count_referal_user}
         generated={GlobalVars.referalStats.total_profit_referal}
         type={"ref"}

@@ -23,8 +23,6 @@ const ReferalMain = () => {
   }
   const { GlobalVars } = useStores();
 
-  console.log("tg_id", GlobalVars.tg_id);
-
   const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
@@ -49,7 +47,6 @@ const ReferalMain = () => {
       <HStack width={"100%"}>
         <VStack width={"230px"} justify={"space-between"}>
           <ReferalBalance
-            balance={0}
             width="100%"
             height={"118px"}
             className={"animated"}

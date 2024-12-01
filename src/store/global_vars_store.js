@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 const baseurl = "https://osiriscrypto.su:8008";
 
 class GlobalVarsStore {
-  tgInfo = "asdasd";
+  tgInfo = "";
   tg_id = null;
   registered = false;
-  username = "leniviy_sid";
+  username = "";
   standartBalance = 0;
   masterBalance = 0;
   rank = "";
@@ -28,7 +28,7 @@ class GlobalVarsStore {
     code: 0,
     count_referal_user: 0,
     total_profit_referal: 0,
-    app_user_id: 181818181,
+    app_user_id: 0,
   };
   constructor() {
     makeAutoObservable(this);
@@ -106,6 +106,7 @@ class GlobalVarsStore {
     );
     const result = await response.json();
     this.referalStats = result;
+    console.log("refstst", result);
   };
   updateRank = (newRank) => {
     this.rank = newRank;
@@ -119,6 +120,7 @@ class GlobalVarsStore {
       },
     });
     const result = await response.json();
+    console.log(result);
     return result;
   };
 }
