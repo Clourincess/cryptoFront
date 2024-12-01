@@ -11,7 +11,6 @@ import MasterBalance from "../components/master_balance";
 import { useNavigate } from "react-router";
 import Note from "../components/note";
 import { register } from "../apifunc";
-import small_calc from "./../assets/images/2121.png";
 import { useEffect } from "react";
 import { useStores } from "../store/store_context";
 import tg from "../tg_vars";
@@ -107,8 +106,19 @@ const Main = observer(() => {
             </svg>
           }
         /> */}
-        <BlackButtonIcon text={"FAQ"} icon={faq} />
-        <BlackButtonIcon text={"ABOUT US"} icon={star} star={true} />
+        <BlackButtonIcon
+          text={"FAQ"}
+          icon={faq}
+          iconWidth={"54px"}
+          iconHeight={"54px"}
+        />
+        <BlackButtonIcon
+          text={"ABOUT US"}
+          icon={star}
+          star={true}
+          iconWidth={"54px"}
+          iconHeight={"54px"}
+        />
       </HStack>
       <HStack width={"100%"} align={"flex-start"} justify={"space-between"}>
         <VStack>
@@ -122,11 +132,13 @@ const Main = observer(() => {
         </VStack>
         <BlackButtonIcon
           text={"CALC INCOME"}
-          icon={small_calc}
+          icon={calc}
           width="170px"
           height="191px"
           route="calc_income"
           isCalc={true}
+          iconWidth={"103px"}
+          // iconHeight={"136px"}
         />
       </HStack>
 
@@ -137,6 +149,8 @@ const Main = observer(() => {
         width="100%"
         height="87px"
         route="/referal_main"
+        iconWidth={"84px"}
+        iconHeight={"84px"}
       />
       <Note text={""} width="100%" updates={true} />
     </VStack>

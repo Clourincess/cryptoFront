@@ -63,6 +63,8 @@ const ReferalMain = () => {
                   ? "/referal_code1"
                   : "/referal_code3"
               }
+              iconWidth={"47px"}
+              iconHeight={"47px"}
               predictionalIcon={
                 <svg
                   width="10"
@@ -94,8 +96,10 @@ const ReferalMain = () => {
             <BlackButtonIcon
               text={"WITHDRAW"}
               icon={withdraw}
-              left={"65px"}
+              left={"45px"}
               route="/referal_withdraw1"
+              iconWidth={"47px"}
+              iconHeight={"47px"}
               additionalTextIcon={
                 <svg
                   width="7"
@@ -119,6 +123,8 @@ const ReferalMain = () => {
           route="/referal_stats"
           icon={stats}
           stats={true}
+          iconWidth={"47px"}
+          iconHeight={"47px"}
         />
       </HStack>
       <Note

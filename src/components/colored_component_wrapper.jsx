@@ -13,21 +13,21 @@ const ColoredComponent = ({
   background = "radial-gradient(120% 107.04% at -20% 84.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)",
 }) => {
   const glowAnimation = keyframes`
-  0% { opacity: 0.5; }
+  0% { opacity: 0.2; }
   50% { opacity: 1; }
-  100% { opacity: 0.5; }
+  100% { opacity: 0.2; }
 `;
   return (
     <Box w={width} height={height} position={"relative"}>
       <Box
         position="absolute"
-        top="0px"
-        left="0px"
-        right="0px"
-        bottom="0px"
+        top="3px"
+        left="5px"
+        right="5px"
+        bottom="3px"
         transform={"skewX(-5deg)"}
         background={`${background}`}
-        filter="blur(40px)"
+        filter="blur(10px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <VStack

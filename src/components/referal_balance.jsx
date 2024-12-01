@@ -22,10 +22,10 @@ const ReferalBalance = ({
     <Box position="relative" width={width} h={height}>
       <Box
         position="absolute"
-        top="-8px"
-        left="-20px"
-        right="-20px"
-        bottom="-8px"
+        top="0px"
+        left="-5px"
+        right="-5px"
+        bottom="0px"
         transform={"skewX(-5deg)"}
         background="linear-gradient(105deg, rgba(255, 126, 95, 0) 5%,#8DC7D6 40%, #74C6B2 60%, rgba(255, 126, 95, 0) 95%)"
         filter="blur(15px)"

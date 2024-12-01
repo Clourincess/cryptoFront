@@ -39,8 +39,10 @@ const MasterMain = () => {
             <BlackButtonIcon
               text={"DEPOSIT"}
               icon={deposit}
-              left={"50px"}
+              left={"30px"}
               route="/st_deposit_1"
+              iconWidth={"47px"}
+              iconHeight={"47px"}
               additionalTextIcon={
                 <svg
                   width="7"
@@ -57,8 +59,10 @@ const MasterMain = () => {
             <BlackButtonIcon
               text={"WITHDRAW"}
               icon={withdraw}
-              left={"65px"}
-              route="/st_withdraw_1"
+              left={"45px"}
+              route="/master_withdraw1"
+              iconWidth={"47px"}
+              iconHeight={"47px"}
               additionalTextIcon={
                 <svg
                   width="7"
@@ -81,6 +85,8 @@ const MasterMain = () => {
           route="/standart_stats"
           icon={stats}
           stats={true}
+          iconWidth={"47px"}
+          iconHeight={"47px"}
         />
       </HStack>
       <HStack w={"100%"}>

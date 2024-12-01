@@ -51,7 +51,7 @@ const BlackButtonIcon = ({
         <Text fontSize={"9px"} color={"white"} dir="row" fontWeight={700}>
           {editMultiLineText(text)}
         </Text>
-        <VStack position={"absolute"} top={top} left={left}>
+        <VStack position={"absolute"} top={top} left={left} w={"54px"}>
           {additionalTextIcon}
         </VStack>
       </HStack>
@@ -77,9 +77,11 @@ const BlackButtonIcon = ({
         ) : isCalc ? (
           <Image
             src={icon}
-            width={"90px"}
+            width={iconWidth}
+            height={iconHeight}
             position={"absolute"}
-            bottom={type == "referal" ? "-3px" : "0px"}
+            bottom={type == "referal" ? "-3px" : "-15px"}
+            right={type == "referal" ? "0px" : "-5px"}
           />
         ) : (
           <>
@@ -94,9 +96,11 @@ const BlackButtonIcon = ({
               <Image
                 src={small_star}
                 position={"absolute"}
-                top={"-30px"}
-                right={"-5px"}
+                top={"-40px"}
+                right={"-20px"}
                 bottom={type == "referal" ? "-3px" : "0px"}
+                width={"60px"}
+                height={"60px"}
               />
             ) : null}
           </>

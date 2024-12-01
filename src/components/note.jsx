@@ -13,15 +13,15 @@ const Note = ({ text, updates = false }) => {
     <Box position="relative" width={"100%"} height={updates ? "241px" : "auto"}>
       <Box
         position="absolute"
-        top="0px"
-        left="0px"
-        right="0px"
-        bottom="0px"
+        top="-2px"
+        left="2px"
+        right="2px"
+        bottom="-2px"
         transform={"skewX(-5deg)"}
         background={
           "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
         }
-        filter="blur(30px)"
+        filter="blur(15px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <HStack
