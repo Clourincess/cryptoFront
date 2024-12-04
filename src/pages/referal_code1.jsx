@@ -131,7 +131,9 @@ const ReferalCode1 = () => {
             height={"34px"}
             width={"114px"}
             onClick={() => {
-              isRef ? apply() : navigate("/referal_code4");
+              isRef && isRef != GlobalVars.referalStats.code
+                ? apply()
+                : navigate("/referal_code4");
             }}
             background={
               "linear-gradient(82.94deg, #2AB0D0 5.51%, #9B71D9 64.24%, #7F7FD7 94.49%)"

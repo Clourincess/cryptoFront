@@ -1,12 +1,4 @@
-import {
-  VStack,
-  HStack,
-  Text,
-  Image,
-  SimpleGrid,
-  Stack,
-  useRadio,
-} from "@chakra-ui/react";
+import { VStack, HStack, Text, Image } from "@chakra-ui/react";
 import Note from "../components/note";
 import { useNavigate } from "react-router";
 import coal from "./../assets/images/coal.svg";
@@ -160,7 +152,7 @@ const ProfilePage = () => {
                   ? "rgba(25, 25, 25, 1)"
                   : "linear-gradient(90deg, rgba(5,177,221,1) 0%, rgba(50,132,222,1) 100%)"
               }
-              borderRadius={"8px"}
+              borderRadius={"4px"}
             />
             <HStack
               w={"58px"}
@@ -171,7 +163,7 @@ const ProfilePage = () => {
                   ? "linear-gradient(90deg, rgba(50,132,222,1) 0%, rgba(103,78,222,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
-              borderRadius={"8px"}
+              borderRadius={"4px"}
             />
             <HStack
               w={"58px"}
@@ -181,7 +173,7 @@ const ProfilePage = () => {
                   ? "linear-gradient(90deg, rgba(103,78,222,1) 0%, rgba(137,44,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
-              borderRadius={"8px"}
+              borderRadius={"4px"}
             />
             <HStack
               w={"58px"}
@@ -191,7 +183,7 @@ const ProfilePage = () => {
                   ? "linear-gradient(90deg, rgba(137,44,223,1) 0%, rgba(171,10,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
-              borderRadius={"8px"}
+              borderRadius={"4px"}
             />
           </HStack>
           <HStack
@@ -240,35 +232,35 @@ const ProfilePage = () => {
             padding={"0 50px"}
             marginTop={"5px"}
           >
-            <VStack gap={"2px"}>
+            <VStack gap={"2px"} justify={"space-between"}>
               <Text fontSize={"8px"} color={"rgba(84, 84, 84, 1)"}>
                 COAL
               </Text>
-              <Image src={coal} />
+              <Image src={coal} w={"28px"} h={"28px"} />
             </VStack>
-            <VStack marginLeft={"24px"} gap={"2px"}>
+            <VStack marginLeft={"24px"} gap={"2px"} justify={"space-between"}>
               <Text fontSize={"8px"} color={"rgba(150, 195, 254, 1)"}>
                 IRON
               </Text>
               <Image src={iron} w={"28px"} h={"28px"} />
             </VStack>
-            <VStack marginLeft={"27px"} gap={"2px"}>
+            <VStack marginLeft={"27px"} gap={"2px"} justify={"space-between"}>
               <Text fontSize={"8px"} color={"rgba(45, 139, 236, 1)"}>
                 SILVER
               </Text>
-              <Image src={silver} />
+              <Image src={silver} w={"28px"} h={"28px"} />
             </VStack>
-            <VStack marginLeft={"25px"} gap={"2px"}>
+            <VStack marginLeft={"25px"} gap={"2px"} justify={"space-between"}>
               <Text fontSize={"8px"} color={"rgba(100, 81, 255, 1)"}>
                 GOLD
               </Text>
-              <Image src={gold} />
+              <Image src={gold} w={"28px"} h={"28px"} />
             </VStack>
-            <VStack marginLeft={"18px"} gap={"2px"}>
+            <VStack marginLeft={"18px"} gap={"2px"} justify={"space-between"}>
               <Text fontSize={"8px"} color={"rgba(161, 45, 246, 1)"}>
                 DIAMOND
               </Text>
-              <Image src={diamond} />
+              <Image src={diamond} w={"28px"} h={"28px"} />
             </VStack>
           </HStack>
         </VStack>

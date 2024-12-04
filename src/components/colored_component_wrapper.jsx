@@ -1,5 +1,4 @@
 import { Box, VStack } from "@chakra-ui/react";
-import "./styles.css";
 import gradient from "./../assets/images/gradient.svg";
 import { keyframes } from "@emotion/react";
 

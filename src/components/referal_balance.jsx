@@ -52,7 +52,7 @@ const ReferalBalance = ({
   const handleCopy = async () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
-        await navigator.clipboard.writeText(GlobalVars.code);
+        await navigator.clipboard.writeText(GlobalVars.referalStats.code);
         alert("Текст скопирован в буфер обмена!");
       } catch (err) {
         console.error("Ошибка при копировании текста: ", err);

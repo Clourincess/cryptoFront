@@ -74,6 +74,7 @@ class GlobalVarsStore {
       }
     );
     const result = await response.json();
+    console.log(result);
     this.masterBalance = result.balance == undefined ? 0 : result.balance;
   };
   getStats = async (isMaster = false) => {
