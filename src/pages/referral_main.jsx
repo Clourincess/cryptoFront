@@ -26,9 +26,9 @@ const ReferalMain = () => {
   const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
-    const getOneUser = async (tgId) => {
+    const getOneUser = async () => {
       const response = await fetch(
-        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${tgId}`,
+        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${GlobalVars.tg_id}`,
         {
           method: "GET",
           headers: {
@@ -39,8 +39,8 @@ const ReferalMain = () => {
       const result = await response.json();
       setUserInfo(result);
     };
-    getOneUser(GlobalVars.tg_id);
-  }, []);
+    getOneUser();
+  }, [GlobalVars.tg_id]);
   console.log(userInfo.used_referal_code);
   return (
     <VStack width={"100%"}>

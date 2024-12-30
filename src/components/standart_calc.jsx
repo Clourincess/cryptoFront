@@ -1,6 +1,14 @@
-import { VStack, Text, HStack, Input, Button } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  HStack,
+  Input,
+  Button,
+  useEditable,
+} from "@chakra-ui/react";
 import ColoredComponent from "./colored_component_wrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useStores } from "../store/store_context";
 
 const arrow = (
   <svg
@@ -31,8 +39,13 @@ const greenArrow = (
 const StandartCalc = () => {
   const [values, setValues] = useState([0, 0]);
   const [result, setResult] = useState(0);
+  const { GlobalVars } = useStores();
+
+  useEffect(() => {
+    GlobalVars.getCoefStandart();
+  }, []);
   return (
-    <ColoredComponent >
+    <ColoredComponent>
       <VStack width={"100%"} height={"100%"} spacing={"0px"}>
         <Text
           fontSize={"10px"}
@@ -120,7 +133,10 @@ const StandartCalc = () => {
           marginTop={"31px"}
           padding="10px"
           onClick={() => {
-            setResult((values[0] + values[1]) * 1.25);
+            setResult(
+              (values[0] + values[1]) *
+                parseFloat(GlobalVars.standart_coef?.data?.value)
+            );
           }}
         >
           <Text
@@ -146,7 +162,12 @@ const StandartCalc = () => {
               ESTIMATED GENERATION:
             </Text>
           </HStack>
-          <Text fontSize={"30px"} color={"white"} alignSelf={"flex-start"} marginTop={"20px"}>
+          <Text
+            fontSize={"30px"}
+            color={"white"}
+            alignSelf={"flex-start"}
+            marginTop={"20px"}
+          >
             {Math.ceil(result, 2)}
           </Text>
           <Text fontSize={"9px"} color={"white"} alignSelf={"flex-start"}>

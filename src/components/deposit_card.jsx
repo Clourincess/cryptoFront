@@ -33,11 +33,13 @@ const DepositCard = ({ route = "/" }) => {
   useEffect(() => {
     GlobalVars.updateMasterDepositAmount(depositAmount);
     console.log("dep", depositAmount);
-    console.log("vars", GlobalVars.master_deposit_amount);
+    console.log("vars", GlobalVars?.master_deposit_amount);
+    console.log("balance id", GlobalVars?.master_balance_info?.id);
   }, [depositAmount]);
 
   const createMasterDeposit = async () => {
     await GlobalVars.createMasterDeposit();
+    navigate("/master_main");
   };
 
   return (
@@ -119,7 +121,10 @@ const DepositCard = ({ route = "/" }) => {
           cursor={depositAmount == "" ? "no-drop" : "pointer"}
           height={"36px"}
           width={"82px"}
-          onClick={() => navigate("/master_main")}
+          onClick={async () => {
+            await createMasterDeposit();
+            
+          }}
           background={
             depositAmount != ""
               ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"

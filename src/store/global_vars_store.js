@@ -4,7 +4,7 @@ const baseurl = "https://osiriscrypto.su:8008";
 class GlobalVarsStore {
   all_users = [];
   tgInfo = "";
-  tg_id = null;
+  tg_id = 5797047312;
   registered = false;
   master_balance_info = [];
   username = "";
@@ -13,7 +13,7 @@ class GlobalVarsStore {
   standart_deposits = [];
   master_deposits = [];
   rank = "";
-
+  standart_coef = {};
   master_deposit_amount = 0;
   standartStats = {
     id: 10,
@@ -103,7 +103,7 @@ class GlobalVarsStore {
   };
   getReferalStats = async () => {
     const response = await fetch(
-      baseurl + `/getReferalProgramm?telegramm_id=${this.tg_id}`,
+      baseurl + `/getReferalProgramm?telegramm_id=${5797047312}`,
       {
         method: "GET",
         headers: {
@@ -144,7 +144,7 @@ class GlobalVarsStore {
 
   getMasterAccountByUserId = async () => {
     const response = await fetch(
-      `${baseurl}/getAccountMasterByUserId?user_id=${this.tg_id}`,
+      `${baseurl}/getAccountMasterByUserId?user_id=${5797047312}`,
       {
         method: "GET",
         headers: {
@@ -154,12 +154,11 @@ class GlobalVarsStore {
     );
     const result = await response.json();
     this.master_balance_info = result;
-    console.log("result", result);
   };
 
   createMatserAccount = async () => {
     const response = await fetch(
-      `${baseurl}/createAccountMaster?user_id=${this.tg_id}`,
+      `${baseurl}/createAccountMaster?user_id=${5797047312}`,
       {
         method: "POST",
         headers: {
@@ -213,14 +212,24 @@ class GlobalVarsStore {
       body: JSON.stringify({
         id: 0,
         sum: this.master_deposit_amount,
-        deposit_date: new Date(),
+        deposit_date: null,
         account_id: this.master_balance_info?.id,
         verification: false,
         account_number: "string",
         type_of_network: "trc20",
       }),
     });
-    console.log("response", response)
+  };
+
+  getCoefStandart = async () => {
+    const response = await fetch(`${baseurl}/app/coefficient/`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const result = await response.json();
+    this.standart_coef = result;
   };
 }
 

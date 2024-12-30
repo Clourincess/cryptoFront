@@ -49,7 +49,7 @@ const MasterCalc = () => {
         textAlign={"center"}
         fontWeight={"800"}
       >
-        PREMIUN <br />
+        PREMIUM <br />
         ACCOUNT
       </Text>
       <HStack

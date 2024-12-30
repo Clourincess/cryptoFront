@@ -31,7 +31,7 @@ const MasterMain = () => {
       >
         <VStack width={"230px"} justify={"space-between"}>
           <MasterBalance
-            balance={GlobalVars?.master_balance_info?.balance}
+            balance={GlobalVars?.master_balance_info?.balance || 0}
             width="100%"
             height="118px"
             // className={"animated"}

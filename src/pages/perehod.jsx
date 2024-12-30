@@ -21,6 +21,7 @@ const PerehodPage = () => {
 
   useEffect(() => {
     GlobalVars.getMasterAccountByUserId();
+    console.log("id", GlobalVars?.master_balance_info?.id);
   }, []);
 
   return (
@@ -41,7 +42,7 @@ const PerehodPage = () => {
           color={"white"}
           width={"100%"}
           borderRadius={"12px"}
-          onClick={()=> navigate("/create_premium_acc")}
+          onClick={() => navigate("/create_premium_acc")}
         >
           Create Premium Account
         </Button>
