@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 const baseurl = "https://osiriscrypto.su:8008";
 
 class GlobalVarsStore {
+  all_users = [];
   tgInfo = "";
   tg_id = null;
   registered = false;
@@ -123,6 +124,17 @@ class GlobalVarsStore {
     const result = await response.json();
     console.log(result);
     return result;
+  };
+
+  getAllUsers = async () => {
+    const response = await fetch(`${baseurl}/getAllUsers`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const result = await response.json();
+    this.all_users = result;
   };
 }
 

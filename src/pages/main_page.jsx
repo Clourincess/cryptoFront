@@ -24,14 +24,25 @@ const Main = observer(() => {
       telegramm_id: tg?.initDataUnsafe?.user?.id,
       user_name: tg?.initDataUnsafe?.user?.username,
       count_bonuses: 0,
-      used_referal_code: "string",
+      used_referal_code: "",
       is_blocked: false,
     };
     await GlobalVars.register(payload);
   };
 
   useEffect(() => {
-    register();
+    GlobalVars.getAllUsers();
+
+    
+
+    
+  }, []);
+
+  useEffect(() => {
+    const thisAccount = GlobalVars.all_users.find((item) => {
+      return item.id == tg?.initDataUnsafe?.user?.id;
+    });
+    thisAccount == undefined && register();
     GlobalVars.getStandart();
     GlobalVars.getMaster();
   }, []);
