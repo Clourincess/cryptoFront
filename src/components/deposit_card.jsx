@@ -24,7 +24,7 @@ const DepositCard = ({ route = "/" }) => {
       height={"220px"}
       padding={"8px 22px 22px 10px"}
       align={"center"}
-      background={"black"}
+      backgroundColor="rgba(20, 20, 20, 1)"
       justify={"space-between"}
       zIndex={100}
     >
@@ -46,7 +46,7 @@ const DepositCard = ({ route = "/" }) => {
           </svg>
         </HStack>
       </HStack>
-      <HStack width={"100%"} align={"flex-end"} justify={"space-between"}>
+      <HStack width={"100%"} align={"flex-end"} justify={"space-between"} >
         <VStack>
           <HStack width={"100%"} justify={"flex-start"} spacing={1}>
             {arrow}
