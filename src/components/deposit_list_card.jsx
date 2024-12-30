@@ -34,7 +34,7 @@ const DepositListCard = ({
           USDT TRC20
         </Text>
       </VStack>
-      <VStack>
+      <VStack spacing={0}>
         <svg
           width="21"
           height="15"
