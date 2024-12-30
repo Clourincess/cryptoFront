@@ -4,8 +4,9 @@ const baseurl = "https://osiriscrypto.su:8008";
 class GlobalVarsStore {
   all_users = [];
   tgInfo = "";
-  tg_id = null;
+  tg_id = 846374619;
   registered = false;
+  master_balance_info = [];
   username = "";
   standartBalance = 0;
   masterBalance = 0;
@@ -135,6 +136,33 @@ class GlobalVarsStore {
     });
     const result = await response.json();
     this.all_users = result;
+  };
+
+  getMasterAccountByUserId = async () => {
+    const response = await fetch(
+      `${baseurl}/getAccountMasterByUserId?user_id=${846374619}`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    this.master_balance_info = result;
+    console.log("result", result);
+  };
+
+  createMatserAccount = async () => {
+    const response = await fetch(
+      `${baseurl}/createAccountMaster?user_id=${846374619}`,
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
   };
 }
 

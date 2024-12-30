@@ -32,19 +32,19 @@ const Main = observer(() => {
 
   useEffect(() => {
     GlobalVars.getAllUsers();
-
-    
-
-    
   }, []);
 
   useEffect(() => {
-    const thisAccount = GlobalVars.all_users.find((item) => {
-      return item.id == tg?.initDataUnsafe?.user?.id;
+    const thisAccount = GlobalVars?.all_users.find((item) => {
+      return item?.id == tg?.initDataUnsafe?.user?.id;
     });
     thisAccount == undefined && register();
     GlobalVars.getStandart();
     GlobalVars.getMaster();
+  }, []);
+
+  useEffect(() => {
+    GlobalVars.getMasterAccountByUserId();
   }, []);
   return (
     <VStack width="100%">
