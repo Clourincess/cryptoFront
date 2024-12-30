@@ -25,7 +25,7 @@ const InfoHeaderMainPage = observer(() => {
           <Image
             width={"33px"}
             height={"33px"}
-            src={`${tg.initDataUnsafe?.user?.photo}`}
+            src={`${tg.initDataUnsafe?.user?.photo_url}`}
             objectFit={"cover"}
             borderRadius={"50%"}
           />
