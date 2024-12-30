@@ -27,12 +27,13 @@ const MasterChoose = () => {
     navigate("/master_deposit1");
     backButton.hide();
   }
+
   return (
     <VStack width={"100%"}>
       <VStack
         width={"100%"}
         borderRadius={"14px"}
-        background={"black"}
+        backgroundColor="rgba(20, 20, 20, 1)"
         padding={"10px"}
         spacing={"30px"}
         zIndex={1000}
@@ -66,6 +67,8 @@ const MasterChoose = () => {
             width={"70px"}
             height={"92px"}
             padding={"5px"}
+            cursor={"pointer"}
+            justify={"space-between"}
             background={
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }
@@ -90,6 +93,8 @@ const MasterChoose = () => {
             width={"70px"}
             height={"92px"}
             padding={"5px"}
+            justify={"space-between"}
+            cursor={"pointer"}
             background={
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }
@@ -116,6 +121,8 @@ const MasterChoose = () => {
             width={"70px"}
             height={"92px"}
             padding={"5px"}
+            cursor={"pointer"}
+            justify={"space-between"}
             background={
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }

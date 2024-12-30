@@ -20,6 +20,7 @@ const MasterMain = () => {
     backButton.hide();
   }
   const { GlobalVars } = useStores();
+
   return (
     <VStack width={"100%"} justify={"flex-start"}>
       <HStack
@@ -30,7 +31,7 @@ const MasterMain = () => {
       >
         <VStack width={"230px"} justify={"space-between"}>
           <MasterBalance
-            balance={GlobalVars.masterBalance}
+            balance={GlobalVars?.master_balance_info?.balance}
             width="100%"
             height="118px"
             // className={"animated"}

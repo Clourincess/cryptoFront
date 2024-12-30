@@ -4,16 +4,17 @@ const baseurl = "https://osiriscrypto.su:8008";
 class GlobalVarsStore {
   all_users = [];
   tgInfo = "";
-  tg_id = 846374619;
+  tg_id = null;
   registered = false;
   master_balance_info = [];
   username = "";
   standartBalance = 0;
   masterBalance = 0;
-
   standart_deposits = [];
   master_deposits = [];
   rank = "";
+
+  master_deposit_amount = 0;
   standartStats = {
     id: 10,
     deposit_sum: 0,
@@ -143,7 +144,7 @@ class GlobalVarsStore {
 
   getMasterAccountByUserId = async () => {
     const response = await fetch(
-      `${baseurl}/getAccountMasterByUserId?user_id=${846374619}`,
+      `${baseurl}/getAccountMasterByUserId?user_id=${this.tg_id}`,
       {
         method: "GET",
         headers: {
@@ -158,7 +159,7 @@ class GlobalVarsStore {
 
   createMatserAccount = async () => {
     const response = await fetch(
-      `${baseurl}/createAccountMaster?user_id=${846374619}`,
+      `${baseurl}/createAccountMaster?user_id=${this.tg_id}`,
       {
         method: "POST",
         headers: {
@@ -196,6 +197,30 @@ class GlobalVarsStore {
     const result = await response.json();
     console.log(result);
     this.master_deposits = result;
+  };
+
+  updateMasterDepositAmount = (new_amount) => {
+    this.master_deposit_amount = new_amount;
+  };
+
+  createMasterDeposit = async () => {
+    const response = await fetch(`${baseurl}/createDepositMaster`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: 0,
+        sum: this.master_deposit_amount,
+        deposit_date: new Date(),
+        account_id: this.master_balance_info?.id,
+        verification: false,
+        account_number: "string",
+        type_of_network: "trc20",
+      }),
+    });
+    console.log("response", response)
   };
 }
 

@@ -1,5 +1,14 @@
-import { VStack, HStack, Text, Button, Input } from "@chakra-ui/react";
+import {
+  VStack,
+  HStack,
+  Text,
+  Button,
+  Input,
+  useEditable,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router";
+import { useStores } from "../store/store_context";
+import { useEffect, useState } from "react";
 
 const arrow = (
   <svg
@@ -17,6 +26,20 @@ const arrow = (
 );
 const DepositCard = ({ route = "/" }) => {
   const navigate = useNavigate();
+  const { GlobalVars } = useStores();
+
+  const [depositAmount, setDepositAmount] = useState("");
+
+  useEffect(() => {
+    GlobalVars.updateMasterDepositAmount(depositAmount);
+    console.log("dep", depositAmount);
+    console.log("vars", GlobalVars.master_deposit_amount);
+  }, [depositAmount]);
+
+  const createMasterDeposit = async () => {
+    await GlobalVars.createMasterDeposit();
+  };
+
   return (
     <VStack
       borderRadius={"14px"}
@@ -46,7 +69,12 @@ const DepositCard = ({ route = "/" }) => {
           </svg>
         </HStack>
       </HStack>
-      <HStack width={"100%"} align={"flex-end"} justify={"space-between"} >
+      <HStack
+        width={"100%"}
+        align={"flex-end"}
+        justify={"space-between"}
+        position={"relative"}
+      >
         <VStack>
           <HStack width={"100%"} justify={"flex-start"} spacing={1}>
             {arrow}
@@ -56,10 +84,11 @@ const DepositCard = ({ route = "/" }) => {
           </HStack>
           <Input
             placeholder="TYPE HERE"
+            value={depositAmount}
+            onChange={(e) => setDepositAmount(e.target.value)}
             style={{
               backgroundColor: "black",
               fontSize: "10px",
-
               borderRadius: "28px",
               width: "100%",
               padding: "5px 20px",
@@ -87,17 +116,32 @@ const DepositCard = ({ route = "/" }) => {
         </VStack>
         <Button
           borderRadius={"28px"}
+          cursor={depositAmount == "" ? "no-drop" : "pointer"}
           height={"36px"}
           width={"82px"}
-          onClick={() => navigate(route)}
+          onClick={() => navigate("/master_main")}
           background={
-            "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
+            depositAmount != ""
+              ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
+              : "rgba(153, 28, 28, 1)"
           }
+          disabled={depositAmount == ""}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
-            NEXT
+            ENTER
           </Text>
         </Button>
+        {depositAmount == "" && (
+          <Text
+            position={"absolute"}
+            right={"0px"}
+            bottom={"-13px"}
+            color={"rgba(199, 32, 32, 1)"}
+            fontSize={"7px"}
+          >
+            ENTER DEPOSIT AMOUNT
+          </Text>
+        )}
       </HStack>
     </VStack>
   );
