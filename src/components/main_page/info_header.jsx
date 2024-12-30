@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import smile from "./../../assets/images/smile.JPG";
 import { useStores } from "../../store/store_context";
 import { observer } from "mobx-react-lite";
-
+import NoPhoto from "./../../assets/images/no_photo_user.png"
 const InfoHeaderMainPage = observer(() => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
@@ -22,13 +22,22 @@ const InfoHeaderMainPage = observer(() => {
     <HStack width={"100%"} justify={"space-between"}>
       <HStack align={"center"} onClick={() => navigate("/profile")}>
         <VStack justify={"center"}>
+          {tg.initDataUnsafe?.user?.photo_url !==""?
           <Image
             width={"33px"}
             height={"33px"}
             src={`${tg.initDataUnsafe?.user?.photo_url}`}
             objectFit={"cover"}
             borderRadius={"50%"}
+          />:
+          <Image
+            width={"33px"}
+            height={"33px"}
+            src={NoPhoto}
+            objectFit={"cover"}
+            borderRadius={"50%"}
           />
+          }
         </VStack>
 
         <VStack
