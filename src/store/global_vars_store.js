@@ -10,6 +10,9 @@ class GlobalVarsStore {
   username = "";
   standartBalance = 0;
   masterBalance = 0;
+
+  standart_deposits = [];
+  master_deposits = [];
   rank = "";
   standartStats = {
     id: 10,
@@ -163,6 +166,36 @@ class GlobalVarsStore {
         },
       }
     );
+  };
+
+  getAllDepositByUserNameStandart = async () => {
+    const response = await fetch(
+      `${baseurl}/getAllDepositByUserName?user_name=${this.username}&type_account=standart`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    this.standart_deposits = result;
+  };
+
+  getAllDepositByUserNameMaster = async () => {
+    const response = await fetch(
+      `${baseurl}/getAllDepositByUserName?user_name=${this.username}&type_account=master`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    this.master_deposits = result;
   };
 }
 

@@ -1,7 +1,13 @@
 import { VStack, HStack, Text, Button } from "@chakra-ui/react";
 import DepositListCard from "./deposit_list_card";
+import { useEffect } from "react";
+import { useStores } from "../store/store_context";
 
 const DepositList = () => {
+  const { GlobalVars } = useStores();
+  useEffect(() => {
+    GlobalVars.getAllDepositByUserName;
+  }, []);
   return (
     <VStack width="100%">
       <HStack alignSelf={"center"} justify={"center"}>
