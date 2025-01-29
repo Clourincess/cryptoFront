@@ -23,67 +23,30 @@ const ProfilePage = () => {
     backButton.hide();
   }
   const { GlobalVars } = useStores();
-  let userId;
 
-  if (tg.initDataUnsafe.user != undefined) {
-    userId = GlobalVars.tg_id;
-  }
-  const [userInfo, setUserInfo] = useState([]);
-
-  useEffect(() => {
-    const getOneUser = async (tgId) => {
-      const response = await fetch(
-        `https://crypto-osiris.com:8008/getUserById?telegramm_id=${tgId}`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-          },
-        }
-      );
-      const result = await response.json();
-      setUserInfo(result);
-    };
-    getOneUser(userId);
-  }, []);
-  let counter = 0;
-  let first_standart_deposit =
-    userInfo?.achievements?.first_standart_deposit == "Y" ? 20 : 0;
-  let first_master_deposit =
-    userInfo?.achievements?.first_master_deposit == "Y" ? 20 : 0;
-  let activate_someone_referal =
-    userInfo?.achievements?.activate_someone_referal == "Y" ? 20 : 0;
-  let activate_current_user_referal =
-    userInfo?.achievements?.activate_current_user_referal == "Y" ? 20 : 0;
-
-  counter =
-    first_standart_deposit +
-    first_master_deposit +
-    activate_someone_referal +
-    activate_current_user_referal;
-
-  counter == 20
-    ? GlobalVars.updateRank("IRON")
-    : counter == 40
-    ? GlobalVars.updateRank("SILVER")
-    : counter == 60
-    ? GlobalVars.updateRank("GOLD")
-    : counter == 80
-    ? GlobalVars.updateRank("DIAMOND")
-    : GlobalVars.updateRank("COAL");
+  const rank =
+    GlobalVars.tg_info?.count_bonuses == 20
+      ? "IRON"
+      : GlobalVars.tg_info?.count_bonuses == 40
+      ? "SILVER"
+      : GlobalVars.tg_info?.count_bonuses == 60
+      ? "GOLD"
+      : GlobalVars.tg_info?.count_bonuses == 80
+      ? "DIAMOND"
+      : "COAL";
   return (
     <VStack width={"100%"} gap={"20px"}>
       <VStack width={"100%"} gap={0}>
         <VStack marginTop={"50px"} gap={0}>
           <Image
             src={
-              counter == 20
+              GlobalVars.tg_info?.count_bonuses == 20
                 ? iron
-                : counter == 40
+                : GlobalVars.tg_info?.count_bonuses == 40
                 ? silver
-                : counter == 60
+                : GlobalVars.tg_info?.count_bonuses == 60
                 ? gold
-                : counter == 80
+                : GlobalVars.tg_info?.count_bonuses == 80
                 ? diamond
                 : coal
             }
@@ -94,26 +57,18 @@ const ProfilePage = () => {
             fontSize={"21px"}
             fontWeight={"800"}
             color={
-              counter == 20
+              GlobalVars.tg_info?.count_bonuses == 20
                 ? "rgba(150, 195, 254, 1)"
-                : counter == 40
+                : GlobalVars.tg_info?.count_bonuses == 40
                 ? "rgba(45, 139, 236, 1)"
-                : counter == 60
+                : GlobalVars.tg_info?.count_bonuses == 60
                 ? "rgba(100, 81, 255, 1)"
-                : counter == 80
+                : GlobalVars.tg_info?.count_bonuses == 80
                 ? "rgba(161, 45, 246, 1)"
                 : "rgba(84, 84, 84, 1)s"
             }
           >
-            {counter == 20
-              ? "IRON."
-              : counter == 40
-              ? "SILVER."
-              : counter == 60
-              ? "GOLD."
-              : counter == 80
-              ? "DIAMOND."
-              : "COAL."}
+            {rank}
           </Text>
         </VStack>
         <VStack width={"inherit"} gap={0} marginTop={"22px"}>
@@ -148,7 +103,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                counter == 0
+                GlobalVars.tg_info?.count_bonuses == 0
                   ? "rgba(25, 25, 25, 1)"
                   : "linear-gradient(90deg, rgba(5,177,221,1) 0%, rgba(50,132,222,1) 100%)"
               }
@@ -158,8 +113,8 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                // || counter == 40 || counter == 60 || counter == 80
-                counter > 20
+                // || GlobalVars.tg_info?.count_bonuses == 40 || GlobalVars.tg_info?.count_bonuses == 60 || GlobalVars.tg_info?.count_bonuses == 80
+                GlobalVars.tg_info?.count_bonuses > 20
                   ? "linear-gradient(90deg, rgba(50,132,222,1) 0%, rgba(103,78,222,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -169,7 +124,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                counter > 40
+                GlobalVars.tg_info?.count_bonuses > 40
                   ? "linear-gradient(90deg, rgba(103,78,222,1) 0%, rgba(137,44,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -179,7 +134,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                counter > 60
+                GlobalVars.tg_info?.count_bonuses > 60
                   ? "linear-gradient(90deg, rgba(137,44,223,1) 0%, rgba(171,10,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -198,28 +153,36 @@ const ProfilePage = () => {
             <Text color={"rgba(84, 84, 84, 1)"}>0</Text>
             <Text
               color={
-                counter > 0 ? "rgba(150, 195, 254, 1)" : "rgba(84, 84, 84, 1)"
+                GlobalVars.tg_info?.count_bonuses > 0
+                  ? "rgba(150, 195, 254, 1)"
+                  : "rgba(84, 84, 84, 1)"
               }
             >
               20
             </Text>
             <Text
               color={
-                counter > 20 ? "rgba(45, 139, 236, 1)" : "rgba(84, 84, 84, 1)"
+                GlobalVars.tg_info?.count_bonuses > 20
+                  ? "rgba(45, 139, 236, 1)"
+                  : "rgba(84, 84, 84, 1)"
               }
             >
               40
             </Text>
             <Text
               color={
-                counter > 40 ? "rgba(100, 81, 255, 1)" : "rgba(84, 84, 84, 1)"
+                GlobalVars.tg_info?.count_bonuses > 40
+                  ? "rgba(100, 81, 255, 1)"
+                  : "rgba(84, 84, 84, 1)"
               }
             >
               60
             </Text>
             <Text
               color={
-                counter > 60 ? "rgba(161, 45, 246, 1)" : "rgba(84, 84, 84, 1)"
+                GlobalVars.tg_info?.count_bonuses > 60
+                  ? "rgba(161, 45, 246, 1)"
+                  : "rgba(84, 84, 84, 1)"
               }
             >
               80
@@ -302,7 +265,8 @@ const ProfilePage = () => {
                 MAKE 1ST DEPOSIT IN STANDARD ACCOUNT
               </Text>
             </HStack>
-            {userInfo?.achievements?.first_standart_deposit == "Y" ? (
+            {GlobalVars.user_info?.achievements?.first_standart_deposit ==
+            "Y" ? (
               <Image src={galka} />
             ) : (
               <HStack
@@ -346,7 +310,7 @@ const ProfilePage = () => {
                 MAKE 1ST DEPOSIT IN PREMIUM ACCOUNT
               </Text>
             </HStack>
-            {userInfo?.achievements?.first_master_deposit == "Y" ? (
+            {GlobalVars.user_info?.achievements?.first_master_deposit == "Y" ? (
               <Image src={galka} />
             ) : (
               <HStack
@@ -390,7 +354,8 @@ const ProfilePage = () => {
                 ACTIVATE SOMEONES REFERRAL CODE
               </Text>
             </HStack>
-            {userInfo?.achievements?.activate_someone_referal == "Y" ? (
+            {GlobalVars.user_info?.achievements?.activate_someone_referal ==
+            "Y" ? (
               <Image src={galka} />
             ) : (
               <HStack
@@ -434,7 +399,8 @@ const ProfilePage = () => {
                 SOMEONE ACTIVATED YOUR REFERRAL CODE
               </Text>
             </HStack>
-            {userInfo?.achievements?.activate_current_user_referal == "Y" ? (
+            {GlobalVars.user_info?.achievements
+              ?.activate_current_user_referal == "Y" ? (
               <Image src={galka} />
             ) : (
               <HStack

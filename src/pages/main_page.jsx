@@ -31,6 +31,7 @@ const Main = observer(() => {
 
   useEffect(() => {
     createUser();
+    GlobalVars.getOneUser();
   }, []);
 
   return (

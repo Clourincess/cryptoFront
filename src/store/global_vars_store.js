@@ -3,6 +3,7 @@ const baseurl = "https://crypto-osiris.com:8008";
 
 class GlobalVarsStore {
   tg_info = {};
+  user_info = {};
   constructor() {
     makeAutoObservable(this);
   }
@@ -27,6 +28,21 @@ class GlobalVarsStore {
       }),
     });
     console.log("Регистрация", response.ok);
+  };
+
+  getOneUser = async () => {
+    const response = await fetch(
+      `${baseurl}/getUser?telegramm_name=${this.tg_info?.username}`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    this.user_info = result;
+    console.log("Инфо пользователя", result);
   };
 }
 
