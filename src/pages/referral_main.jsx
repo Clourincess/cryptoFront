@@ -1,16 +1,17 @@
 import { HStack, VStack } from "@chakra-ui/react";
+import { useStores } from "../store/store_context";
+import { useNavigate } from "react-router";
+
 import ReferalBalance from "../components/referal_balance";
 import BlackButtonIcon from "../components/black_button_icon";
-import Note from "../components/note";
-import deposit from "./../assets/images/deposit.svg";
-import withdraw from "./../assets/images/withdraw.svg";
-import { useNavigate } from "react-router";
-import tg from "../tg_vars";
-import stats from "./../assets/images/stats.svg";
 import redact from "../redact";
 import "./../components/styles.css";
-import { useStores } from "../store/store_context";
-import { useEffect, useState } from "react";
+import Note from "../components/note";
+import tg from "../tg_vars";
+
+import deposit from "./../assets/images/deposit.svg";
+import withdraw from "./../assets/images/withdraw.svg";
+import stats from "./../assets/images/stats.svg";
 
 const ReferalMain = () => {
   const navigate = useNavigate();
@@ -23,25 +24,6 @@ const ReferalMain = () => {
   }
   const { GlobalVars } = useStores();
 
-  const [userInfo, setUserInfo] = useState([]);
-
-  useEffect(() => {
-    const getOneUser = async () => {
-      const response = await fetch(
-        `https://crypto-osiris.com:8008/getUserById?telegramm_id=${GlobalVars.tg_id}`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-          },
-        }
-      );
-      const result = await response.json();
-      setUserInfo(result);
-    };
-    getOneUser();
-  }, [GlobalVars.tg_id]);
-  console.log(userInfo.used_referal_code);
   return (
     <VStack width={"100%"}>
       <HStack width={"100%"}>
@@ -56,7 +38,7 @@ const ReferalMain = () => {
               text={"ACTIVATE CODE"}
               icon={deposit}
               route={
-                userInfo?.used_referal_code == "None"
+                GlobalVars.referral_program?.code == "None"
                   ? "/referal_code1"
                   : "/referal_code3"
               }

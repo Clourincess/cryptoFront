@@ -32,6 +32,9 @@ const Main = observer(() => {
   useEffect(() => {
     createUser();
     GlobalVars.getOneUser();
+    GlobalVars.getReferralProgram();
+    GlobalVars.getReportAccount("standart");
+    GlobalVars.getReportAccount("master");
   }, []);
 
   return (

@@ -1,20 +1,12 @@
 import { VStack, HStack, Text, Image, Box } from "@chakra-ui/react";
-import ColoredComponent from "./colored_component_wrapper";
-import usdt_green from "./../assets/images/usdt_green.svg";
-import "./styles.css";
 import { keyframes } from "@emotion/react";
-import tg from "../tg_vars";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useStores } from "../store/store_context";
 
-const ReferalBalance = ({
-  width = "178px",
-  height,
-  onClick = () => {
-    console.log("hi");
-  },
-  className,
-}) => {
+import usdt_green from "./../assets/images/usdt_green.svg";
+import "./styles.css";
+
+const ReferalBalance = ({ width = "178px", height }) => {
   const glowAnimation = keyframes`
   0% { opacity: 0.5; }
   50% { opacity: 1; }
@@ -23,36 +15,12 @@ const ReferalBalance = ({
 
   const { GlobalVars } = useStores();
 
-  // const [referralInfo, setReferralInfo] = useState([]);
-  // useEffect(() => {
-  //   const getReferalProgramm = async (tgId) => {
-  //     const response = await fetch(
-  //       `https://crypto-osiris.com:8008/getReferalProgramm?telegramm_id=${tgId}`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           accept: "application/json",
-  //         },
-  //       }
-  //     );
-  //     const result = await response.json();
-  //     setReferralInfo(result);
-  //   };
-  //   getReferalProgramm(GlobalVars.tg_id);
-  // }, []);
-
-  // console.log("refInfo", referralInfo);
-
-  useEffect(() => {
-    GlobalVars.getReferalStats();
-  });
-
   const textRef = useRef(null);
 
   const handleCopy = async () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
-        await navigator.clipboard.writeText(GlobalVars.referalStats.code);
+        await navigator.clipboard.writeText(GlobalVars.referral_program?.code);
         alert("Текст скопирован в буфер обмена!");
       } catch (err) {
         console.error("Ошибка при копировании текста: ", err);
@@ -103,7 +71,6 @@ const ReferalBalance = ({
         background={"rgba(14,14,14,1)"}
         borderRadius={"14px"}
         padding={"7px 10px"}
-        onClick={onClick}
         height={height}
         justify={"space-between"}
         position={"relative"}
@@ -137,7 +104,7 @@ const ReferalBalance = ({
               cursor={"pointer"}
               textAlign={"end"}
             >
-              {GlobalVars.referalStats.code ?? "00000000"}
+              {GlobalVars.referral_program?.code ?? "00000000"}
             </Text>
             <div
               ref={textRef}
@@ -147,14 +114,14 @@ const ReferalBalance = ({
                 opacity: 0,
               }}
             >
-              {GlobalVars.code}
+              {GlobalVars.referral_program?.code}
             </div>
           </VStack>
         </HStack>
         <HStack width={"100%"} justify={"space-between"}>
           <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
             <Text fontSize={26} color={"white"} fontWeight={700}>
-              {GlobalVars.referalStats.total_profit_referal ?? 0}
+              {GlobalVars.referral_program?.total_profit_referal ?? 0}
             </Text>
             <Text fontSize={"9px"} color={"white"}>
               USDT TRC20
