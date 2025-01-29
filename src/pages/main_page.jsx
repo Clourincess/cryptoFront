@@ -1,51 +1,38 @@
-import { HStack, VStack, Text, Table, Td, Tr, Image } from "@chakra-ui/react";
+import { HStack, VStack, Text, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
+
 import InfoHeaderMainPage from "../components/main_page/info_header";
 import BlackButtonIcon from "../components/black_button_icon";
+import BalanceColored from "../components/balance_colored";
+import Note from "../components/note";
+import tg from "../tg_vars";
+
 import star from "./../assets/images/star.svg";
 import faq from "./../assets/images/faq.svg";
 import earbuds from "./../assets/images/earbuds.svg";
 import calc from "./../assets/images/calc.svg";
 import megafon from "./../assets/images/megafon.svg";
-import BalanceColored from "../components/balance_colored";
-import MasterBalance from "../components/master_balance";
-import { useNavigate } from "react-router";
-import Note from "../components/note";
-import { register } from "../apifunc";
-import { useEffect } from "react";
-import { useStores } from "../store/store_context";
-import tg from "../tg_vars";
-import { observer } from "mobx-react-lite";
 
 const Main = observer(() => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
-  const register = async () => {
-    const payload = {
-      telegramm_id: tg?.initDataUnsafe?.user?.id,
-      user_name: tg?.initDataUnsafe?.user?.username,
-      count_bonuses: 0,
-      used_referal_code: "",
-      is_blocked: false,
-    };
-    await GlobalVars.register(payload);
+
+  useEffect(() => {
+    GlobalVars.updateTgInfo(tg?.initDataUnsafe?.user);
+    console.log("tg_info", GlobalVars.tg_info);
+  }, []);
+
+  const createUser = async () => {
+    await GlobalVars.createUser();
   };
 
   useEffect(() => {
-    GlobalVars.getAllUsers();
+    createUser();
   }, []);
 
-  useEffect(() => {
-    const thisAccount = GlobalVars?.all_users.find((item) => {
-      return item?.id == tg?.initDataUnsafe?.user?.id;
-    });
-    thisAccount == undefined && register();
-    GlobalVars.getStandart();
-    GlobalVars.getMaster();
-  }, []);
-
-  useEffect(() => {
-    GlobalVars.getMasterAccountByUserId();
-  }, []);
   return (
     <VStack width="100%">
       <InfoHeaderMainPage username={GlobalVars.username} />
@@ -63,7 +50,6 @@ const Main = observer(() => {
           cursor={"pointer"}
         >
           <HStack width={"100%"} justify={"flex-start"} spacing={"3px"}>
-            {/* {predictionalIcon} */}
             <Text fontSize={"9px"} color={"white"} dir="row">
               LIVE <br />
               SUPPORT
@@ -90,33 +76,9 @@ const Main = observer(() => {
             justifySelf={"flex-end"}
             position={"relative"}
           >
-            <Image
-              src={earbuds}
-              // width={iconWidth}
-              // height={iconHeight}
-              position={"absolute"}
-              bottom={"0px"}
-              right={"0px"}
-              // bottom={type == "referal" ? "-3px" : "0px"}
-            />
+            <Image src={earbuds} position={"absolute"} bottom={"0px"} />
           </HStack>
         </VStack>
-
-        {/* <BlackButtonIcon
-          text={"LIVE SUPPORT"}
-          icon={earbuds}
-          additionalTextIcon={
-            <svg
-              width="6"
-              height="6"
-              viewBox="0 0 6 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="3" cy="3" r="3" fill="#AF0000" />
-            </svg>
-          }
-        /> */}
         <BlackButtonIcon
           text={"FAQ"}
           icon={faq}
@@ -139,7 +101,6 @@ const Main = observer(() => {
             width="170px"
             height="191px"
           />
-          {/* <MasterBalance balance={0} onClick={() => navigate("master_main")} width="170px"/> */}
         </VStack>
         <BlackButtonIcon
           text={"CALC INCOME"}

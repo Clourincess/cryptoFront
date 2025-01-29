@@ -4,8 +4,6 @@ import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import DepositCard from "../components/deposit_card";
 import redact from "../redact";
-import { useEffect } from "react";
-import { useStores } from "../store/store_context";
 
 const MasterDeposit1 = () => {
   const navigate = useNavigate();
@@ -17,7 +15,6 @@ const MasterDeposit1 = () => {
     backButton.hide();
   }
 
-  const { GlobalVars } = useStores();
   return (
     <VStack width={"100%"}>
       <DepositCard route="/master_choose" />

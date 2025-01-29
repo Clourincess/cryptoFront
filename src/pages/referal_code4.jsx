@@ -10,7 +10,7 @@ const ReferalCode4 = () => {
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/referal_code1");
+    navigate("/referal_main");
     backButton.hide();
   }
 

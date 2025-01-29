@@ -33,6 +33,7 @@ import { useEffect } from "react";
 import ReferalCode3 from "./pages/referal_code3";
 import ReferalCode4 from "./pages/referal_code4";
 import CreateMasterAccount from "./pages/create_master_account";
+import DepositHistory from "./pages/deposit_history";
 
 const router = createMemoryRouter([
   { path: "/", element: <Main /> },
@@ -66,6 +67,7 @@ const router = createMemoryRouter([
   { path: "/referal_code4", element: <ReferalCode4 /> },
   { path: "/perehod", element: <PerehodPage /> },
   { path: "/create_premium_acc", element: <CreateMasterAccount /> },
+  { path: "/deposit_history", element: <DepositHistory /> },
 ]);
 
 const App = () => {

@@ -1,235 +1,32 @@
 import { makeAutoObservable } from "mobx";
-const baseurl = "https://osiriscrypto.su:8008";
+const baseurl = "https://crypto-osiris.com:8008";
 
 class GlobalVarsStore {
-  all_users = [];
-  tgInfo = "";
-  tg_id = 5797047312;
-  registered = false;
-  master_balance_info = [];
-  username = "";
-  standartBalance = 0;
-  masterBalance = 0;
-  standart_deposits = [];
-  master_deposits = [];
-  rank = "";
-  standart_coef = {};
-  master_deposit_amount = 0;
-  standartStats = {
-    id: 10,
-    deposit_sum: 0,
-    withdrawal_sum: 0,
-    profit: 0,
-    standart_account_id: 8,
-  };
-  masterStats = {
-    id: 10,
-    deposit_sum: 0,
-    withdrawal_sum: 0,
-    profit: 0,
-    standart_account_id: 8,
-  };
-  referalStats = {
-    id: 0,
-    code: 0,
-    count_referal_user: 0,
-    total_profit_referal: 0,
-    app_user_id: 0,
-  };
+  tg_info = {};
   constructor() {
     makeAutoObservable(this);
   }
-  updateTgInfo = (newValue) => {
-    this.tgInfo = newValue;
-  };
-  register = async (values) => {
-    const response = await fetch("https://osiriscrypto.su:8008/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    this.registered = response.status == 200 ? true : false;
-    const result = await response.json();
-    this.username = result.user_name;
-    this.tg_id = result.telegramm_id;
-  };
-  getStandart = async () => {
-    const response = await fetch(
-      baseurl + `/getAccountStandart?userName=${this.username}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    this.standartBalance = result.balance;
-  };
-  getMaster = async () => {
-    const response = await fetch(
-      baseurl + `/getAccountMaster?user_name=${this.username}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    this.masterBalance = result.balance == undefined ? 0 : result.balance;
-  };
-  getStats = async (isMaster = false) => {
-    const response = await fetch(
-      baseurl +
-        `/getReportAccount?type_account=${
-          isMaster ? "master" : "standart"
-        }&user_name=${this.username}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    {
-      isMaster ? (this.masterStats = result) : (this.standartStats = result);
-    }
-  };
-  getReferalStats = async () => {
-    const response = await fetch(
-      baseurl + `/getReferalProgramm?telegramm_id=${5797047312}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    this.referalStats = result;
-    console.log("refstst", result);
-  };
-  updateRank = (newRank) => {
-    this.rank = newRank;
+
+  updateTgInfo = (new_info) => {
+    this.tg_info = new_info;
   };
 
-  getAllReferralPrograms = async () => {
-    const response = await fetch(baseurl + "/getAllReferalProgramms", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    });
-    const result = await response.json();
-    console.log(result);
-    return result;
-  };
-
-  getAllUsers = async () => {
-    const response = await fetch(`${baseurl}/getAllUsers`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    });
-    const result = await response.json();
-    this.all_users = result;
-  };
-
-  getMasterAccountByUserId = async () => {
-    const response = await fetch(
-      `${baseurl}/getAccountMasterByUserId?user_id=${5797047312}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    this.master_balance_info = result;
-  };
-
-  createMatserAccount = async () => {
-    const response = await fetch(
-      `${baseurl}/createAccountMaster?user_id=${5797047312}`,
-      {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-  };
-
-  getAllDepositByUserNameStandart = async () => {
-    const response = await fetch(
-      `${baseurl}/getAllDepositByUserName?user_name=${this.username}&type_account=standart`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    this.standart_deposits = result;
-  };
-
-  getAllDepositByUserNameMaster = async () => {
-    const response = await fetch(
-      `${baseurl}/getAllDepositByUserName?user_name=${this.username}&type_account=master`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-    this.master_deposits = result;
-  };
-
-  updateMasterDepositAmount = (new_amount) => {
-    this.master_deposit_amount = new_amount;
-  };
-
-  createMasterDeposit = async () => {
-    const response = await fetch(`${baseurl}/createDepositMaster`, {
+  createUser = async () => {
+    const response = await fetch(`${baseurl}/register`, {
       method: "POST",
       headers: {
         accept: "application/json",
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
       body: JSON.stringify({
-        id: 0,
-        sum: this.master_deposit_amount,
-        deposit_date: null,
-        account_id: this.master_balance_info?.id,
-        verification: false,
-        account_number: "string",
-        type_of_network: "trc20",
+        telegramm_id: this.tg_info?.id,
+        user_name: this.tg_info?.username,
+        count_bonuses: 0,
+        used_referal_code: "string",
+        is_blocked: false,
       }),
     });
-  };
-
-  getCoefStandart = async () => {
-    const response = await fetch(`${baseurl}/app/coefficient/`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    });
-    const result = await response.json();
-    this.standart_coef = result;
+    console.log("Регистрация", response.ok);
   };
 }
 

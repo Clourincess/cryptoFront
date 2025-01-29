@@ -2,7 +2,7 @@ import BalanceColored from "../components/balance_colored";
 import MasterBalance from "../components/master_balance";
 import Note from "../components/note";
 import { useNavigate } from "react-router";
-import { Button, useEditable, VStack } from "@chakra-ui/react";
+import { Button, HStack, Text, useEditable, VStack } from "@chakra-ui/react";
 import tg from "../tg_vars";
 import redact from "../redact";
 import { useEffect } from "react";
@@ -54,6 +54,21 @@ const PerehodPage = () => {
           onClick={() => navigate("/master_main")}
         />
       )}
+
+      <HStack
+        backgroundColor={"rgba(20,20,20,0.6)"}
+        w={"100%"}
+        borderRadius={"12px"}
+        height={"128px"}
+        padding={"8px"}
+        align={"flex-start"}
+        cursor={"pointer"}
+        onClick={() => navigate("/deposit_history")}
+      >
+        <Text color={"white"} fontSize={"9px"}>
+          DEPOSIT HISTORY
+        </Text>
+      </HStack>
 
       <Note
         text={redact(

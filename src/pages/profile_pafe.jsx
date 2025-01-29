@@ -33,7 +33,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const getOneUser = async (tgId) => {
       const response = await fetch(
-        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${tgId}`,
+        `https://crypto-osiris.com:8008/getUserById?telegramm_id=${tgId}`,
         {
           method: "GET",
           headers: {

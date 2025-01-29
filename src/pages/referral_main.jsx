@@ -28,7 +28,7 @@ const ReferalMain = () => {
   useEffect(() => {
     const getOneUser = async () => {
       const response = await fetch(
-        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${GlobalVars.tg_id}`,
+        `https://crypto-osiris.com:8008/getUserById?telegramm_id=${GlobalVars.tg_id}`,
         {
           method: "GET",
           headers: {

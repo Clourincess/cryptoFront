@@ -29,6 +29,7 @@ const DepositCard = ({ route = "/" }) => {
   const { GlobalVars } = useStores();
 
   const [depositAmount, setDepositAmount] = useState("");
+  const [valletAmount, setValletAmount] = useState("");
 
   useEffect(() => {
     GlobalVars.updateMasterDepositAmount(depositAmount);
@@ -77,13 +78,14 @@ const DepositCard = ({ route = "/" }) => {
         justify={"space-between"}
         position={"relative"}
       >
-        <VStack>
+        <VStack align={"flex-start"}>
           <HStack width={"100%"} justify={"flex-start"} spacing={1}>
             {arrow}
             <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
               ENTER DEPOSIT AMOUNT
             </Text>
           </HStack>
+
           <Input
             placeholder="TYPE HERE"
             value={depositAmount}
@@ -97,6 +99,15 @@ const DepositCard = ({ route = "/" }) => {
               color: "white",
             }}
           />
+          {depositAmount == "" && (
+            <Text
+              color={"rgba(199, 32, 32, 1)"}
+              fontSize={"7px"}
+              marginLeft={"5px"}
+            >
+              ENTER DEPOSIT AMOUNT
+            </Text>
+          )}
           <HStack width={"100%"} justify={"flex-start"} spacing={1}>
             {arrow}
             <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
@@ -115,38 +126,37 @@ const DepositCard = ({ route = "/" }) => {
               color: "white",
             }}
           />
+          {depositAmount == "" && (
+            <Text
+              color={"rgba(199, 32, 32, 1)"}
+              fontSize={"7px"}
+              marginLeft={"5px"}
+            >
+              ENTER VALLET AMOUNT
+            </Text>
+          )}
         </VStack>
         <Button
           borderRadius={"28px"}
-          cursor={depositAmount == "" ? "no-drop" : "pointer"}
+          cursor={
+            depositAmount == "" || valletAmount == "" ? "no-drop" : "pointer"
+          }
           height={"36px"}
           width={"82px"}
           onClick={async () => {
             await createMasterDeposit();
-            
           }}
           background={
-            depositAmount != ""
+            depositAmount != "" || valletAmount != ""
               ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
               : "rgba(153, 28, 28, 1)"
           }
-          disabled={depositAmount == ""}
+          disabled={depositAmount == "" || valletAmount == ""}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
             ENTER
           </Text>
         </Button>
-        {depositAmount == "" && (
-          <Text
-            position={"absolute"}
-            right={"0px"}
-            bottom={"-13px"}
-            color={"rgba(199, 32, 32, 1)"}
-            fontSize={"7px"}
-          >
-            ENTER DEPOSIT AMOUNT
-          </Text>
-        )}
       </HStack>
     </VStack>
   );

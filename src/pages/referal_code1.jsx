@@ -58,7 +58,7 @@ const ReferalCode1 = () => {
   console.log(GlobalVars.tg_id, GlobalVars.username);
   const updateReferalCodeAppUser = async (tg_id, username, ref_code) => {
     const response = await fetch(
-      "https://osiriscrypto.su:8008/updateReferalCodeAppUser",
+      "https://crypto-osiris.com:8008/updateReferalCodeAppUser",
       {
         method: "PUT",
         headers: {

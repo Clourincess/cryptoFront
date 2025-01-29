@@ -2,12 +2,15 @@ import { VStack, HStack, Text, Button } from "@chakra-ui/react";
 import DepositListCard from "./deposit_list_card";
 import { useEffect } from "react";
 import { useStores } from "../store/store_context";
+import { useNavigate } from "react-router";
 
 const DepositList = () => {
   const { GlobalVars } = useStores();
   useEffect(() => {
     GlobalVars.getAllDepositByUserNameMaster();
   }, []);
+
+  const navigate = useNavigate();
   return (
     <VStack width="100%">
       <HStack alignSelf={"center"} justify={"center"}>
@@ -64,6 +67,7 @@ const DepositList = () => {
               padding={"5px 10px"}
               borderRadius={"10px"}
               marginTop={"20px"}
+              onClick={() => navigate("/master_choose")}
             >
               <Text color={"white"} fontSize={"10px"}>
                 ACTIVATE DEPOSITS

@@ -27,7 +27,7 @@ const ReferalBalance = ({
   // useEffect(() => {
   //   const getReferalProgramm = async (tgId) => {
   //     const response = await fetch(
-  //       `https://osiriscrypto.su:8008/getReferalProgramm?telegramm_id=${tgId}`,
+  //       `https://crypto-osiris.com:8008/getReferalProgramm?telegramm_id=${tgId}`,
   //       {
   //         method: "GET",
   //         headers: {

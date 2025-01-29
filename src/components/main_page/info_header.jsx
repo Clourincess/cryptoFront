@@ -1,49 +1,24 @@
 import { HStack, Image, VStack, Text } from "@chakra-ui/react";
-
-import telegramm_icon from "./../../assets/images/telegram.svg";
+import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router";
 import { useStores } from "../../store/store_context";
-import { observer } from "mobx-react-lite";
+
+import telegramm_icon from "./../../assets/images/telegram.svg";
 import NoPhoto from "./../../assets/images/no_photo_user.png";
-import { useEffect, useState } from "react";
+
 const InfoHeaderMainPage = observer(() => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
-  let first_name = "";
-  let last_name = "";
   const tg = window.Telegram.WebApp;
-  if (tg.initDataUnsafe.user != undefined) {
-    first_name = tg.initDataUnsafe?.user?.first_name;
-    last_name = tg.initDataUnsafe?.user?.last_name;
-  }
-
-  const [userInfo, setUserInfo] = useState([]);
-
-  useEffect(() => {
-    const getOneUser = async () => {
-      const response = await fetch(
-        `https://osiriscrypto.su:8008/getUserById?telegramm_id=${GlobalVars.tg_id}`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-          },
-        }
-      );
-      const result = await response.json();
-      setUserInfo(result);
-    };
-    getOneUser();
-  }, [GlobalVars?.tg_id]);
 
   const rank =
-    userInfo?.count_bonuses == 20
+    GlobalVars.tg_info?.count_bonuses == 20
       ? "IRON"
-      : userInfo?.count_bonuses == 40
+      : GlobalVars.tg_info?.count_bonuses == 40
       ? "SILVER"
-      : userInfo?.count_bonuses == 60
+      : GlobalVars.tg_info?.count_bonuses == 60
       ? "GOLD"
-      : userInfo?.count_bonuses == 80
+      : GlobalVars.tg_info?.count_bonuses == 80
       ? "DIAMOND"
       : "COAL";
 
@@ -77,7 +52,7 @@ const InfoHeaderMainPage = observer(() => {
           padding={0}
         >
           <Text fontSize={"15px"} color={"white"} fontWeight={800}>
-            {first_name} {last_name}
+            {GlobalVars.tg_info?.first_name} {GlobalVars.tg_info?.last_name}
             {">"}
           </Text>
           <Text
