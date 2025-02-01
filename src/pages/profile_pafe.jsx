@@ -25,13 +25,13 @@ const ProfilePage = () => {
   const { GlobalVars } = useStores();
 
   const rank =
-    GlobalVars.tg_info?.count_bonuses == 20
+    GlobalVars.user_info?.count_bonuses == 20
       ? "IRON"
-      : GlobalVars.tg_info?.count_bonuses == 40
+      : GlobalVars.user_info?.count_bonuses == 40
       ? "SILVER"
-      : GlobalVars.tg_info?.count_bonuses == 60
+      : GlobalVars.user_info?.count_bonuses == 60
       ? "GOLD"
-      : GlobalVars.tg_info?.count_bonuses == 80
+      : GlobalVars.user_info?.count_bonuses == 80
       ? "DIAMOND"
       : "COAL";
   return (
@@ -40,13 +40,13 @@ const ProfilePage = () => {
         <VStack marginTop={"50px"} gap={0}>
           <Image
             src={
-              GlobalVars.tg_info?.count_bonuses == 20
+              GlobalVars.user_info?.count_bonuses == 20
                 ? iron
-                : GlobalVars.tg_info?.count_bonuses == 40
+                : GlobalVars.user_info?.count_bonuses == 40
                 ? silver
-                : GlobalVars.tg_info?.count_bonuses == 60
+                : GlobalVars.user_info?.count_bonuses == 60
                 ? gold
-                : GlobalVars.tg_info?.count_bonuses == 80
+                : GlobalVars.user_info?.count_bonuses == 80
                 ? diamond
                 : coal
             }
@@ -57,13 +57,13 @@ const ProfilePage = () => {
             fontSize={"21px"}
             fontWeight={"800"}
             color={
-              GlobalVars.tg_info?.count_bonuses == 20
+              GlobalVars.user_info?.count_bonuses == 20
                 ? "rgba(150, 195, 254, 1)"
-                : GlobalVars.tg_info?.count_bonuses == 40
+                : GlobalVars.user_info?.count_bonuses == 40
                 ? "rgba(45, 139, 236, 1)"
-                : GlobalVars.tg_info?.count_bonuses == 60
+                : GlobalVars.user_info?.count_bonuses == 60
                 ? "rgba(100, 81, 255, 1)"
-                : GlobalVars.tg_info?.count_bonuses == 80
+                : GlobalVars.user_info?.count_bonuses == 80
                 ? "rgba(161, 45, 246, 1)"
                 : "rgba(84, 84, 84, 1)s"
             }
@@ -103,7 +103,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                GlobalVars.tg_info?.count_bonuses == 0
+                GlobalVars.user_info?.count_bonuses == 0
                   ? "rgba(25, 25, 25, 1)"
                   : "linear-gradient(90deg, rgba(5,177,221,1) 0%, rgba(50,132,222,1) 100%)"
               }
@@ -113,8 +113,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                // || GlobalVars.tg_info?.count_bonuses == 40 || GlobalVars.tg_info?.count_bonuses == 60 || GlobalVars.tg_info?.count_bonuses == 80
-                GlobalVars.tg_info?.count_bonuses > 20
+                GlobalVars.user_info?.count_bonuses > 20
                   ? "linear-gradient(90deg, rgba(50,132,222,1) 0%, rgba(103,78,222,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -124,7 +123,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                GlobalVars.tg_info?.count_bonuses > 40
+                GlobalVars.user_info?.count_bonuses > 40
                   ? "linear-gradient(90deg, rgba(103,78,222,1) 0%, rgba(137,44,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -134,7 +133,7 @@ const ProfilePage = () => {
               w={"58px"}
               h={"15px"}
               background={
-                GlobalVars.tg_info?.count_bonuses > 60
+                GlobalVars.user_info?.count_bonuses > 60
                   ? "linear-gradient(90deg, rgba(137,44,223,1) 0%, rgba(171,10,223,1) 100%)"
                   : "rgba(25, 25, 25, 1)"
               }
@@ -153,7 +152,7 @@ const ProfilePage = () => {
             <Text color={"rgba(84, 84, 84, 1)"}>0</Text>
             <Text
               color={
-                GlobalVars.tg_info?.count_bonuses > 0
+                GlobalVars.user_info?.count_bonuses > 0
                   ? "rgba(150, 195, 254, 1)"
                   : "rgba(84, 84, 84, 1)"
               }
@@ -162,7 +161,7 @@ const ProfilePage = () => {
             </Text>
             <Text
               color={
-                GlobalVars.tg_info?.count_bonuses > 20
+                GlobalVars.user_info?.count_bonuses > 20
                   ? "rgba(45, 139, 236, 1)"
                   : "rgba(84, 84, 84, 1)"
               }
@@ -171,7 +170,7 @@ const ProfilePage = () => {
             </Text>
             <Text
               color={
-                GlobalVars.tg_info?.count_bonuses > 40
+                GlobalVars.user_info?.count_bonuses > 40
                   ? "rgba(100, 81, 255, 1)"
                   : "rgba(84, 84, 84, 1)"
               }
@@ -180,7 +179,7 @@ const ProfilePage = () => {
             </Text>
             <Text
               color={
-                GlobalVars.tg_info?.count_bonuses > 60
+                GlobalVars.user_info?.count_bonuses > 60
                   ? "rgba(161, 45, 246, 1)"
                   : "rgba(84, 84, 84, 1)"
               }

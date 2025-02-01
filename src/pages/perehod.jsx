@@ -19,11 +19,6 @@ const PerehodPage = () => {
   }
   const { GlobalVars } = useStores();
 
-  useEffect(() => {
-    GlobalVars.getMasterAccountByUserId();
-    console.log("id", GlobalVars?.master_balance_info?.id);
-  }, []);
-
   return (
     <VStack width={"100%"}>
       <BalanceColored
@@ -31,8 +26,9 @@ const PerehodPage = () => {
         isPerehod={true}
         height="128px"
         onClick={() => navigate("/standart_main")}
+        balance={GlobalVars.standart_balance?.balance}
       />
-      {GlobalVars.master_balance_info?.message ==
+      {GlobalVars.master_balance?.message ==
       "У данного пользователя отсутствует мастер аккаунт" ? (
         <Button
           height={"45px"}

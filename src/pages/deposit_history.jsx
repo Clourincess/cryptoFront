@@ -9,13 +9,6 @@ const DepositHistory = () => {
 
   const { GlobalVars } = useStores();
 
-  useEffect(() => {
-    GlobalVars.getAllDepositByUserNameStandart();
-    GlobalVars.getAllDepositByUserNameMaster();
-
-    console.log(GlobalVars.master_deposits);
-    console.log(GlobalVars.standart_deposits);
-  }, []);
   return (
     <VStack width={"100%"}>
       <Text color={"white"} fontSize={"10px"}>

@@ -36,7 +36,7 @@ const BalanceColored = ({
       <HStack width={"100%"} justify={"space-between"}>
         <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
           <Text fontSize={26} color={"black"} letterSpacing={-2}>
-            {balance}
+            {balance || 0}
           </Text>
           {!isPerehod && (
             <Text fontSize={"9px"} color={"black"}>

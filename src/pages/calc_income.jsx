@@ -1,9 +1,10 @@
 import { VStack, HStack } from "@chakra-ui/react";
-import Note from "../components/note";
-import tg from "../tg_vars";
 import { useNavigate } from "react-router";
+
 import StandartCalc from "../components/standart_calc";
 import MasterCalc from "../components/master_calc";
+import Note from "../components/note";
+import tg from "../tg_vars";
 import redact from "../redact";
 
 const CalcIncome = () => {

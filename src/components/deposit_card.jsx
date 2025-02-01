@@ -1,11 +1,4 @@
-import {
-  VStack,
-  HStack,
-  Text,
-  Button,
-  Input,
-  useEditable,
-} from "@chakra-ui/react";
+import { VStack, HStack, Text, Button, Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { useStores } from "../store/store_context";
 import { useEffect, useState } from "react";
@@ -32,15 +25,18 @@ const DepositCard = ({ route = "/" }) => {
   const [valletAmount, setValletAmount] = useState("");
 
   useEffect(() => {
-    GlobalVars.updateMasterDepositAmount(depositAmount);
-    console.log("dep", depositAmount);
-    console.log("vars", GlobalVars?.master_deposit_amount);
-    console.log("balance id", GlobalVars?.master_balance_info?.id);
-  }, [depositAmount]);
+    GlobalVars.updateDepositAmount(depositAmount);
+    GlobalVars.updateValletAmount(valletAmount);
+    console.log(GlobalVars.deposit_amount, GlobalVars.vallet_amount);
+  }, [depositAmount, valletAmount]);
 
-  const createMasterDeposit = async () => {
-    await GlobalVars.createMasterDeposit();
-    navigate("/master_main");
+  const createDepositStandart = async () => {
+    const success = await GlobalVars.createDepositStandart();
+    if (success) {
+      navigate("/st_deposit_2");
+    } else {
+      alert("Error when making a deposit! Try again later.");
+    }
   };
 
   return (
@@ -116,17 +112,18 @@ const DepositCard = ({ route = "/" }) => {
           </HStack>
           <Input
             placeholder="TYPE HERE"
+            value={valletAmount}
+            onChange={(e) => setValletAmount(e.target.value)}
             style={{
               backgroundColor: "black",
               fontSize: "10px",
-
               borderRadius: "28px",
               width: "100%",
               padding: "5px 20px",
               color: "white",
             }}
           />
-          {depositAmount == "" && (
+          {valletAmount == "" && (
             <Text
               color={"rgba(199, 32, 32, 1)"}
               fontSize={"7px"}
@@ -143,15 +140,15 @@ const DepositCard = ({ route = "/" }) => {
           }
           height={"36px"}
           width={"82px"}
-          onClick={async () => {
-            await createMasterDeposit();
-          }}
           background={
-            depositAmount != "" || valletAmount != ""
+            depositAmount != "" && valletAmount != ""
               ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
               : "rgba(153, 28, 28, 1)"
           }
           disabled={depositAmount == "" || valletAmount == ""}
+          onClick={async () => {
+            await createDepositStandart();
+          }}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
             ENTER

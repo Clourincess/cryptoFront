@@ -1,14 +1,8 @@
-import {
-  VStack,
-  Text,
-  HStack,
-  Input,
-  Button,
-  useEditable,
-} from "@chakra-ui/react";
-import ColoredComponent from "./colored_component_wrapper";
+import { VStack, Text, HStack, Input, Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useStores } from "../store/store_context";
+
+import ColoredComponent from "./colored_component_wrapper";
 
 const arrow = (
   <svg
@@ -41,9 +35,6 @@ const StandartCalc = () => {
   const [result, setResult] = useState(0);
   const { GlobalVars } = useStores();
 
-  useEffect(() => {
-    GlobalVars.getCoefStandart();
-  }, []);
   return (
     <ColoredComponent>
       <VStack width={"100%"} height={"100%"} spacing={"0px"}>
@@ -134,8 +125,7 @@ const StandartCalc = () => {
           padding="10px"
           onClick={() => {
             setResult(
-              (values[0] + values[1]) *
-                parseFloat(GlobalVars.standart_coef?.data?.value)
+              (values[0] + values[1]) * parseFloat(GlobalVars.coef?.data?.value)
             );
           }}
         >

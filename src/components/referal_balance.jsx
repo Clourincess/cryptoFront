@@ -14,16 +14,14 @@ const ReferalBalance = ({ width = "178px", height }) => {
 `;
 
   const { GlobalVars } = useStores();
-
   const textRef = useRef(null);
-
   const handleCopy = async () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
         await navigator.clipboard.writeText(GlobalVars.referral_program?.code);
-        alert("Текст скопирован в буфер обмена!");
+        alert("The text is copied to the clipboard!");
       } catch (err) {
-        console.error("Ошибка при копировании текста: ", err);
+        console.error("Error: ", err);
         fallbackCopy();
       }
     } else {
@@ -43,10 +41,10 @@ const ReferalBalance = ({ width = "178px", height }) => {
 
       try {
         document.execCommand("copy");
-        alert("Текст скопирован с использованием резервного метода!");
+        alert("The text is copied to the clipboard!");
       } catch (err) {
-        console.error("Не удалось скопировать текст: ", err);
-        alert("Копирование не поддерживается в вашем браузере.");
+        console.error("Error: ", err);
+        alert("Copying is not supported in your browser.");
       }
 
       selection.removeAllRanges();

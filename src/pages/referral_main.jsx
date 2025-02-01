@@ -12,6 +12,7 @@ import tg from "../tg_vars";
 import deposit from "./../assets/images/deposit.svg";
 import withdraw from "./../assets/images/withdraw.svg";
 import stats from "./../assets/images/stats.svg";
+import { useEffect } from "react";
 
 const ReferalMain = () => {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ const ReferalMain = () => {
     backButton.hide();
   }
   const { GlobalVars } = useStores();
+  useEffect(() => {
+    console.log("ref prog");
+  });
 
   return (
     <VStack width={"100%"}>
@@ -38,7 +42,7 @@ const ReferalMain = () => {
               text={"ACTIVATE CODE"}
               icon={deposit}
               route={
-                GlobalVars.referral_program?.code == "None"
+                GlobalVars.user_info?.used_referal_code == "None"
                   ? "/referal_code1"
                   : "/referal_code3"
               }

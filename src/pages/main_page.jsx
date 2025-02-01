@@ -35,6 +35,11 @@ const Main = observer(() => {
     GlobalVars.getReferralProgram();
     GlobalVars.getReportAccount("standart");
     GlobalVars.getReportAccount("master");
+    GlobalVars.getCoefStandart();
+    GlobalVars.getStandartBalanceByUserId();
+    GlobalVars.getMasterBalanceByUserId();
+    GlobalVars.getAllDepositsByUserName("standart");
+    GlobalVars.getAllDepositsByUserName("master");
   }, []);
 
   return (
@@ -100,7 +105,10 @@ const Main = observer(() => {
       <HStack width={"100%"} align={"flex-start"} justify={"space-between"}>
         <VStack>
           <BalanceColored
-            balance={GlobalVars?.standartBalance + GlobalVars?.masterBalance}
+            balance={
+              GlobalVars?.standart_balance?.balance +
+              GlobalVars?.master_balance?.balance
+            }
             onClick={() => navigate("perehod")}
             width="170px"
             height="191px"

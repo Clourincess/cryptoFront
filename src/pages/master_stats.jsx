@@ -4,8 +4,6 @@ import Note from "../components/note";
 import { useNavigate } from "react-router";
 import tg from "../tg_vars";
 import { useStores } from "../store/store_context";
-import { useEffect } from "react";
-
 const MasterStats = () => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
@@ -17,15 +15,12 @@ const MasterStats = () => {
   }
   const { GlobalVars } = useStores();
 
-  useEffect(() => {
-    GlobalVars.getStats(true);
-  });
   return (
     <VStack width={"100%"}>
       <Stats
-        withdrawn={GlobalVars.masterStats.withdrawal_sum}
-        deposited={GlobalVars.masterStats.deposit_sum}
-        generated={GlobalVars.masterStats.profit}
+        deposited={GlobalVars.report_master.deposit_sum}
+        generated={GlobalVars.report_master.profit}
+        withdrawn={GlobalVars.report_master.withdrawal_sum}
       />
       <Note text={"THIS PAGE DISPLAYS YOUR ACTIVITY IN THE PREMIUM BALANCE."} />
     </VStack>

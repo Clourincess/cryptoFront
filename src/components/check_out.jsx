@@ -1,5 +1,8 @@
 import { HStack, VStack, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
+import { useStores } from "../store/store_context";
+import { useEffect, useState } from "react";
+
 const arrow = (
   <svg
     width="7"
@@ -16,16 +19,40 @@ const arrow = (
 );
 
 const CheckOut = ({
-  count = 20,
-  adress = "JKkska29jksk71qncxa92",
-  gettings = [
-    `${count} USDT TRC20 ON YOUR STANDART BALANCE`,
-    "0.66 %/DAY GENERATION",
-  ],
   back_route = "/st_deposit_1",
   next_route = "/st_deposit_3",
 }) => {
   const navigate = useNavigate();
+  const { GlobalVars } = useStores();
+
+  const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 минут в секундах
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      GlobalVars.getStatusDepositStandart().result
+        ? navigate(next_route)
+        : navigate("/st_deposit_4");
+      return;
+    } // Остановка таймера
+    console.log(timeLeft);
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    // Каждые 2 минуты запрос
+    if (timeLeft % 120 === 0 && timeLeft !== 20 * 60) {
+      GlobalVars.getStatusDepositStandart().result && navigate(next_route);
+    }
+
+    return () => clearInterval(interval);
+  }, [timeLeft]);
+
+  // Форматирование времени
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+  };
   return (
     <VStack
       width={"100%"}
@@ -39,11 +66,12 @@ const CheckOut = ({
       borderRadius="14px"
       padding={"10px"}
       spacing="0px"
+      position={"relative"}
     >
       <HStack width={"100%"} justify="center">
         <Text fontSize={"10px"} color="white">
           CHECK OUT
-        </Text>{" "}
+        </Text>
         <svg
           width="8"
           height="8"
@@ -55,6 +83,15 @@ const CheckOut = ({
           <circle cx="4" cy="4" r="3" fill="#2281A8" />
         </svg>
       </HStack>
+      <Text
+        color={"white"}
+        position={"absolute"}
+        top={"12px"}
+        right={"20px"}
+        fontSize={"12px"}
+      >
+        {formatTime(timeLeft)}
+      </Text>
       <HStack width={"100%"} justify={"flex-start"}>
         {arrow}
         <Text fontSize={"10px"} color={"white"}>
@@ -62,7 +99,7 @@ const CheckOut = ({
         </Text>
       </HStack>
       <Text fontSize={"10px"} color={"white"}>
-        {count} USDT TRC20
+        {GlobalVars.deposit_amount} USDT TRC20
       </Text>
       <HStack width={"100%"} justify={"flex-start"}>
         {arrow}
@@ -71,7 +108,7 @@ const CheckOut = ({
         </Text>
       </HStack>
       <Text fontSize={"10px"} color={"white"}>
-        {adress}
+        {GlobalVars.vallet_amount}
       </Text>
       <HStack width={"100%"} justify={"flex-start"}>
         {arrow}
@@ -80,35 +117,24 @@ const CheckOut = ({
         </Text>
       </HStack>
       <Text fontSize={"10px"} color={"white"}>
-        {gettings[0]}
+        {(GlobalVars.deposit_amount * GlobalVars.coef?.data?.value).toFixed(2)}{" "}
+        USDT TRC20 ON YOUR STANDARD BALANCE
       </Text>
       <Text fontSize={"10px"} color={"white"}>
-        {gettings[1]}
+        {GlobalVars.coef?.data?.value} %/DAY GENERATION
       </Text>
-      <HStack width={"100%"} justify="space-around">
+
+      <Text color={"red"} alignSelf={"center"} fontSize={"10px"}>
+        PLEASE WAIT FOR THE TIMER TO END.
+      </Text>
+      <HStack width={"100%"} justify="center">
         <Button
-          background={"#8b8b8b"}
-          borderRadius={"28px"}
-          padding="10px 15px"
-          onClick={() => navigate(back_route)}
-        >
-          <Text fontSize={"10px"} color="black">
-            BACK
-          </Text>
-        </Button>
-        <Button
-          background={
-            "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
-          }
-          borderRadius={"28px"}
-          padding="10px 15px"
-          onClick={() => navigate(next_route)}
-        >
-          <Text fontSize={"10px"} color="black">
-            I SEND IT
-          </Text>
-        </Button>
-        <Button
+          onClick={() => {
+            GlobalVars.updateDepositAmount("");
+            GlobalVars.updateValletAmount("");
+            GlobalVars.updateCreatedStandart(null);
+            navigate("/");
+          }}
           background={"#9f1b1b"}
           borderRadius={"28px"}
           padding="10px 15px"

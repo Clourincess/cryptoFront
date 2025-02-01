@@ -12,13 +12,13 @@ const InfoHeaderMainPage = observer(() => {
   const tg = window.Telegram.WebApp;
 
   const rank =
-    GlobalVars.tg_info?.count_bonuses == 20
+    GlobalVars.user_info?.count_bonuses == 20
       ? "IRON"
-      : GlobalVars.tg_info?.count_bonuses == 40
+      : GlobalVars.user_info?.count_bonuses == 40
       ? "SILVER"
-      : GlobalVars.tg_info?.count_bonuses == 60
+      : GlobalVars.user_info?.count_bonuses == 60
       ? "GOLD"
-      : GlobalVars.tg_info?.count_bonuses == 80
+      : GlobalVars.user_info?.count_bonuses == 80
       ? "DIAMOND"
       : "COAL";
 

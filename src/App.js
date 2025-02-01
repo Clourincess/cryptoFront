@@ -12,6 +12,7 @@ import CalcIncome from "./pages/calc_income";
 import StandartDeposit1 from "./pages/standart_deposit1";
 import StandartDeposit2 from "./pages/standart_deposit2";
 import StandartDeposit3 from "./pages/standart_deposit3";
+import StandartDeposit4 from "./pages/standart_deposit4";
 import StandartWithDraw1 from "./pages/standart_withdraw1";
 import StandartWithDraw2 from "./pages/standart_withdraw2";
 import MasterDeposit1 from "./pages/master_deposit1";
@@ -48,6 +49,7 @@ const router = createMemoryRouter([
   { path: "/st_deposit_1", element: <StandartDeposit1 /> },
   { path: "/st_deposit_2", element: <StandartDeposit2 /> },
   { path: "/st_deposit_3", element: <StandartDeposit3 /> },
+  { path: "/st_deposit_4", element: <StandartDeposit4 /> },
   { path: "/st_withdraw_1", element: <StandartWithDraw1 /> },
   { path: "/st_withdraw_2", element: <StandartWithDraw2 /> },
   { path: "/master_deposit1", element: <MasterDeposit1 /> },

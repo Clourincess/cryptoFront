@@ -14,8 +14,8 @@ const CreateMasterAccount = () => {
   }
   const { GlobalVars } = useStores();
 
-  const createMasterAccount = async () => {
-    await GlobalVars.createMatserAccount();
+  const createMasterBalance = async () => {
+    await GlobalVars.createMasterBalance();
     navigate("/");
   };
 
@@ -36,7 +36,7 @@ const CreateMasterAccount = () => {
           borderRadius={"10px"}
           width={"100%"}
           height={"30px"}
-          onClick={async () => await createMasterAccount()}
+          onClick={async () => await createMasterBalance()}
         >
           <Text color={"white"} fontSize={"12px"}>
             YES
@@ -47,7 +47,7 @@ const CreateMasterAccount = () => {
           borderRadius={"10px"}
           width={"100%"}
           height={"30px"}
-          onClick={() => navigate("/perehod")}
+          onClick={() => navigate("/")}
         >
           <Text color={"red"} fontSize={"12px"}>
             NO
