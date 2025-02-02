@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import tg from "../tg_vars";
 import { useStores } from "../store/store_context";
 
-const StandartDeposit4 = () => {
+const MasterDeposit4 = () => {
   const { GlobalVars } = useStores();
   const navigate = useNavigate();
   const backButton = tg.BackButton;
@@ -73,7 +73,7 @@ const StandartDeposit4 = () => {
           Error when making a deposit. <br />
           Please contact us through support. <br />
           <br />
-          DEPOSIT ID: {GlobalVars.created_standart_deposit_id}
+          DEPOSIT ID: {GlobalVars.created_master_deposit_id}
         </Text>
 
         <Stack position={"absolute"} right={"13px"} top={"13px"}>
@@ -84,4 +84,4 @@ const StandartDeposit4 = () => {
   );
 };
 
-export default StandartDeposit4;
+export default MasterDeposit4;

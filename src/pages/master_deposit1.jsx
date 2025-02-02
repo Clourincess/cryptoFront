@@ -17,7 +17,7 @@ const MasterDeposit1 = () => {
 
   return (
     <VStack width={"100%"}>
-      <DepositCard route="/master_choose" />
+      <DepositCard route="/master_deposit2" />
       <Note
         text={redact(`ENTER YOUR DEPOSIT AMOUNT IN USDT TRC20.
 

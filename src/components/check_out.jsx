@@ -29,10 +29,16 @@ const CheckOut = ({
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      GlobalVars.getStatusDepositStandart().result
-        ? navigate(next_route)
-        : navigate("/st_deposit_4");
-      return;
+      if (next_route == "/master_deposit3") {
+        GlobalVars.getStatusDepositMaster().result
+          ? navigate("/master_choose")
+          : navigate("/master_deposit4");
+      } else {
+        GlobalVars.getStatusDepositStandart().result
+          ? navigate("/st_deposit_3")
+          : navigate("/st_deposit_4");
+        return;
+      }
     } // Остановка таймера
     console.log(timeLeft);
     const interval = setInterval(() => {
@@ -41,7 +47,13 @@ const CheckOut = ({
 
     // Каждые 2 минуты запрос
     if (timeLeft % 120 === 0 && timeLeft !== 20 * 60) {
-      GlobalVars.getStatusDepositStandart().result && navigate(next_route);
+      if (next_route == "/master_deposit3") {
+        GlobalVars.getStatusDepositMaster().result &&
+          navigate("/master_choose");
+      } else {
+        GlobalVars.getStatusDepositStandart().result &&
+          navigate("/st_deposit_3");
+      }
     }
 
     return () => clearInterval(interval);
@@ -59,7 +71,7 @@ const CheckOut = ({
       align="flex-start"
       textAlign={"left"}
       justify={"space-between"}
-      height="300px"
+      height={next_route == "/master_deposit3" ? "250px" : "300px"}
       background={
         "linear-gradient(216deg, #131315 0%, #000 50.6%, #131315 100%)"
       }
@@ -110,19 +122,25 @@ const CheckOut = ({
       <Text fontSize={"10px"} color={"white"}>
         {GlobalVars.vallet_amount}
       </Text>
-      <HStack width={"100%"} justify={"flex-start"}>
-        {arrow}
-        <Text fontSize={"10px"} color={"white"}>
-          YOU GET
-        </Text>
-      </HStack>
-      <Text fontSize={"10px"} color={"white"}>
-        {(GlobalVars.deposit_amount * GlobalVars.coef?.data?.value).toFixed(2)}{" "}
-        USDT TRC20 ON YOUR STANDARD BALANCE
-      </Text>
-      <Text fontSize={"10px"} color={"white"}>
-        {GlobalVars.coef?.data?.value} %/DAY GENERATION
-      </Text>
+      {next_route != "/master_deposit3" ? (
+        <>
+          <HStack width={"100%"} justify={"flex-start"}>
+            {arrow}
+            <Text fontSize={"10px"} color={"white"}>
+              YOU GET
+            </Text>
+          </HStack>
+          <Text fontSize={"10px"} color={"white"}>
+            {(GlobalVars.deposit_amount * GlobalVars.coef?.data?.value).toFixed(
+              2
+            )}{" "}
+            USDT TRC20 ON YOUR STANDARD BALANCE
+          </Text>
+          <Text fontSize={"10px"} color={"white"}>
+            {GlobalVars.coef?.data?.value} %/DAY GENERATION
+          </Text>
+        </>
+      ) : null}
 
       <Text color={"red"} alignSelf={"center"} fontSize={"10px"}>
         PLEASE WAIT FOR THE TIMER TO END.
@@ -133,6 +151,7 @@ const CheckOut = ({
             GlobalVars.updateDepositAmount("");
             GlobalVars.updateValletAmount("");
             GlobalVars.updateCreatedStandart(null);
+            GlobalVars.updateCreatedMaster(null);
             navigate("/");
           }}
           background={"#9f1b1b"}

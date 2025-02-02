@@ -42,7 +42,7 @@ const MasterChoose = () => {
           <Text fontSize={"10px"} color={"white"}>
             DEPOSIT CARD
           </Text>
-          <Stack position={"absolute"} left={"75px"} top={"5px"}>
+          <Stack position={"absolute"} left={"75px"} top={"4px"}>
             <svg
               width="8"
               height="8"
