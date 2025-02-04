@@ -40,6 +40,7 @@ const Main = observer(() => {
     GlobalVars.getMasterBalanceByUserId();
     GlobalVars.getAllDepositsByUserName("standart");
     GlobalVars.getAllDepositsByUserName("master");
+    GlobalVars.getallTarrif();
   }, []);
 
   return (

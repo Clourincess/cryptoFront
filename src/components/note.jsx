@@ -17,17 +17,19 @@ const Note = ({ text, updates = false }) => {
         left="2px"
         right="2px"
         bottom="-2px"
-        transform={"skewX(-5deg)"}
+        // transform={"skewX(-5deg)"}
         background={
-          "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
+          "linear-gradient(90deg, rgba(4,222,120,1) 0%, rgba(32,115,247,1) 100%)"
+          // "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
         }
-        filter="blur(15px)"
+        filter="blur(20px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <HStack
         width={"100%"}
         background={
-          "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
+          "linear-gradient(90deg, rgba(4,222,120,1) 0%, rgba(32,115,247,1) 100%)"
+          // "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
         }
         borderRadius={"14px"}
         justify={"space-between"}

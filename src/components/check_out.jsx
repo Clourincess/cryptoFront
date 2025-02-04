@@ -26,35 +26,46 @@ const CheckOut = ({
   const { GlobalVars } = useStores();
 
   const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 минут в секундах
+  console.log("next route", next_route);
 
-  useEffect(() => {
+  const getStatusEnd = async () => {
+    const standartStatus = await GlobalVars.getStatusDepositStandart();
+    const masterStatus = await GlobalVars.getStatusDepositMaster();
     if (timeLeft <= 0) {
       if (next_route == "/master_deposit3") {
-        GlobalVars.getStatusDepositMaster().result
+        masterStatus?.result
           ? navigate("/master_choose")
           : navigate("/master_deposit4");
       } else {
-        GlobalVars.getStatusDepositStandart().result
+        standartStatus.result
           ? navigate("/st_deposit_3")
           : navigate("/st_deposit_4");
         return;
       }
-    } // Остановка таймера
-    console.log(timeLeft);
-    const interval = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
-    }, 1000);
-
-    // Каждые 2 минуты запрос
-    if (timeLeft % 120 === 0 && timeLeft !== 20 * 60) {
-      if (next_route == "/master_deposit3") {
-        GlobalVars.getStatusDepositMaster().result &&
-          navigate("/master_choose");
-      } else {
-        GlobalVars.getStatusDepositStandart().result &&
-          navigate("/st_deposit_3");
-      }
     }
+  };
+
+  const getStatusInterval = async () => {
+    const standartStatus = await GlobalVars.getStatusDepositStandart();
+    const masterStatus = await GlobalVars.getStatusDepositMaster();
+    if (next_route == "/master_deposit3") {
+      masterStatus?.result && navigate("/master_choose");
+    } else {
+      standartStatus?.result && navigate("/st_deposit_3");
+    }
+  };
+  useEffect(() => {
+    // Остановка таймера
+    const interval = setInterval(async () => {
+      setTimeLeft((prev) => prev - 1);
+
+      // Проверяем статус при достижении условий
+      if (timeLeft - 1 <= 0) {
+        await getStatusEnd();
+      } else if ((timeLeft - 1) % 120 === 0 && timeLeft - 1 !== 20 * 60) {
+        await getStatusInterval();
+      }
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [timeLeft]);

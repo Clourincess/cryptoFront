@@ -2,6 +2,8 @@ import { VStack, HStack, Text, Stack } from "@chakra-ui/react";
 import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
+import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -18,16 +20,27 @@ const arrow = (
   </svg>
 );
 
-const MasterChoose = () => {
+const MasterChoose = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/master_deposit1");
+    navigate("/");
     backButton.hide();
   }
 
+  const { GlobalVars } = useStores();
+
+  const updateTariff = async (name, coef, period) => {
+    (await GlobalVars.updateTariff(name, coef, period)) &&
+      navigate("/master_deposit3");
+  };
+
+  const easyTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 32);
+  const mediumTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 33);
+  const hardTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 34);
+  console.log("тарифы", easyTarrif, mediumTarrif, hardTarrif);
   return (
     <VStack width={"100%"}>
       <VStack
@@ -73,7 +86,13 @@ const MasterChoose = () => {
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }
             borderRadius={"14px"}
-            onClick={() => navigate("/master_deposit2")}
+            onClick={async () => {
+              await updateTariff(
+                easyTarrif?.name,
+                easyTarrif?.coefficient,
+                easyTarrif?.mounth_period
+              );
+            }}
           >
             <Text fontSize={"10px"}>x1.25</Text>
             <svg
@@ -99,7 +118,13 @@ const MasterChoose = () => {
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }
             borderRadius={"14px"}
-            onClick={() => navigate("/master_deposit2")}
+            onClick={async () => {
+              await updateTariff(
+                mediumTarrif?.name,
+                mediumTarrif?.coefficient,
+                mediumTarrif?.mounth_period
+              );
+            }}
           >
             <Text fontSize={"10px"}>x1.55</Text>
             <svg
@@ -127,7 +152,13 @@ const MasterChoose = () => {
               "linear-gradient(31deg, #28afd0 0%, #648fd5 37.5%, #9972d9 68%, #7071d5 100%)"
             }
             borderRadius={"14px"}
-            onClick={() => navigate("/master_deposit2")}
+            onClick={async () => {
+              await updateTariff(
+                hardTarrif.name,
+                hardTarrif.coefficient,
+                hardTarrif.mounth_period
+              );
+            }}
           >
             <Text fontSize={"10px"}>x2.25</Text>
             <svg
@@ -151,6 +182,6 @@ const MasterChoose = () => {
       <Note text={`SELECT THE FREEZING PERIOD AND THE FOLLOWING RATE.`} />
     </VStack>
   );
-};
+});
 
 export default MasterChoose;

@@ -14,6 +14,7 @@ class GlobalVarsStore {
   vallet_amount = "";
   standart_deposits = [];
   master_deposits = [];
+  all_tariffs = [];
 
   created_standart_deposit_id = null;
   created_master_deposit_id = null;
@@ -252,6 +253,36 @@ class GlobalVarsStore {
       this.master_deposits = result;
     }
     console.log("deposits", result);
+  };
+
+  getallTarrif = async () => {
+    const response = await fetch(`${baseurl}/getAllTariffs`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const result = await response.json();
+    this.all_tariffs = result;
+    console.log("tariffs", result);
+  };
+
+  updateTariff = async (name, coef, period) => {
+    const response = await fetch(`${baseurl}/updateTariff`, {
+      method: "PUT",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: 0,
+        name: name,
+        coefficient: coef,
+        mounth_period: period,
+      }),
+    });
+    console.log("update tariff", response.ok);
+    return response.ok;
   };
 }
 

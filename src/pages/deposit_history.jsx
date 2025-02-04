@@ -70,7 +70,6 @@ const DepositHistory = () => {
               .filter((value) => {
                 return value?.verification == 0;
               })
-              .reverse()
               .map((value, index) => {
                 return (
                   <HStack
@@ -102,7 +101,6 @@ const DepositHistory = () => {
               .filter((value) => {
                 return value?.verification == 1;
               })
-              .reverse()
               .map((value, index) => {
                 return (
                   <HStack
