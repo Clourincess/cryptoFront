@@ -1,5 +1,7 @@
 import { VStack, HStack, Text, Button, Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
+import { useStores } from "../store/store_context";
+import { useEffect, useState } from "react";
 
 const arrow = (
   <svg
@@ -17,6 +19,32 @@ const arrow = (
 );
 const WithdrawalCard = ({ route = "/", standart = true }) => {
   const navigate = useNavigate();
+  const { GlobalVars } = useStores();
+
+  const [depositAmount, setDepositAmount] = useState("");
+  const [valletAmount, setValletAmount] = useState("");
+
+  useEffect(() => {
+    GlobalVars.updateDepositAmount(depositAmount);
+    GlobalVars.updateValletAmount(valletAmount);
+    console.log(GlobalVars.deposit_amount, GlobalVars.vallet_amount);
+  }, [depositAmount, valletAmount]);
+
+  const createWithdravalStandart = async () => {
+    return await GlobalVars.createWithdravalStandart();
+  };
+
+  const createWithdraval = async () => {
+    if (route == "/st_withdraw_2") {
+      let status = await createWithdravalStandart();
+      console.log("status", status);
+      if (status) {
+        navigate(route);
+      }
+    }
+  };
+
+  console.log("navigate withdraw", route);
   return (
     <VStack
       borderRadius={"14px"}
@@ -24,7 +52,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
       height={"220px"}
       padding={"7px 22px 22px 9px"}
       align={"center"}
-      background={"rgba(20,20,20,0.6)"}
+      background={"rgba(8, 11, 16, 0.6)"}
       justify={"space-between"}
       zIndex={100}
     >
@@ -46,7 +74,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
         </HStack>
       </HStack>
       <HStack width={"100%"} align={"flex-end"} justify={"space-between"}>
-        <VStack>
+        <VStack align={"flex-start"}>
           {standart ? (
             <>
               <HStack width={"100%"} justify={"flex-start"}>
@@ -57,16 +85,26 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               </HStack>
               <Input
                 placeholder="TYPE HERE"
+                value={depositAmount}
+                onChange={(e) => setDepositAmount(e.target.value)}
                 style={{
                   backgroundColor: "black",
                   fontSize: "10px",
-
                   borderRadius: "28px",
                   width: "100%",
                   padding: "5px 20px",
                   color: "white",
                 }}
               />
+              {depositAmount == "" && (
+                <Text
+                  color={"rgba(199, 32, 32, 1)"}
+                  fontSize={"7px"}
+                  marginLeft={"5px"}
+                >
+                  ENTER WITHDRAW AMOUNT
+                </Text>
+              )}
             </>
           ) : null}
 
@@ -78,30 +116,45 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
           </HStack>
           <Input
             placeholder="TYPE HERE"
+            value={valletAmount}
+            onChange={(e) => setValletAmount(e.target.value)}
             style={{
               backgroundColor: "black",
               fontSize: "10px",
-
               borderRadius: "28px",
               width: "100%",
               padding: "5px 20px",
               color: "white",
             }}
           />
+          {valletAmount == "" && (
+            <Text
+              color={"rgba(199, 32, 32, 1)"}
+              fontSize={"7px"}
+              marginLeft={"5px"}
+            >
+              ENTER VALLET AMOUNT
+            </Text>
+          )}
         </VStack>
         <Button
           borderRadius={"28px"}
           height={"36px"}
           width={"82px"}
-          onClick={() => navigate(route)}
+          onClick={async () => await createWithdraval()}
           background={
             "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
           }
+          cursor={
+            depositAmount == "" || valletAmount == "" ? "no-drop" : "pointer"
+          }
+          disabled={depositAmount == "" || valletAmount == ""}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
             NEXT
           </Text>
         </Button>
+        <Button onClick={() => navigate("/st_withdraw_2")}>HUI</Button>
       </HStack>
     </VStack>
   );

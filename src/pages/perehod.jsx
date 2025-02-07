@@ -32,7 +32,7 @@ const PerehodPage = () => {
       "У данного пользователя отсутствует мастер аккаунт" ? (
         <Button
           height={"45px"}
-          backgroundColor={"rgba(20, 20, 20, 0.6)"}
+          backgroundColor={"rgba(8, 11, 16, 0.6)"}
           justifyContent={"center"}
           alignItems={"center"}
           color={"white"}
@@ -52,7 +52,7 @@ const PerehodPage = () => {
       )}
 
       <HStack
-        backgroundColor={"rgba(20,20,20,0.6)"}
+        backgroundColor={"rgba(8, 11, 16, 0.6)"}
         w={"100%"}
         borderRadius={"12px"}
         height={"128px"}

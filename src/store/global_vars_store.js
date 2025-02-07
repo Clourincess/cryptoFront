@@ -163,7 +163,7 @@ class GlobalVarsStore {
       },
       body: JSON.stringify({
         id: 0,
-        sum: parseInt(this.deposit_amount),
+        sum: Number(this.deposit_amount),
         deposit_date: new Date().toISOString().split("T")[0],
         account_id: this.standart_balance?.id,
         verification: false,
@@ -200,7 +200,7 @@ class GlobalVarsStore {
       },
       body: JSON.stringify({
         id: 0,
-        sum: parseInt(this.deposit_amount),
+        sum: Number(this.deposit_amount),
         deposit_date: new Date().toISOString().split("T")[0],
         account_id: this.master_balance?.id,
         verification: false,
@@ -282,6 +282,48 @@ class GlobalVarsStore {
       }),
     });
     console.log("update tariff", response.ok);
+    return response.ok;
+  };
+
+  createWithdravalStandart = async () => {
+    const response = await fetch(`${baseurl}/createWithdravalStandart`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: 0,
+        sum: Number(this.deposit_amount),
+        withdrawal_date: new Date().toISOString().split("T")[0],
+        account_id: this.standart_balance?.id,
+        verification: false,
+        account_number: this.vallet_amount.toString(),
+        type_of_network: "trc20",
+      }),
+    });
+    console.log("withdrawal standart", response);
+    return response.ok;
+  };
+
+  createWithdravalMaster = async () => {
+    const response = await fetch(`${baseurl}/createWithdravalMaster`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: 0,
+        sum: this.master_balance?.balance,
+        withdrawal_date: new Date().toISOString().split("T")[0],
+        account_id: this.master_balance?.id,
+        verification: false,
+        account_number: this.vallet_amount.toString(),
+        type_of_network: "trc20",
+      }),
+    });
+    console.log("withdrawal standart", response);
     return response.ok;
   };
 }

@@ -32,7 +32,7 @@ const MasterCalc = () => {
   return (
     <VStack
       borderRadius={"14px"}
-      background={"rgba(20,20,20,0.6)"}
+      background={"rgba(8, 11, 16, 0.6)"}
       width={"166px"}
       height={"422.5px"}
       padding={"10px"}

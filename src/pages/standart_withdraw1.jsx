@@ -1,10 +1,8 @@
-import { Stat, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
-import DepositCard from "../components/deposit_card";
 import WithdrawalCard from "../components/withdrawal_card";
-
 
 const StandartWithDraw1 = () => {
   const navigate = useNavigate();

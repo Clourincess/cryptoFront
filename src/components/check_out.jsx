@@ -26,7 +26,6 @@ const CheckOut = ({
   const { GlobalVars } = useStores();
 
   const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 минут в секундах
-  console.log("next route", next_route);
 
   const getStatusEnd = async () => {
     const standartStatus = await GlobalVars.getStatusDepositStandart();
@@ -34,7 +33,7 @@ const CheckOut = ({
     if (timeLeft <= 0) {
       if (next_route == "/master_deposit3") {
         masterStatus?.result
-          ? navigate("/master_choose")
+          ? navigate("/master_deposit3")
           : navigate("/master_deposit4");
       } else {
         standartStatus.result
@@ -49,7 +48,7 @@ const CheckOut = ({
     const standartStatus = await GlobalVars.getStatusDepositStandart();
     const masterStatus = await GlobalVars.getStatusDepositMaster();
     if (next_route == "/master_deposit3") {
-      masterStatus?.result && navigate("/master_choose");
+      masterStatus?.result && navigate("/master_deposit3");
     } else {
       standartStatus?.result && navigate("/st_deposit_3");
     }

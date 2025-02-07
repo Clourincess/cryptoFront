@@ -29,7 +29,7 @@ const DepositCard = ({ route = "/" }) => {
   useEffect(() => {
     GlobalVars.updateDepositAmount(depositAmount);
     GlobalVars.updateValletAmount(valletAmount);
-    console.log(GlobalVars.deposit_amount, GlobalVars.vallet_amount);
+    console.log(typeof GlobalVars.deposit_amount, GlobalVars.vallet_amount);
   }, [depositAmount, valletAmount]);
 
   const createDepositStandart = async () => {

@@ -69,7 +69,7 @@ const InfoHeaderMainPage = observer(() => {
       </HStack>
       <a href="#">
         <HStack
-          backgroundColor={"rgba(20, 20, 20, 0.6)"}
+          backgroundColor={"rgba(8, 11, 16, 0.6)"}
           borderRadius={"32px"}
           width={"105px"}
           height={"35px"}

@@ -15,8 +15,7 @@ const MasterWithdrawList = () => {
   }
   return (
     <VStack width={"100%"}>
-        <DepositList/>
-      
+      <DepositList />
     </VStack>
   );
 };

@@ -88,7 +88,7 @@ const ReferalCode1 = () => {
         height={"98px"}
         padding={"10px"}
         align={"center"}
-        background={"rgba(20,20,20,0.6)"}
+        background={"rgba(8, 11, 16, 0.6)"}
         justify={"space-between"}
         zIndex={100}
       >

@@ -30,7 +30,7 @@ const StandartMain = () => {
       >
         <VStack width={"230px"} justify={"space-between"}>
           <BalanceColored
-            balance={GlobalVars.standartBalance}
+            balance={GlobalVars.standart_balance?.balance || 0}
             width="100%"
             height="118px"
           />

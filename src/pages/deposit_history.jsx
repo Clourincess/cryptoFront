@@ -18,7 +18,7 @@ const DepositHistory = () => {
       <VStack
         marginTop={"10px"}
         align={"flex-start"}
-        backgroundColor={"rgba(20,20,20,0.6)"}
+        backgroundColor={"rgba(8, 11, 16, 0.6)"}
         padding={"10px"}
         borderRadius={"12px"}
         width={"100%"}
@@ -134,7 +134,7 @@ const DepositHistory = () => {
       <VStack
         marginTop={"10px"}
         align={"flex-start"}
-        backgroundColor={"rgba(20,20,20,0.6)"}
+        backgroundColor={"rgba(8, 11, 16, 0.6)"}
         padding={"10px"}
         borderRadius={"12px"}
         width={"100%"}
