@@ -66,7 +66,7 @@ const ReferalBalance = ({ width = "178px", height }) => {
       />
       <VStack
         width={width}
-        background={"rgba(14,14,14,1)"}
+        background={"rgba(8, 11, 16, 1)"}
         borderRadius={"14px"}
         padding={"7px 10px"}
         height={height}
@@ -102,7 +102,7 @@ const ReferalBalance = ({ width = "178px", height }) => {
               cursor={"pointer"}
               textAlign={"end"}
             >
-              {GlobalVars.referral_program?.code ?? "00000000"}
+              {GlobalVars.referral_program?.code || "00000000"}
             </Text>
             <div
               ref={textRef}

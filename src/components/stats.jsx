@@ -57,11 +57,11 @@ const Stats = ({ deposited, generated, withdrawn, type }) => {
             )}
             {type == "ref" ? (
               <Text color={"white"} fontSize={"9px"}>
-                {deposited} TIMES
+                {deposited.toFixed(2)} TIMES
               </Text>
             ) : (
               <Text color={"white"} fontSize={"9px"}>
-                {deposited} USDT TRC20
+                {deposited.toFixed(2)} USDT TRC20
               </Text>
             )}
           </VStack>
@@ -86,7 +86,7 @@ const Stats = ({ deposited, generated, withdrawn, type }) => {
               TOTAL GENERATED
             </Text>
             <Text color={"white"} fontSize={"9px"}>
-              {generated} USDT TRC20
+              {generated.toFixed(2)} USDT TRC20
             </Text>
           </VStack>
         </HStack>
@@ -110,7 +110,7 @@ const Stats = ({ deposited, generated, withdrawn, type }) => {
               TOTAL WITHDRAWN
             </Text>
             <Text color={"white"} fontSize={"9px"}>
-              {withdrawn} USDT TRC20
+              {withdrawn.toFixed(2)} USDT TRC20
             </Text>
           </VStack>
         </HStack>
