@@ -44,6 +44,7 @@ const PerehodPage = () => {
         </Button>
       ) : (
         <MasterBalance
+          balance={GlobalVars?.master_balance?.balance || 0}
           width="100%"
           isPerehod={true}
           height="128px"

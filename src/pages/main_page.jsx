@@ -22,7 +22,6 @@ const Main = observer(() => {
 
   useEffect(() => {
     GlobalVars.updateTgInfo(tg?.initDataUnsafe?.user);
-    console.log("tg_info", GlobalVars.tg_info);
   }, []);
 
   const createUser = async () => {

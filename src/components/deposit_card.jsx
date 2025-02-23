@@ -24,27 +24,15 @@ const DepositCard = ({ route = "/" }) => {
   const [depositAmount, setDepositAmount] = useState("");
   const [valletAmount, setValletAmount] = useState("");
 
-  console.log(route);
-
   useEffect(() => {
     GlobalVars.updateDepositAmount(depositAmount);
     GlobalVars.updateValletAmount(valletAmount);
-    console.log(typeof GlobalVars.deposit_amount, GlobalVars.vallet_amount);
   }, [depositAmount, valletAmount]);
 
   const createDepositStandart = async () => {
     const success = await GlobalVars.createDepositStandart();
     if (success) {
       navigate("/st_deposit_2");
-    } else {
-      alert("Error when making a deposit! Try again later.");
-    }
-  };
-
-  const createDepositMaster = async () => {
-    const success = await GlobalVars.createDepositMaster();
-    if (success) {
-      navigate("/master_deposit2");
     } else {
       alert("Error when making a deposit! Try again later.");
     }
@@ -160,7 +148,7 @@ const DepositCard = ({ route = "/" }) => {
           onClick={async () => {
             route == "/st_deposit_2"
               ? await createDepositStandart()
-              : await createDepositMaster();
+              : navigate("/master_choose");
           }}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>

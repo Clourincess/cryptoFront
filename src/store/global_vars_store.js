@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-const baseurl = "https://crypto-osiris.com:8008";
+const baseurl = "https://ossctgapp.com:8008";
 
 class GlobalVarsStore {
   tg_info = {};
@@ -19,9 +19,17 @@ class GlobalVarsStore {
   created_standart_deposit_id = null;
   created_master_deposit_id = null;
 
+  tarrif_id = "";
+
+  selected_deposit = {};
+
   constructor() {
     makeAutoObservable(this);
   }
+
+  updateSelectedDeposit = (new_deposit) => {
+    this.selected_deposit = new_deposit;
+  };
 
   updateTgInfo = (new_info) => {
     this.tg_info = new_info;
@@ -206,11 +214,15 @@ class GlobalVarsStore {
         verification: false,
         account_number: this.vallet_amount.toString(),
         type_of_network: "trc20",
+        tariff_id: this.tarrif_id,
+        result_balance: 0,
+        completion_date: 0,
       }),
     });
     const result = await response.json();
+
     this.created_master_deposit_id = result;
-    return result;
+    return response.ok;
   };
 
   getStatusDepositMaster = async () => {
@@ -236,9 +248,14 @@ class GlobalVarsStore {
     this.vallet_amount = new_vallet_amount;
   };
 
+  updateTarrifId = (new_tarrif_id) => {
+    this.tarrif_id = new_tarrif_id;
+  };
+
   getAllDepositsByUserName = async (type_account) => {
     const response = await fetch(
-      `${baseurl}/getAllDepositByUserName?user_name=${this.tg_info?.username}&type_account=${type_account}`,
+      // this.tg_info?.username
+      `${baseurl}/getAllDepositByUserName?user_name=${"leniviy_sid"}&type_account=${type_account}`,
       {
         method: "GET",
         headers: {
@@ -320,10 +337,11 @@ class GlobalVarsStore {
         account_id: this.master_balance?.id,
         verification: false,
         account_number: this.vallet_amount.toString(),
+        deposit_id: this.selected_deposit?.id,
         type_of_network: "trc20",
       }),
     });
-    console.log("withdrawal standart", response);
+    console.log("withdrawal master", response);
     return response.ok;
   };
 }

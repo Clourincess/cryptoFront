@@ -37,10 +37,15 @@ const MasterChoose = observer(() => {
       navigate("/master_deposit3");
   };
 
-  const easyTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 32);
-  const mediumTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 33);
-  const hardTarrif = GlobalVars.all_tariffs.find((item) => item?.id == 34);
-  console.log("тарифы", easyTarrif, mediumTarrif, hardTarrif);
+  const createDepositMaster = async () => {
+    const success = await GlobalVars.createDepositMaster();
+    if (success) {
+      navigate("/master_deposit2");
+    } else {
+      alert("Error when making a deposit! Try again later.");
+    }
+  };
+
   return (
     <VStack width={"100%"}>
       <VStack
@@ -87,11 +92,8 @@ const MasterChoose = observer(() => {
             }
             borderRadius={"14px"}
             onClick={async () => {
-              await updateTariff(
-                easyTarrif?.name,
-                easyTarrif?.coefficient,
-                easyTarrif?.mounth_period
-              );
+              GlobalVars.updateTarrifId(32);
+              await createDepositMaster();
             }}
           >
             <Text fontSize={"10px"}>x1.25</Text>
@@ -119,11 +121,8 @@ const MasterChoose = observer(() => {
             }
             borderRadius={"14px"}
             onClick={async () => {
-              await updateTariff(
-                mediumTarrif?.name,
-                mediumTarrif?.coefficient,
-                mediumTarrif?.mounth_period
-              );
+              GlobalVars.updateTarrifId(33);
+              await createDepositMaster();
             }}
           >
             <Text fontSize={"10px"}>x1.55</Text>
@@ -153,11 +152,8 @@ const MasterChoose = observer(() => {
             }
             borderRadius={"14px"}
             onClick={async () => {
-              await updateTariff(
-                hardTarrif.name,
-                hardTarrif.coefficient,
-                hardTarrif.mounth_period
-              );
+              GlobalVars.updateTarrifId(34);
+              await createDepositMaster();
             }}
           >
             <Text fontSize={"10px"}>x2.25</Text>
