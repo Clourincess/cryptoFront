@@ -26,7 +26,7 @@ const MasterChoose = observer(() => {
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/");
+    navigate("/master_deposit1");
     backButton.hide();
   }
 

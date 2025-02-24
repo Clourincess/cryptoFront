@@ -9,7 +9,7 @@ const CreateMasterAccount = () => {
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/");
+    navigate("/perehod");
     backButton.hide();
   }
   const { GlobalVars } = useStores();
@@ -17,6 +17,7 @@ const CreateMasterAccount = () => {
   const createMasterBalance = async () => {
     await GlobalVars.createMasterBalance();
     navigate("/");
+    alert("The premium account was created successfully");
   };
 
   return (
@@ -24,7 +25,6 @@ const CreateMasterAccount = () => {
       <Text color={"white"} fontSize={"10px"}>
         CREATE PREMIUM ACCOUNT?
       </Text>
-
       <HStack
         width={"100%"}
         justify={"space-between"}
@@ -47,7 +47,7 @@ const CreateMasterAccount = () => {
           borderRadius={"10px"}
           width={"100%"}
           height={"30px"}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/perehod")}
         >
           <Text color={"red"} fontSize={"12px"}>
             NO

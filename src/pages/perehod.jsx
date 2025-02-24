@@ -26,7 +26,7 @@ const PerehodPage = () => {
         isPerehod={true}
         height="128px"
         onClick={() => navigate("/standart_main")}
-        balance={GlobalVars.standart_balance?.balance}
+        balance={GlobalVars.standart_balance?.balance || 0}
       />
       {GlobalVars.master_balance?.message ==
       "У данного пользователя отсутствует мастер аккаунт" ? (

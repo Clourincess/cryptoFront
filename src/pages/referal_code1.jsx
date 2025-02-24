@@ -14,6 +14,7 @@ import DepositCard from "../components/deposit_card";
 
 import { useStores } from "../store/store_context";
 import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -29,7 +30,7 @@ const arrow = (
     />
   </svg>
 );
-const ReferalCode1 = () => {
+const ReferalCode1 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -39,22 +40,13 @@ const ReferalCode1 = () => {
     backButton.hide();
   }
 
-  const [allReferrals, setAllReferrals] = useState([]);
-
   const [inputValue, setInputValue] = useState("");
   const { GlobalVars } = useStores();
 
-  const allRefs = async () => {
-    setAllReferrals(await GlobalVars.getAllReferralPrograms());
-  };
-
-  useEffect(() => {
-    allRefs();
-  }, []);
-
-  const isRef = allReferrals.some((item) => {
-    return item.code == inputValue;
+  const isRef = GlobalVars.all_referals?.find((item) => {
+    return item?.code == inputValue;
   });
+
   const updateReferalCodeAppUser = async (tg_id, username, ref_code) => {
     const response = await fetch(
       "https://ossctgapp.com:8008/updateReferalCodeAppUser",
@@ -73,11 +65,16 @@ const ReferalCode1 = () => {
         }),
       }
     );
+    console.log("response", response);
   };
 
   const apply = () => {
     navigate("/referal_code2");
-    updateReferalCodeAppUser(GlobalVars.tg_id, GlobalVars.username, inputValue);
+    updateReferalCodeAppUser(
+      GlobalVars.tg_info?.id,
+      GlobalVars.tg_info?.username,
+      inputValue
+    );
   };
   return (
     <VStack width={"100%"}>
@@ -130,7 +127,8 @@ const ReferalCode1 = () => {
             height={"34px"}
             width={"114px"}
             onClick={() => {
-              isRef && isRef != GlobalVars.referalStats.code
+              isRef != undefined &&
+              isRef?.code != GlobalVars.referral_program?.code
                 ? apply()
                 : navigate("/referal_code4");
             }}
@@ -149,6 +147,6 @@ const ReferalCode1 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default ReferalCode1;

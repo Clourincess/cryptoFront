@@ -18,9 +18,9 @@ const MasterStats = () => {
   return (
     <VStack width={"100%"}>
       <Stats
-        deposited={GlobalVars.report_master.deposit_sum}
-        generated={GlobalVars.report_master.profit}
-        withdrawn={GlobalVars.report_master.withdrawal_sum}
+        deposited={GlobalVars.report_master.deposit_sum || 0}
+        generated={GlobalVars.report_master.profit || 0}
+        withdrawn={GlobalVars.report_master.withdrawal_sum || 0}
       />
       <Note text={"THIS PAGE DISPLAYS YOUR ACTIVITY IN THE PREMIUM BALANCE."} />
     </VStack>

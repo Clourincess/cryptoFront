@@ -6,7 +6,7 @@ import { useStores } from "../store/store_context";
 import usdt_green from "./../assets/images/usdt_green.svg";
 import "./styles.css";
 
-const ReferalBalance = ({ width = "178px", height }) => {
+const ReferalBalance = ({ width = "178px", height, balance }) => {
   const glowAnimation = keyframes`
   0% { opacity: 0.5; }
   50% { opacity: 1; }
@@ -118,8 +118,8 @@ const ReferalBalance = ({ width = "178px", height }) => {
         </HStack>
         <HStack width={"100%"} justify={"space-between"}>
           <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
-            <Text fontSize={26} color={"white"} fontWeight={700}>
-              {GlobalVars.referral_program?.total_profit_referal ?? 0}
+            <Text fontSize={24} color={"white"} fontWeight={700}>
+              {balance.toFixed(2)}
             </Text>
             <Text fontSize={"9px"} color={"white"}>
               USDT TRC20

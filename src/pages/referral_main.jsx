@@ -32,6 +32,7 @@ const ReferalMain = () => {
             width="100%"
             height={"118px"}
             className={"animated"}
+            balance={GlobalVars.referral_program?.total_profit_referal || 0}
           />
           <HStack width={"100%"}>
             <BlackButtonIcon

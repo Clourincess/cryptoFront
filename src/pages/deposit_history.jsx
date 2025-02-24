@@ -1,13 +1,24 @@
 import { Collapse, HStack, Stack, Text, VStack } from "@chakra-ui/react";
-import { keyframes } from "@emotion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useStores } from "../store/store_context";
+import { useNavigate } from "react-router";
+
+import tg from "../tg_vars";
 
 const DepositHistory = () => {
   const [isOpen, setIsOpen] = useState([0, 0]);
   let copyIsOPen = Array.from(isOpen);
 
   const { GlobalVars } = useStores();
+
+  const navigate = useNavigate();
+  const backButton = tg.BackButton;
+  backButton.show();
+  backButton.onClick(back_page);
+  function back_page() {
+    navigate("/perehod");
+    backButton.hide();
+  }
 
   return (
     <VStack width={"100%"}>

@@ -6,7 +6,7 @@ import Congrats from "../components/congrats";
 
 const MasterDeposit3 = () => {
   const backButton = tg.BackButton;
-  backButton.show();
+  backButton.hide();
 
   return (
     <VStack width={"100%"}>

@@ -74,10 +74,10 @@ const DepositList = observer(() => {
               padding={"5px 10px"}
               borderRadius={"10px"}
               marginTop={"10px"}
-              onClick={() => navigate("/master_deposit2")}
+              onClick={() => navigate("/master_deposit1")}
             >
               <Text color={"white"} fontSize={"10px"}>
-                ACTIVATE BALANCE
+                ACTIVATE DEPOSIT
               </Text>
             </Button>
           </VStack>

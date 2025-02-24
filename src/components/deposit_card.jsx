@@ -45,7 +45,7 @@ const DepositCard = ({ route = "/" }) => {
       height={"220px"}
       padding={"8px 22px 22px 10px"}
       align={"center"}
-      backgroundColor="rgba(20, 20, 20, 1)"
+      backgroundColor="rgba(8, 11, 16, 0.6)"
       justify={"space-between"}
       zIndex={100}
     >

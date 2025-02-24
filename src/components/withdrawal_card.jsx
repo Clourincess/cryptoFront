@@ -18,21 +18,6 @@ const arrow = (
   </svg>
 );
 
-const gray_arrow = (
-  <svg
-    width="7"
-    height="8"
-    viewBox="0 0 7 8"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M6.1167 4L0.0342223 7.4641L0.0342226 0.535898L6.1167 4Z"
-      fill="#2281a8"
-    />
-  </svg>
-);
-
 const WithdrawalCard = ({ route = "/", standart = true }) => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
@@ -53,10 +38,6 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
     return await GlobalVars.createWithdravalStandart();
   };
 
-  const createWithdravalMaster = async () => {
-    return await GlobalVars.createWithdravalMaster();
-  };
-
   const createWithdraval = async () => {
     if (route == "/st_withdraw_2") {
       let status = await createWithdravalStandart();
@@ -64,12 +45,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
         navigate(route);
       }
     } else {
-      let status = await createWithdravalMaster();
-      if (status) {
-        navigate(route);
-      } else {
-        alert("ошибка");
-      }
+      navigate("/master_withdraw3");
     }
   };
 
@@ -77,7 +53,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
     <VStack
       borderRadius={"14px"}
       width={"100%"}
-      height={standart ? "220px" : "180px"}
+      height={standart ? "220px" : "130px"}
       padding={"7px 22px 22px 9px"}
       align={"center"}
       background={"rgba(8, 11, 16, 0.6)"}
@@ -103,20 +79,6 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
       </HStack>
       <HStack width={"100%"} align={"flex-end"} justify={"space-between"}>
         <VStack align={"flex-start"}>
-          {!standart ? (
-            <>
-              <HStack justify={"flex-start"}>
-                {gray_arrow}
-                <Text color={"rgba(34, 129, 168, 1)"} fontSize={"9px"}>
-                  YOU WITHDRAW
-                </Text>
-              </HStack>
-              <Text color={"white"} fontSize={"9px"} marginLeft={"16px"}>
-                {GlobalVars.selected_deposit?.result_balance.toFixed(2)} USDT
-                TRC20
-              </Text>
-            </>
-          ) : null}
           {standart ? (
             <>
               <HStack width={"100%"} justify={"flex-start"}>
@@ -145,6 +107,20 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
                   marginLeft={"5px"}
                 >
                   ENTER WITHDRAW AMOUNT
+                </Text>
+              )}
+              {console.log(
+                depositAmount,
+                GlobalVars.report_standart?.deposit_sum
+              )}
+              {Number(depositAmount) >
+                Number(GlobalVars.report_standart?.deposit_sum) && (
+                <Text
+                  color={"rgba(199, 32, 32, 1)"}
+                  fontSize={"7px"}
+                  marginLeft={"5px"}
+                >
+                  THE WITHDRAWAL CANNOT BE MORE THAN THE AMOUNT ON THE BALANCE
                 </Text>
               )}
             </>

@@ -24,7 +24,11 @@ const InfoHeaderMainPage = observer(() => {
 
   return (
     <HStack width={"100%"} justify={"space-between"}>
-      <HStack align={"center"} onClick={() => navigate("/profile")}>
+      <HStack
+        align={"center"}
+        onClick={() => navigate("/profile")}
+        cursor={"pointer"}
+      >
         <VStack justify={"center"}>
           {tg.initDataUnsafe?.user?.photo_url !== "" ? (
             <Image

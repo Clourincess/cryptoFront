@@ -16,7 +16,7 @@ const MasterMain = () => {
   backButton.show();
   backButton.onClick(back_page);
   function back_page() {
-    navigate("/");
+    navigate("/perehod");
     backButton.hide();
   }
   const { GlobalVars } = useStores();

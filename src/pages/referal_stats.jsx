@@ -20,9 +20,9 @@ const ReferalStats = () => {
   return (
     <VStack width={"100%"}>
       <Stats
-        deposited={GlobalVars.referral_program?.count_referal_user}
-        generated={GlobalVars.referral_program?.total_profit_referal}
-        withdrawn={GlobalVars.report_standart?.withdrawal_sum}
+        deposited={GlobalVars.referral_program?.count_referal_user || 0}
+        generated={GlobalVars.referral_program?.total_profit_referal || 0}
+        withdrawn={GlobalVars.report_standart?.withdrawal_sum || 0}
         type={"ref"}
       />
       <Note

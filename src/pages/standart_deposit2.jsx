@@ -7,12 +7,7 @@ import CheckOut from "../components/check_out";
 const StandartDeposit2 = () => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
-  backButton.show();
-  backButton.onClick(back_page);
-  function back_page() {
-    navigate("/st_deposit_1");
-    backButton.hide();
-  }
+  backButton.hide();
   return (
     <VStack width={"100%"}>
       <CheckOut />

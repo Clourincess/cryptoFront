@@ -20,6 +20,9 @@ const Main = observer(() => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
 
+  const backButton = tg.BackButton;
+  backButton.hide();
+
   useEffect(() => {
     GlobalVars.updateTgInfo(tg?.initDataUnsafe?.user);
   }, []);
@@ -40,6 +43,7 @@ const Main = observer(() => {
     GlobalVars.getAllDepositsByUserName("standart");
     GlobalVars.getAllDepositsByUserName("master");
     GlobalVars.getallTarrif();
+    GlobalVars.getAllReferralProgram();
   }, []);
 
   return (
@@ -106,10 +110,14 @@ const Main = observer(() => {
         <VStack>
           <BalanceColored
             balance={
-              GlobalVars?.standart_balance?.balance +
-              GlobalVars?.master_balance?.balance
+              GlobalVars.master_balance?.message ==
+              "У данного пользователя отсутствует мастер аккаунт"
+                ? GlobalVars?.master_balance?.balance || 0
+                : GlobalVars?.standart_balance?.balance ||
+                  0 + GlobalVars?.master_balance?.balance ||
+                  0
             }
-            onClick={() => navigate("perehod")}
+            onClick={() => navigate("/perehod")}
             width="170px"
             height="191px"
           />

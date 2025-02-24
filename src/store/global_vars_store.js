@@ -15,6 +15,7 @@ class GlobalVarsStore {
   standart_deposits = [];
   master_deposits = [];
   all_tariffs = [];
+  all_referals = [];
 
   created_standart_deposit_id = null;
   created_master_deposit_id = null;
@@ -91,7 +92,8 @@ class GlobalVarsStore {
 
   getReportAccount = async (type_account) => {
     const response = await fetch(
-      `${baseurl}/getReportAccount?type_account=${type_account}&user_name=${this.tg_info?.username}`,
+      //this.tg_info?.username
+      `${baseurl}/getReportAccount?type_account=${type_account}&user_name=${"leniviy_sid"}`,
       {
         method: "GET",
         headers: {
@@ -254,8 +256,7 @@ class GlobalVarsStore {
 
   getAllDepositsByUserName = async (type_account) => {
     const response = await fetch(
-      // this.tg_info?.username
-      `${baseurl}/getAllDepositByUserName?user_name=${"leniviy_sid"}&type_account=${type_account}`,
+      `${baseurl}/getAllDepositByUserName?user_name=${this.tg_info?.username}&type_account=${type_account}`,
       {
         method: "GET",
         headers: {
@@ -343,6 +344,17 @@ class GlobalVarsStore {
     });
     console.log("withdrawal master", response);
     return response.ok;
+  };
+
+  getAllReferralProgram = async () => {
+    const response = await fetch(`${baseurl}/getAllReferalProgramms`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    const result = await response.json();
+    this.all_referals = result;
   };
 }
 
