@@ -21,7 +21,7 @@ const CreateMasterAccount = () => {
   };
 
   return (
-    <VStack w={"100%"} height={"100%"}>
+    <VStack w={"100%"} height={"100vh"}>
       <Text color={"white"} fontSize={"10px"}>
         CREATE PREMIUM ACCOUNT?
       </Text>

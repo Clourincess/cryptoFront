@@ -8,7 +8,12 @@ const MainContainerPage = (props) => {
       align={"flex-start"}
       justify={"center"}
     >
-      <VStack width={"375px"} padding={"14px"}>
+      <VStack
+        width={"375px"}
+        height={"100vh"}
+        overflow={"auto"}
+        padding={"14px"}
+      >
         {props.children}
       </VStack>
     </HStack>
