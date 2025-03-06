@@ -84,7 +84,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               <HStack width={"100%"} justify={"flex-start"}>
                 {arrow}
                 <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-                  ENTER WITHDRAW AMOUNT
+                  ENTER AMOUNT
                 </Text>
               </HStack>
               <Input
@@ -98,27 +98,24 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
                   width: "100%",
                   padding: "5px 20px",
                   color: "white",
+                  marginLeft: "13px",
                 }}
               />
               {depositAmount == "" && (
                 <Text
                   color={"rgba(199, 32, 32, 1)"}
                   fontSize={"7px"}
-                  marginLeft={"5px"}
+                  marginLeft={"16px"}
                 >
-                  ENTER WITHDRAW AMOUNT
+                  ENTER AMOUNT
                 </Text>
-              )}
-              {console.log(
-                depositAmount,
-                GlobalVars.report_standart?.deposit_sum
               )}
               {Number(depositAmount) >
                 Number(GlobalVars.report_standart?.deposit_sum) && (
                 <Text
                   color={"rgba(199, 32, 32, 1)"}
                   fontSize={"7px"}
-                  marginLeft={"5px"}
+                  marginLeft={"16px"}
                 >
                   THE WITHDRAWAL CANNOT BE MORE THAN THE AMOUNT ON THE BALANCE
                 </Text>
@@ -129,7 +126,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
           <HStack width={"100%"} justify={"flex-start"} marginTop={"10px"}>
             {arrow}
             <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-              ENTER YOUR WALLET ADDRESS
+              ENTER YOUR USDT TRC20 ADDRESS
             </Text>
           </HStack>
           <Input
@@ -143,15 +140,16 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               width: "100%",
               padding: "5px 20px",
               color: "white",
+              marginLeft: "13px",
             }}
           />
           {valletAmount == "" && (
             <Text
               color={"rgba(199, 32, 32, 1)"}
               fontSize={"7px"}
-              marginLeft={"5px"}
+              marginLeft={"16px"}
             >
-              ENTER VALLET AMOUNT
+              ENTER ADDRESS AMOUNT
             </Text>
           )}
         </VStack>

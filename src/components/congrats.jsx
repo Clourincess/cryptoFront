@@ -1,4 +1,4 @@
-import { HStack, VStack, Text, Button, Image } from "@chakra-ui/react";
+import { HStack, VStack, Text, Button, Image, Stack } from "@chakra-ui/react";
 import stars from "./../assets/images/stars.png";
 import { useNavigate } from "react-router";
 
@@ -20,41 +20,64 @@ const arrow = (
 const Congrats = () => {
   const navigate = useNavigate();
   return (
-    <VStack width={"100%"} align="flex-start" spacing={"20px"} marginBottom={'31px'}>
-      <Image src={stars} position="absolute" top={"0px"} right="20px" />
+    <VStack
+      width={"100%"}
+      align="flex-start"
+      padding={"18px"}
+      position={"relative"}
+      spacing={0}
+      gap={0}
+      background={"rgba(8, 11, 16, 1)"}
+      borderRadius={"14px"}
+    >
+      <Image src={stars} position="absolute" top={"11px"} right="5px" />
       <Text
-        fontSize={"20px"}
+        fontSize={"18px"}
         background="linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
         backgroundClip={"text"}
       >
         CONGRATS!
       </Text>
-      <HStack width={"60%"} justify={"flex-start"}>
-        {arrow}
-        <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-          YOUR REQUEST IS BEING PROCESSED <br/> (IT MIGHT TAKE UP TO 24 HOURS)
-        </Text>
-      </HStack>
-      <HStack width={"80%"} justify={"flex-start"}>
-        {arrow}
-        <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-          CHECK THE APP AND YOUR BALANCE
-        </Text>
-      </HStack>
-      <HStack width={"100%"} justify={"flex-start"}>
-        {arrow}
-        <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-          IF YOU HAVE ANY ISSUES WITH THIS TRANSACTION — <br/>PLEASE CONTACT SUPPORT
-          TEAM BY CLICKING “LIVE<br/> SUPPORT” BUTTON IN THE MAIN MENU
-        </Text>
-      </HStack>
+      <VStack
+        align={"flex-start"}
+        justify={"flex-start"}
+        marginTop={"25px"}
+        gap={"25px"}
+        width={"100%"}
+      >
+        <HStack width={"60%"} justify={"flex-start"} align={"flex-start"}>
+          <Stack marginTop={"3px"}>{arrow}</Stack>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+            YOUR REQUEST IS BEING PROCESSED
+            <br />
+            (IT MIGHT TAKE UP TO 24 HOURS).
+          </Text>
+        </HStack>
+
+        <HStack width={"80%"} justify={"flex-start"} align={"flex-start"}>
+          <Stack marginTop={"3px"}>{arrow}</Stack>
+
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+            CHECK THE APP AND YOUR BALANCE
+          </Text>
+        </HStack>
+        <HStack width={"100%"} justify={"flex-start"} align={"flex-start"}>
+          <Stack marginTop={"3px"}>{arrow}</Stack>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+            IF YOU HAVE ANY ISSUES WITH THIS TRANSACTION — <br />
+            PLEASE CONTACT SUPPORT TEAM BY CLICKING “LIVE
+            <br /> SUPPORT” BUTTON IN THE MAIN MENU
+          </Text>
+        </HStack>
+      </VStack>
       <Button
         background={
           "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
         }
         borderRadius="28px"
-        alignSelf={"flex-end"}
+        alignSelf={"center"}
         onClick={() => navigate("/")}
+        marginTop={"40px"}
       >
         <Text color={"black"} fontSize="10px" padding={"10px 15px"}>
           GO TO MAIN MENU

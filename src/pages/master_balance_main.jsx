@@ -58,12 +58,13 @@ const MasterMain = () => {
               }
             />
             <BlackButtonIcon
-              text={"WITHDRAW"}
+              text={"DEPOSIT LIST"}
               icon={withdraw}
               left={"45px"}
               route="/master_withdraw1"
               iconWidth={"47px"}
               iconHeight={"47px"}
+              prem={true}
               additionalTextIcon={
                 <svg
                   width="7"
@@ -92,17 +93,19 @@ const MasterMain = () => {
       </HStack>
       <HStack w={"100%"}>
         <Note
-          text={redact(`IT IS THE PREMIUM ACCOUNT PAGE.
+          text={redact(`THIS IS THE PREMIUM ACCOUNT PAGE.
 HERE, YOU CAN GENERATE MORE USDT THAN IN THE STANDARD ACCOUNT BY FREEZING YOUR DEPOSIT FOR A CERTAIN PERIOD (1, 2, OR 4 MONTHS).
 
-MODS:
+OPTIONS:
 x1.25 OF YOUR DEPOSIT (FREEZE FOR 1 MONTH)
 x1.55 OF YOUR DEPOSIT (FREEZE FOR 2 MONTHS)
 x2.25 OF YOUR DEPOSIT (FREEZE FOR 4 MONTHS)
- 
-ON THIS PAGE, YOU CAN CREATE DEPOSITS, GENERATE USDT, AND WITHDRAW IT BACK.
- 
-ALL DEPOSITS YOU CREATE WILL BE DISPLAYED HERE.`)}
+
+
+ON THIS PAGE YOU CAN CREATE DEPOSITS, GENERATE USDT AND WITHDRAW IT BACK.
+
+ALL DEPOSITS YOU CREATE WILL BE DISPLAYED HERE.
+`)}
         />
       </HStack>
     </VStack>

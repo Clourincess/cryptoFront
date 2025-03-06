@@ -63,7 +63,7 @@ const MasterBalance = ({
       </HStack>
       <HStack width={"100%"} justify={"space-between"}>
         <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
-          <Text fontSize={24} color={"white"}>
+          <Text fontSize={"26px"} color={"white"}>
             {balance?.toFixed(2) || 0}
           </Text>
           {!isPerehod && (

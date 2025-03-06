@@ -53,7 +53,7 @@ const ReferalBalance = ({ width = "178px", height, balance }) => {
   };
   return (
     <Box position="relative" width={width} h={height}>
-      <Box
+      {/* <Box
         position="absolute"
         top="0px"
         left="-5px"
@@ -63,10 +63,10 @@ const ReferalBalance = ({ width = "178px", height, balance }) => {
         background="linear-gradient(105deg, rgba(255, 126, 95, 0) 5%,#8DC7D6 40%, #74C6B2 60%, rgba(255, 126, 95, 0) 95%)"
         filter="blur(15px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
-      />
+      /> */}
       <VStack
         width={width}
-        background={"rgba(8, 11, 16, 1)"}
+        background={"rgba(8, 11, 16, 0.6)"}
         borderRadius={"14px"}
         padding={"7px 10px"}
         height={height}
@@ -92,7 +92,7 @@ const ReferalBalance = ({ width = "178px", height, balance }) => {
               YOUR CODE:
             </Text>
             <Text
-              fontSize={"9px"}
+              fontSize={"10px"}
               color={"white"}
               w={"50px"}
               whiteSpace={"nowrap"}
@@ -118,7 +118,7 @@ const ReferalBalance = ({ width = "178px", height, balance }) => {
         </HStack>
         <HStack width={"100%"} justify={"space-between"}>
           <VStack align={"flex-start"} textAlign={"left"} spacing={0}>
-            <Text fontSize={24} color={"white"} fontWeight={700}>
+            <Text fontSize={"26px"} color={"white"} fontWeight={700}>
               {balance.toFixed(2)}
             </Text>
             <Text fontSize={"9px"} color={"white"}>

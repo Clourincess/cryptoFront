@@ -68,7 +68,7 @@ const ProfilePage = () => {
                 : "rgba(84, 84, 84, 1)s"
             }
           >
-            {rank}
+            {rank}.
           </Text>
         </VStack>
         <VStack width={"inherit"} gap={0} marginTop={"22px"}>

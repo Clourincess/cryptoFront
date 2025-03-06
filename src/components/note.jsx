@@ -5,25 +5,25 @@ import { keyframes } from "@emotion/react";
 
 const Note = ({ text, updates = false }) => {
   const glowAnimation = keyframes`
-  0% { opacity: 0.5; }
+  0% { opacity: 0.8; }
   50% { opacity: 1; }
-  100% { opacity: 0.5; }
+  100% { opacity: 0.8; }
 `;
   return (
-    <Box position="relative" width={"100%"} height={updates ? "241px" : "auto"}>
+    <Box position="relative" width={"100%"} height={updates ? "221px" : "auto"}>
       <Box
         position="absolute"
-        top="-2px"
-        left="2px"
-        right="2px"
-        bottom="-2px"
+        top="-4px"
+        left="-4px"
+        right="-4px"
+        bottom="-4px"
         // transform={"skewX(-5deg)"}
         background={
           "linear-gradient(90deg, rgba(4,222,120,1) 0%, rgba(32,115,247,1) 100%)"
           // "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
         }
-        filter="blur(20px)"
-        animation={`${glowAnimation} 3s ease-in-out infinite`}
+        filter="blur(8px)"
+        // animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <HStack
         width={"100%"}
@@ -35,7 +35,7 @@ const Note = ({ text, updates = false }) => {
         justify={"space-between"}
         padding={!updates ? "10px 13px" : "11px"}
         position={"relative"}
-        height={updates ? "241px" : "auto"}
+        height={updates ? "221px" : "auto"}
         align={"flex-start"}
       >
         <VStack align={"flex-start"}>

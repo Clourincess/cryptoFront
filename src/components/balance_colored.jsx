@@ -8,13 +8,16 @@ const BalanceColored = ({
   onClick = () => {},
   height = "",
   isPerehod = false,
+  background = "radial-gradient(122.06% 115.28% at -22.06% 94.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)",
 }) => {
   return (
     <ColoredComponent
       width={width}
       onClick={onClick}
       height={height != "" ? height : "auto"}
-      background="radial-gradient(120% 107.04% at -10% 74.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)"
+      // background="radial-gradient(120% 107.04% at -10% 74.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)"
+      // background="radial-gradient(122.06% 115.28% at -22.06% 94.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)"
+      background={background}
     >
       <HStack width={"100%"} justify={"space-between"}>
         <Text fontSize={"9px"} color={"black"}>

@@ -45,7 +45,7 @@ const MasterCalc = () => {
           "linear-gradient(88deg, #e19e13 0%, #ea743d 16.67%, #db5356 33.33%, #b94a70 50%, #b44d88 62.1%, #395cf9 76.1%, #00c2ff 94.1%)"
         }
         backgroundClip={"text"}
-        fontSize={"10px"}
+        fontSize={"9px"}
         textAlign={"center"}
         fontWeight={"800"}
       >
@@ -61,7 +61,7 @@ const MasterCalc = () => {
       >
         <HStack justify={"flex-start"}>
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             ENTER DEPOSIT
           </Text>
         </HStack>
@@ -172,7 +172,7 @@ const MasterCalc = () => {
       >
         <Text
           style={{
-            fontSize: "10px",
+            fontSize: "9px",
             letterSpacing: "-0.02em",
             color: "white",
           }}
@@ -189,12 +189,12 @@ const MasterCalc = () => {
         marginTop={"30px"}
       >
         <HStack width={"100%"} justify={"flex-start"}>
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             ESTIMATED GENERATION:
           </Text>
         </HStack>
         <Text
-          fontSize={"30px"}
+          fontSize={"27px"}
           color={"white"}
           alignSelf={"flex-start"}
           marginTop={"20px"}

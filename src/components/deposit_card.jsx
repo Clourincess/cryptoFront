@@ -51,19 +51,18 @@ const DepositCard = ({ route = "/" }) => {
     >
       <HStack width={"100%"} justify={"center"}>
         <HStack alignSelf={"center"} justify={"center"} spacing={1}>
-          <Text fontSize={"10px"} color={"white"}>
+          <Text fontSize={"9px"} color={"white"}>
             DEPOSIT CARD
           </Text>
           <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
+            width="7"
+            height="7"
+            viewBox="0 0 7 7"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle cx="4" cy="4" r="4" fill="#1EB85B" fill-opacity="0.5" />
-            <circle cx="4" cy="4" r="4" fill="#1EB85B" fill-opacity="0.5" />
-            <circle cx="4" cy="4" r="3" fill="#1EB85B" />
+            <circle cx="3.5" cy="3.5" r="3.5" fill="#1EB85B" />
+            <circle cx="3.5" cy="3.5" r="2.625" fill="#1EB85B" />
           </svg>
         </HStack>
       </HStack>
@@ -76,8 +75,8 @@ const DepositCard = ({ route = "/" }) => {
         <VStack align={"flex-start"}>
           <HStack width={"100%"} justify={"flex-start"} spacing={1}>
             {arrow}
-            <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-              ENTER DEPOSIT AMOUNT
+            <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+              ENTER DEPOSIT
             </Text>
           </HStack>
 
@@ -100,13 +99,18 @@ const DepositCard = ({ route = "/" }) => {
               fontSize={"7px"}
               marginLeft={"5px"}
             >
-              ENTER DEPOSIT AMOUNT
+              ENTER DEPOSIT
             </Text>
           )}
-          <HStack width={"100%"} justify={"flex-start"} spacing={1}>
+          <HStack
+            width={"100%"}
+            justify={"flex-start"}
+            spacing={1}
+            marginTop={"10px"}
+          >
             {arrow}
-            <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-              ENTER YOUR WALLET ADDRESS
+            <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+              ENTER YOUR USDT TRC20 ADDRESS
             </Text>
           </HStack>
           <Input
@@ -152,7 +156,7 @@ const DepositCard = ({ route = "/" }) => {
           }}
         >
           <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
-            ENTER
+            NEXT
           </Text>
         </Button>
       </HStack>

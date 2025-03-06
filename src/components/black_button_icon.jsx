@@ -19,6 +19,7 @@ const BlackButtonIcon = ({
   isCalc = false,
   top,
   left,
+  prem,
 }) => {
   const navigate = useNavigate();
   const editMultiLineText = (text) => {
@@ -46,12 +47,17 @@ const BlackButtonIcon = ({
       position={"relative"}
       cursor={"pointer"}
     >
-      <HStack width={"100%"} justify={"flex-start"} spacing={"3px"}>
+      <HStack width={"100%"} justify={"flex-start"}>
         {predictionalIcon}
         <Text fontSize={"9px"} color={"white"} dir="row" fontWeight={700}>
-          {editMultiLineText(text)}
+          {prem ? text : editMultiLineText(text)}
         </Text>
-        <VStack position={"absolute"} top={top} left={left} w={"54px"}>
+        <VStack
+          position={"absolute"}
+          top={top}
+          left={left}
+          w={prem ? "62px" : "54px"}
+        >
           {additionalTextIcon}
         </VStack>
       </HStack>

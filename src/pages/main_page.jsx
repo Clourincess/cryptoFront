@@ -1,4 +1,4 @@
-import { HStack, VStack, Text, Image } from "@chakra-ui/react";
+import { HStack, VStack, Text, Image, Stack } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useStores } from "../store/store_context";
@@ -106,7 +106,12 @@ const Main = observer(() => {
           iconHeight={"54px"}
         />
       </HStack>
-      <HStack width={"100%"} align={"flex-start"} justify={"space-between"}>
+      <HStack
+        width={"100%"}
+        align={"flex-start"}
+        justify={"space-between"}
+        marginTop={"10px"}
+      >
         <VStack>
           <BalanceColored
             balance={
@@ -120,6 +125,7 @@ const Main = observer(() => {
             onClick={() => navigate("/perehod")}
             width="170px"
             height="191px"
+            background="radial-gradient(120% 107.04% at -10% 74.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)"
           />
         </VStack>
         <BlackButtonIcon
@@ -133,17 +139,18 @@ const Main = observer(() => {
           // iconHeight={"136px"}
         />
       </HStack>
-
-      <BlackButtonIcon
-        type="referal"
-        text={"REFERRAL"}
-        icon={megafon}
-        width="100%"
-        height="87px"
-        route="/referal_main"
-        iconWidth={"84px"}
-        iconHeight={"84px"}
-      />
+      <Stack width={"100%"} marginTop={"10px"}>
+        <BlackButtonIcon
+          type="referal"
+          text={"REFERRAL"}
+          icon={megafon}
+          width="100%"
+          height="87px"
+          route="/referal_main"
+          iconWidth={"84px"}
+          iconHeight={"84px"}
+        />
+      </Stack>
       <Note text={""} width="100%" updates={true} />
     </VStack>
   );

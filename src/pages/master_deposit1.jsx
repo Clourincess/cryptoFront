@@ -19,9 +19,9 @@ const MasterDeposit1 = () => {
     <VStack width={"100%"}>
       <DepositCard route="/master_deposit2" />
       <Note
-        text={redact(`ENTER YOUR DEPOSIT AMOUNT IN USDT TRC20.
+        text={redact(`ENTER YOUR DEPOSIT IN USDT TRC20.
 
-        ENTER YOUR CRYPTO WALLET ADDRESS SO THAT WE CAN TRACK THE TRANSACTION.`)}
+ENTER YOUR USDT TRC20 ADDRESS SO THAT WE CAN TRACK THE TRANSACTION.`)}
       />
     </VStack>
   );

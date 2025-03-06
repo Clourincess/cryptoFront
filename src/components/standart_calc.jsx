@@ -39,7 +39,7 @@ const StandartCalc = () => {
     <ColoredComponent>
       <VStack width={"100%"} height={"100%"} spacing={"0px"}>
         <Text
-          fontSize={"10px"}
+          fontSize={"9px"}
           fontWeight={"800"}
           color={"black"}
           alignSelf={"center"}
@@ -97,7 +97,7 @@ const StandartCalc = () => {
         />
         <HStack width={"100%"} justify={"flex-start"} marginTop={"34px"}>
           {arrow}
-          <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"black"} alignSelf={"center"}>
             ENTER DAYS NUMBER
           </Text>
         </HStack>
@@ -131,7 +131,7 @@ const StandartCalc = () => {
         >
           <Text
             style={{
-              fontSize: "10px",
+              fontSize: "9px",
               letterSpacing: "-0.02em",
               color: "#a8487d",
             }}
@@ -145,15 +145,15 @@ const StandartCalc = () => {
           backgroundColor={"black"}
           padding={"8px"}
           borderRadius={"10px"}
-          marginTop={"30px"}
+          marginTop={"40px"}
         >
           <HStack width={"100%"} justify={"flex-start"}>
-            <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+            <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
               ESTIMATED GENERATION:
             </Text>
           </HStack>
           <Text
-            fontSize={"30px"}
+            fontSize={"27px"}
             color={"white"}
             alignSelf={"flex-start"}
             marginTop={"20px"}

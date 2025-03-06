@@ -51,7 +51,7 @@ const MasterChoose = observer(() => {
       <VStack
         width={"100%"}
         borderRadius={"14px"}
-        backgroundColor="rgba(20, 20, 20, 1)"
+        backgroundColor="rgba(8, 11, 16, 0.6)"
         padding={"10px"}
         spacing={"30px"}
         zIndex={1000}
