@@ -175,7 +175,6 @@ class GlobalVarsStore {
         id: 0,
         sum: Number(this.deposit_amount),
         deposit_date: new Date().toISOString().split("T")[0],
-        //
         account_id: this.standart_balance?.id,
         verification: false,
         account_number: this.vallet_amount.toString(),
@@ -315,8 +314,8 @@ class GlobalVarsStore {
         id: 0,
         sum: Number(this.deposit_amount),
         withdrawal_date: new Date().toISOString().split("T")[0],
-        // this.standart_balance?.id,
-        account_id: 8,
+        //
+        account_id: this.standart_balance?.id,
         verification: false,
         account_number: this.vallet_amount.toString(),
         type_of_network: "trc20",
@@ -357,6 +356,24 @@ class GlobalVarsStore {
     });
     const result = await response.json();
     this.all_referals = result;
+  };
+
+  createWithdrawReferal = async () => {
+    const response = await fetch(`${baseurl}/createWithdravalpReferal`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        app_user_id: this.tg_info?.id,
+        count_bonuses: Number(this.deposit_amount),
+        verification: false,
+        account_number: this.vallet_amount.toString(),
+        type_of_network: "trc20",
+      }),
+    });
+    return response.ok;
   };
 }
 

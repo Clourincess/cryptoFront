@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import blueIndicator from "./../assets/images/indicator_blue.svg";
 import redCircle from "./../assets/images/red_circle.svg";
 import redTriangle from "./../assets/images/red_arrow.svg";
+import { steps } from "framer-motion";
 
 const arrow = (
   <svg
@@ -143,9 +144,18 @@ const CheckOut = ({
     return await GlobalVars.createWithdravalStandart();
   };
 
+  const createWithdrawReferal = async () => {
+    return await GlobalVars.createWithdrawReferal();
+  };
+  console.log(next_route);
   const createWithdraval = async () => {
     if (next_route == "/st_withdraw_2") {
       let status = await createWithdravalStandart();
+      if (status) {
+        navigate(next_route);
+      }
+    } else if (next_route == "/referal_withdraw3") {
+      let status = await createWithdrawReferal();
       if (status) {
         navigate(next_route);
       }
@@ -283,7 +293,7 @@ const CheckOut = ({
             </Button>
           </HStack>
         </VStack>
-      ) : back_route == "/st_withdraw_1" ? (
+      ) : (
         <VStack
           width={"100%"}
           align="flex-start"
@@ -367,9 +377,15 @@ const CheckOut = ({
             fontSize={"9px"}
             marginLeft={"10px"}
           >
-            {Number(
-              GlobalVars.standart_balance?.balance - GlobalVars.deposit_amount
-            ).toFixed(2)}{" "}
+            {next_route == "/referal_withdraw3"
+              ? Number(
+                  GlobalVars.referral_program?.total_profit_referal -
+                    GlobalVars.deposit_amount
+                ).toFixed(2)
+              : Number(
+                  GlobalVars.standart_balance?.balance -
+                    GlobalVars.deposit_amount
+                ).toFixed(2)}{" "}
             USDT TRC20
           </Text>
           <HStack
@@ -431,7 +447,7 @@ const CheckOut = ({
             </Button>
           </HStack>
         </VStack>
-      ) : null}
+      )}
     </>
   );
 };

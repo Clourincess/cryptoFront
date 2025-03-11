@@ -93,12 +93,13 @@ const ReferalCode1 = observer(() => {
           justify={"flex-start"}
           position={"relative"}
           align={"center"}
+          gap={"4px"}
         >
           {arrow}
           <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             ENTER A REFERRAL CODE
           </Text>
-          <Stack position={"absolute"} top={"5px"} left={"160px"}>
+          <Stack>
             <svg
               width="7"
               height="7"

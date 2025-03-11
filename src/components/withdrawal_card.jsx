@@ -35,6 +35,8 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
     GlobalVars.updateValletAmount(valletAmount);
   }, [depositAmount, valletAmount]);
 
+  console.log(route);
+
   return (
     <VStack
       borderRadius={"14px"}
@@ -60,7 +62,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
             <>
               <HStack width={"100%"} justify={"flex-start"}>
                 {arrow}
-                <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+                <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
                   ENTER AMOUNT
                 </Text>
               </HStack>
@@ -140,9 +142,12 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
           height={"36px"}
           width={"82px"}
           onClick={() =>
-            route == "/st_withdraw_3"
-              ? navigate(route)
-              : navigate("/master_withdraw3")
+            // route == "/st_withdraw_3"
+            //   ? navigate(route)
+            //   : route == "/referal_withdraw2"
+            //   ? navigate("/referal_withdraw2")
+            //   : navigate("/master_withdraw3")
+            navigate(route)
           }
           background={
             valletAmount != ""
