@@ -1,4 +1,4 @@
-import { HStack, Stack, VStack } from "@chakra-ui/react";
+import { Box, HStack, Stack, VStack } from "@chakra-ui/react";
 import MasterBalance from "../components/master_balance";
 import BlackButtonIcon from "../components/black_button_icon";
 import Note from "../components/note";
@@ -9,6 +9,7 @@ import tg from "../tg_vars";
 import stats from "./../assets/images/stats.svg";
 import { useStores } from "../store/store_context";
 import redact from "../redact";
+import { keyframes } from "@emotion/react";
 
 const MasterMain = () => {
   const navigate = useNavigate();
@@ -21,6 +22,12 @@ const MasterMain = () => {
   }
   const { GlobalVars } = useStores();
 
+  const glowAnimation = keyframes`
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  `;
+
   return (
     <VStack width={"100%"} justify={"flex-start"}>
       <HStack
@@ -30,12 +37,26 @@ const MasterMain = () => {
         marginBottom={"14px"}
       >
         <VStack width={"230px"} justify={"space-between"}>
-          <MasterBalance
-            balance={GlobalVars?.master_balance?.balance || 0}
-            width="100%"
-            height="118px"
-            // className={"animated"}
-          />
+          <Box position={"relative"} width={"100%"}>
+            <Box
+              position="absolute"
+              top="0px"
+              left="0px"
+              right="0px"
+              bottom="0px"
+              transform={"skewX(-2deg)"}
+              background={`radial-gradient(122.06% 115.28% at -22.06% 94.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)`}
+              filter="blur(10px)"
+              // animation={`${glowAnimation} 3s ease-in-out infinite`}
+            />
+            <MasterBalance
+              balance={GlobalVars?.master_balance?.balance || 0}
+              width="100%"
+              height="118px"
+              // className={"animated"}
+            />
+          </Box>
+
           <HStack width={"100%"}>
             <BlackButtonIcon
               text={"DEPOSIT"}

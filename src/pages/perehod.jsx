@@ -66,12 +66,7 @@ const PerehodPage = () => {
           DEPOSIT HISTORY
         </Text>
       </HStack>
-
-      <Note
-        text={redact(
-          `SELECT ONE OF THE FOLLOWING ACCOUNTS.`
-        )}
-      />
+      <Note text={redact(`SELECT ONE OF THE FOLLOWING ACCOUNTS.`)} />
     </VStack>
   );
 };

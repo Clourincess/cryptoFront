@@ -1,7 +1,8 @@
-import { VStack, HStack, Text, Button, Input } from "@chakra-ui/react";
+import { VStack, HStack, Text, Button, Input, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { useStores } from "../store/store_context";
 import { useEffect, useState } from "react";
+import redCIrcle from "./../assets/images/red_circle.svg";
 
 const arrow = (
   <svg
@@ -34,21 +35,6 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
     GlobalVars.updateValletAmount(valletAmount);
   }, [depositAmount, valletAmount]);
 
-  const createWithdravalStandart = async () => {
-    return await GlobalVars.createWithdravalStandart();
-  };
-
-  const createWithdraval = async () => {
-    if (route == "/st_withdraw_2") {
-      let status = await createWithdravalStandart();
-      if (status) {
-        navigate(route);
-      }
-    } else {
-      navigate("/master_withdraw3");
-    }
-  };
-
   return (
     <VStack
       borderRadius={"14px"}
@@ -61,20 +47,11 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
       zIndex={100}
     >
       <HStack width={"100%"} justify={"center"}>
-        <HStack alignSelf={"center"} justify={"center"}>
-          <Text fontSize={"10px"} color={"white"}>
+        <HStack align={"center"} justify={"center"} gap={"4px"}>
+          <Text fontSize={"9px"} color={"white"}>
             WITHDRAWAL CARD
           </Text>
-          <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="4" cy="4" r="4" fill="#B81E1E" fill-opacity="0.5" />
-            <circle cx="4" cy="4" r="3" fill="#B81E1E" />
-          </svg>
+          <Image src={redCIrcle} />
         </HStack>
       </HStack>
       <HStack width={"100%"} align={"flex-end"} justify={"space-between"}>
@@ -95,7 +72,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
                   backgroundColor: "black",
                   fontSize: "10px",
                   borderRadius: "28px",
-                  width: "100%",
+                  width: "80%",
                   padding: "5px 20px",
                   color: "white",
                   marginLeft: "13px",
@@ -123,9 +100,14 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
             </>
           ) : null}
 
-          <HStack width={"100%"} justify={"flex-start"} marginTop={"10px"}>
+          <HStack
+            width={"100%"}
+            justify={"flex-start"}
+            marginTop={"10px"}
+            align={"center"}
+          >
             {arrow}
-            <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+            <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
               ENTER YOUR USDT TRC20 ADDRESS
             </Text>
           </HStack>
@@ -137,7 +119,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               backgroundColor: "black",
               fontSize: "10px",
               borderRadius: "28px",
-              width: "100%",
+              width: "80%",
               padding: "5px 20px",
               color: "white",
               marginLeft: "13px",
@@ -157,7 +139,11 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
           borderRadius={"28px"}
           height={"36px"}
           width={"82px"}
-          onClick={async () => await createWithdraval()}
+          onClick={() =>
+            route == "/st_withdraw_3"
+              ? navigate(route)
+              : navigate("/master_withdraw3")
+          }
           background={
             valletAmount != ""
               ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"

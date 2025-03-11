@@ -8,9 +8,9 @@ import "./styles.css";
 
 const ReferalBalance = ({ width = "178px", height, balance }) => {
   const glowAnimation = keyframes`
-  0% { opacity: 0.5; }
+  0% { opacity: 0.7; }
   50% { opacity: 1; }
-  100% { opacity: 0.5; }
+  100% { opacity: 0.7; }
 `;
 
   const { GlobalVars } = useStores();
@@ -53,20 +53,20 @@ const ReferalBalance = ({ width = "178px", height, balance }) => {
   };
   return (
     <Box position="relative" width={width} h={height}>
-      {/* <Box
+      <Box
         position="absolute"
         top="0px"
         left="-5px"
         right="-5px"
         bottom="0px"
-        transform={"skewX(-5deg)"}
+        // transform={"skewX(0deg)"}
         background="linear-gradient(105deg, rgba(255, 126, 95, 0) 5%,#8DC7D6 40%, #74C6B2 60%, rgba(255, 126, 95, 0) 95%)"
-        filter="blur(15px)"
+        filter="blur(12px)"
         animation={`${glowAnimation} 3s ease-in-out infinite`}
-      /> */}
+      />
       <VStack
         width={width}
-        background={"rgba(8, 11, 16, 0.6)"}
+        background={"rgba(8, 11, 16, 1)"}
         borderRadius={"14px"}
         padding={"7px 10px"}
         height={height}

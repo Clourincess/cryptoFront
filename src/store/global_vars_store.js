@@ -92,8 +92,8 @@ class GlobalVarsStore {
 
   getReportAccount = async (type_account) => {
     const response = await fetch(
-      //this.tg_info?.username
-      `${baseurl}/getReportAccount?type_account=${type_account}&user_name=${"leniviy_sid"}`,
+      //
+      `${baseurl}/getReportAccount?type_account=${type_account}&user_name=${this.tg_info?.username}`,
       {
         method: "GET",
         headers: {
@@ -175,8 +175,8 @@ class GlobalVarsStore {
         id: 0,
         sum: Number(this.deposit_amount),
         deposit_date: new Date().toISOString().split("T")[0],
-        // this.standart_balance?.id
-        account_id: 8,
+        //
+        account_id: this.standart_balance?.id,
         verification: false,
         account_number: this.vallet_amount.toString(),
         type_of_network: "trc20",

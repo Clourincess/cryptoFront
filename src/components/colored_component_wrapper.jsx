@@ -27,7 +27,7 @@ const ColoredComponent = ({
         transform={"skewX(-2deg)"}
         background={`${background}`}
         filter="blur(10px)"
-        animation={`${glowAnimation} 3s ease-in-out infinite`}
+        // animation={`${glowAnimation} 3s ease-in-out infinite`}
       />
       <VStack
         borderRadius={"14px"}

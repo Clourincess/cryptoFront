@@ -36,6 +36,7 @@ import ReferalCode4 from "./pages/referal_code4";
 import CreateMasterAccount from "./pages/create_master_account";
 import DepositHistory from "./pages/deposit_history";
 import MasterDeposit4 from "./pages/master_deposit4";
+import StandartWithdraw3 from "./pages/st_withdraw_3";
 
 const router = createMemoryRouter([
   { path: "/", element: <Main /> },
@@ -53,6 +54,7 @@ const router = createMemoryRouter([
   { path: "/st_deposit_4", element: <StandartDeposit4 /> },
   { path: "/st_withdraw_1", element: <StandartWithDraw1 /> },
   { path: "/st_withdraw_2", element: <StandartWithDraw2 /> },
+  { path: "/st_withdraw_3", element: <StandartWithdraw3 /> },
   { path: "/master_deposit1", element: <MasterDeposit1 /> },
   { path: "/master_choose", element: <MasterChoose /> },
   { path: "/master_deposit2", element: <MasterDeposit2 /> },

@@ -88,10 +88,15 @@ const ReferalCode1 = observer(() => {
         justify={"space-between"}
         zIndex={100}
       >
-        <HStack width={"100%"} justify={"flex-start"} position={"relative"}>
+        <HStack
+          width={"100%"}
+          justify={"flex-start"}
+          position={"relative"}
+          align={"center"}
+        >
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-            ENTER YOUR FRIEND’S CODE
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+            ENTER A REFERRAL CODE
           </Text>
           <Stack position={"absolute"} top={"5px"} left={"160px"}>
             <svg
@@ -113,7 +118,7 @@ const ReferalCode1 = observer(() => {
               backgroundColor: "black",
               fontSize: "10px",
               borderRadius: "28px",
-              width: "100%",
+              width: "80%",
               padding: "5px 20px",
               color: "white",
             }}

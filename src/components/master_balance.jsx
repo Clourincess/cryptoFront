@@ -1,5 +1,7 @@
-import { VStack, HStack, Text } from "@chakra-ui/react";
+import { VStack, HStack, Text, Box } from "@chakra-ui/react";
 import "./styles.css";
+
+import { keyframes } from "@emotion/react";
 
 const MasterBalance = ({
   balance,
@@ -14,7 +16,7 @@ const MasterBalance = ({
   return (
     <VStack
       width={width}
-      backgroundColor={"rgba(8, 11, 16, 0.6)"}
+      backgroundColor={"rgba(8, 11, 16, 1)"}
       borderRadius={"14px"}
       padding={"10px"}
       onClick={onClick}
