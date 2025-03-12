@@ -41,7 +41,7 @@ const StandartWithDraw2 = () => {
       >
         <Image src={stars} position="absolute" top={"0px"} right="10px" />
         <Text
-          fontSize={"20px"}
+          fontSize={"18px"}
           background="linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
           backgroundClip={"text"}
         >
@@ -49,20 +49,20 @@ const StandartWithDraw2 = () => {
         </Text>
         <HStack width={"60%"} justify={"flex-start"}>
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             YOUR REQUEST IS BEING PROCESSED <br /> (IT MIGHT TAKE UP TO 24
             HOURS)
           </Text>
         </HStack>
         <HStack width={"80%"} justify={"flex-start"}>
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             CHECK THE APP AND YOUR BALANCE
           </Text>
         </HStack>
         <HStack width={"100%"} justify={"flex-start"}>
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
             IF YOU HAVE ANY ISSUES WITH THIS TRANSACTION — <br />
             PLEASE CONTACT SUPPORT TEAM BY CLICKING “LIVE
             <br /> SUPPORT” BUTTON IN THE MAIN MENU
@@ -76,7 +76,7 @@ const StandartWithDraw2 = () => {
           alignSelf={"flex-end"}
           onClick={() => navigate("/")}
         >
-          <Text color={"black"} fontSize="10px" padding={"10px 15px"}>
+          <Text color={"black"} fontSize="9px" padding={"10px 15px"}>
             GO TO MAIN MENU
           </Text>
         </Button>

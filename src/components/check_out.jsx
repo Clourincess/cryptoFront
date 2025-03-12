@@ -209,22 +209,22 @@ const CheckOut = ({
           >
             <HStack width={"100%"} justify={"flex-start"}>
               {arrow}
-              <Text fontSize={"10px"} color={"rgba(34, 129, 168, 1)"}>
+              <Text fontSize={"9px"} color={"rgba(34, 129, 168, 1)"}>
                 YOU NEED TO SEND
               </Text>
             </HStack>
-            <Text fontSize={"10px"} color={"white"} marginLeft={"16px"}>
+            <Text fontSize={"9px"} color={"white"} marginLeft={"16px"}>
               {GlobalVars.deposit_amount} USDT TRC20
             </Text>
           </VStack>
           <VStack align={"flex-start"} gap={0} spacing={0} marginTop={"30px"}>
             <HStack width={"100%"} justify={"flex-start"}>
               {arrow}
-              <Text fontSize={"10px"} color={"rgba(34, 129, 168, 1)"}>
+              <Text fontSize={"9px"} color={"rgba(34, 129, 168, 1)"}>
                 TO USDT TRC20 ADDRESS
               </Text>
             </HStack>
-            <Text fontSize={"10px"} color={"white"} marginLeft={"16px"}>
+            <Text fontSize={"9px"} color={"white"} marginLeft={"16px"}>
               {GlobalVars.vallet_amount}
             </Text>
           </VStack>

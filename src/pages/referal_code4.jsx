@@ -66,7 +66,7 @@ const ReferalCode4 = () => {
       >
         <Stack marginTop={"3px"}>{arrow}</Stack>
 
-        <Text color={"white"} fontSize={"8px"}>
+        <Text color={"white"} fontSize={"9px"}>
           THE CODE IS INVALID, TRY AGAIN
         </Text>
         <Stack position={"absolute"} right={"13px"} top={"13px"}>

@@ -142,7 +142,7 @@ const ReferalCode1 = observer(() => {
               "linear-gradient(82.94deg, #2AB0D0 5.51%, #9B71D9 64.24%, #7F7FD7 94.49%)"
             }
           >
-            <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
+            <Text fontSize={"9px"} color={"black"} alignSelf={"center"}>
               APPLY
             </Text>
           </Button>

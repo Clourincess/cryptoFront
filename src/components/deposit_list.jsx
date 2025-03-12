@@ -76,7 +76,7 @@ const DepositList = observer(() => {
               marginTop={"10px"}
               onClick={() => navigate("/master_deposit1")}
             >
-              <Text color={"white"} fontSize={"10px"}>
+              <Text color={"white"} fontSize={"9px"}>
                 ACTIVATE DEPOSIT
               </Text>
             </Button>

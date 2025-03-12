@@ -159,7 +159,7 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
           }
           disabled={depositAmount == "" || valletAmount == ""}
         >
-          <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"black"} alignSelf={"center"}>
             NEXT
           </Text>
         </Button>

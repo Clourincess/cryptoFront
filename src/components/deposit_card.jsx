@@ -155,7 +155,7 @@ const DepositCard = ({ route = "/" }) => {
               : navigate("/master_choose");
           }}
         >
-          <Text fontSize={"10px"} color={"black"} alignSelf={"center"}>
+          <Text fontSize={"9px"} color={"black"} alignSelf={"center"}>
             NEXT
           </Text>
         </Button>

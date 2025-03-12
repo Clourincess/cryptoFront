@@ -60,7 +60,7 @@ const InfoHeaderMainPage = observer(() => {
             {">"}
           </Text>
           <Text
-            fontSize={"9px"}
+            fontSize={"8px"}
             color={"black"}
             backgroundColor={"white"}
             borderRadius={"4px"}

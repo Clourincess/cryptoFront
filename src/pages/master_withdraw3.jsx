@@ -52,7 +52,7 @@ const MasterWithDraw3 = () => {
         position={"relative"}
       >
         <HStack width={"100%"} justify="center" gap={"5px"}>
-          <Text fontSize={"10px"} color="white">
+          <Text fontSize={"9px"} color="white">
             CHECK OUT
           </Text>
           <Image src={redInd} marginTop={"2px"} />
@@ -60,11 +60,11 @@ const MasterWithDraw3 = () => {
         <VStack align={"flex-start"} gap={0}>
           <HStack width={"100%"} justify={"flex-start"} align={"center"}>
             <Image src={redArrow} />
-            <Text fontSize={"10px"} color={"rgba(159, 27, 27, 1)"}>
+            <Text fontSize={"9px"} color={"rgba(159, 27, 27, 1)"}>
               YOU WITHDRAW
             </Text>
           </HStack>
-          <Text fontSize={"10px"} color={"white"} marginLeft={"15px"}>
+          <Text fontSize={"9px"} color={"white"} marginLeft={"15px"}>
             {GlobalVars.deposit_amount} USDT TRC20
           </Text>
         </VStack>
@@ -72,11 +72,11 @@ const MasterWithDraw3 = () => {
         <VStack align={"flex-start"} gap={"0"}>
           <HStack width={"100%"} justify={"flex-start"}>
             <Image src={redArrow} />
-            <Text fontSize={"10px"} color={"rgba(159, 27, 27, 1)"}>
+            <Text fontSize={"9px"} color={"rgba(159, 27, 27, 1)"}>
               TO CRYPTO WALLET
             </Text>
           </HStack>
-          <Text fontSize={"10px"} color={"white"} marginLeft={"15px"}>
+          <Text fontSize={"9px"} color={"white"} marginLeft={"15px"}>
             {GlobalVars.vallet_amount}
           </Text>
         </VStack>
@@ -94,7 +94,7 @@ const MasterWithDraw3 = () => {
             borderRadius={"28px"}
             padding="10px 15px"
           >
-            <Text fontSize={"10px"} color="black">
+            <Text fontSize={"9px"} color="black">
               CANCEL
             </Text>
           </Button>
@@ -106,7 +106,7 @@ const MasterWithDraw3 = () => {
             borderRadius={"28px"}
             padding="10px 15px"
           >
-            <Text fontSize={"10px"} color="black">
+            <Text fontSize={"9px"} color="black">
               PROCEED
             </Text>
           </Button>

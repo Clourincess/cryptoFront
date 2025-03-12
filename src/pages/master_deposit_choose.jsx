@@ -57,7 +57,7 @@ const MasterChoose = observer(() => {
         zIndex={1000}
       >
         <HStack alignSelf={"center"} justify={"center"} position={"relative"}>
-          <Text fontSize={"10px"} color={"white"}>
+          <Text fontSize={"9px"} color={"white"}>
             DEPOSIT CARD
           </Text>
           <Stack position={"absolute"} left={"75px"} top={"4px"}>
@@ -76,8 +76,8 @@ const MasterChoose = observer(() => {
         </HStack>
         <HStack width={"100%"} justify={"flex-start"}>
           {arrow}
-          <Text fontSize={"10px"} color={"white"} alignSelf={"center"}>
-            CHOOSE THE MODE
+          <Text fontSize={"9px"} color={"white"} alignSelf={"center"}>
+            CHOOSE THE OPTION:
           </Text>
         </HStack>
         <HStack>
@@ -96,7 +96,9 @@ const MasterChoose = observer(() => {
               await createDepositMaster();
             }}
           >
-            <Text fontSize={"10px"}>x1.25</Text>
+            <Text fontSize={"9px"} color={"black"}>
+              x1.25
+            </Text>
             <svg
               width="10"
               height="10"
@@ -106,7 +108,7 @@ const MasterChoose = observer(() => {
             >
               <circle cx="5" cy="5" r="5" fill="#BF1414" />
             </svg>
-            <Text fontSize={"10px"} textAlign={"center"}>
+            <Text fontSize={"9px"} textAlign={"center"} color={"black"}>
               1 MONTH HOLD
             </Text>
           </VStack>
@@ -125,7 +127,9 @@ const MasterChoose = observer(() => {
               await createDepositMaster();
             }}
           >
-            <Text fontSize={"10px"}>x1.55</Text>
+            <Text fontSize={"9px"} color={"black"}>
+              x1.55
+            </Text>
             <svg
               width="16"
               height="16"
@@ -137,7 +141,7 @@ const MasterChoose = observer(() => {
               <circle cx="8" cy="8" r="5" fill="#BF1414" />
             </svg>
 
-            <Text fontSize={"10px"} textAlign={"center"}>
+            <Text fontSize={"9px"} color={"black"} textAlign={"center"}>
               2 MONTH HOLD
             </Text>
           </VStack>
@@ -156,7 +160,9 @@ const MasterChoose = observer(() => {
               await createDepositMaster();
             }}
           >
-            <Text fontSize={"10px"}>x2.25</Text>
+            <Text fontSize={"9px"} color={"black"}>
+              x2.25
+            </Text>
             <svg
               width="20"
               height="20"
@@ -169,7 +175,7 @@ const MasterChoose = observer(() => {
               <circle cx="10" cy="10" r="5" fill="#ED0E0E" />
             </svg>
 
-            <Text fontSize={"10px"} textAlign={"center"}>
+            <Text fontSize={"9px"} color={"black"} textAlign={"center"}>
               4 MONTH HOLD
             </Text>
           </VStack>

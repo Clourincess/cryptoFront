@@ -117,7 +117,7 @@ const MasterCalc = () => {
           <Text fontSize={"9px"} color={"white"}>
             x1.25
           </Text>
-          <Text fontSize={"7px"} color={"white"} textAlign={"center"}>
+          <Text fontSize={"9px"} color={"white"} textAlign={"center"}>
             1 MONTH
           </Text>
         </VStack>
@@ -136,7 +136,7 @@ const MasterCalc = () => {
           <Text fontSize={"9px"} color={"white"}>
             x1.75
           </Text>
-          <Text fontSize={"7px"} color={"white"} textAlign={"center"}>
+          <Text fontSize={"9px"} color={"white"} textAlign={"center"}>
             2 MONTH
           </Text>
         </VStack>
@@ -155,7 +155,7 @@ const MasterCalc = () => {
           <Text fontSize={"9px"} color={"white"}>
             x2.25
           </Text>
-          <Text fontSize={"7px"} color={"white"} textAlign={"center"}>
+          <Text fontSize={"9px"} color={"white"} textAlign={"center"}>
             4 MONTH
           </Text>
         </VStack>

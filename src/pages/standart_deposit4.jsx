@@ -69,7 +69,7 @@ const StandartDeposit4 = () => {
         position={"relative"}
       >
         <Stack marginTop={"3px"}>{arrow}</Stack>
-        <Text color={"white"} fontSize={"10px"}>
+        <Text color={"white"} fontSize={"9px"}>
           Error when making a deposit. <br />
           Please contact us through support. <br />
           <br />

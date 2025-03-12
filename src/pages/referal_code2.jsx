@@ -30,7 +30,7 @@ const ReferalCode2 = () => {
             "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
           }
           backgroundClip={"text"}
-          fontSize={"10px"}
+          fontSize={"9px"}
         >
           CONGRATS! THE CODE IS ACTIVATED
         </Text>
