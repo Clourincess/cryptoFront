@@ -5,8 +5,9 @@ import Note from "../components/note";
 
 import stars from "./../assets/images/stars.png";
 import tg from "../tg_vars";
+import { observer } from "mobx-react-lite";
 
-const StandartWithDraw2 = () => {
+const StandartWithDraw2 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -87,6 +88,6 @@ const StandartWithDraw2 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default StandartWithDraw2;

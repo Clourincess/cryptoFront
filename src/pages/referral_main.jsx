@@ -12,8 +12,9 @@ import tg from "../tg_vars";
 import deposit from "./../assets/images/deposit.svg";
 import withdraw from "./../assets/images/withdraw.svg";
 import stats from "./../assets/images/stats.svg";
+import { observer } from "mobx-react-lite";
 
-const ReferalMain = () => {
+const ReferalMain = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -119,6 +120,6 @@ REFERRAL FUNDS WILL GO TO YOUR REFERRAL ACCOUNT AND CAN BE WITHDRAWN.`
       />
     </VStack>
   );
-};
+});
 
 export default ReferalMain;

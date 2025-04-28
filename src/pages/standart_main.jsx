@@ -9,8 +9,9 @@ import tg from "../tg_vars";
 import stats from "./../assets/images/stats.svg";
 import { useStores } from "../store/store_context";
 import redact from "../redact";
+import { observer } from "mobx-react-lite";
 
-const StandartMain = () => {
+const StandartMain = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -96,6 +97,6 @@ HERE, YOU CAN GENERATE USDT WITH A 0.23%/DAY RATE, MAKE DEPOSITS, AND WITHDRAW I
       />
     </VStack>
   );
-};
+});
 
 export default StandartMain;

@@ -1,6 +1,6 @@
 import { VStack, HStack, Text, Button } from "@chakra-ui/react";
 import DepositListCard from "./deposit_list_card";
-import { useEffect } from "react";
+
 import { useStores } from "../store/store_context";
 import { useNavigate } from "react-router";
 import { observer } from "mobx-react-lite";
@@ -11,8 +11,8 @@ const DepositList = observer(() => {
   const navigate = useNavigate();
 
   return (
-    <VStack width="100%">
-      <HStack alignSelf={"center"} justify={"center"}>
+    <VStack width="100%" gap={0}>
+      <HStack alignSelf={"center"} justify={"center"} gap={0}>
         <Text fontSize={"9px"} color={"white"} marginTop={"10px"}>
           DEPOSITS
         </Text>
@@ -25,7 +25,9 @@ const DepositList = observer(() => {
         alignItems={"center"}
       >
         {GlobalVars.master_deposits.length != 0 &&
-        GlobalVars.master_deposits.map((elem) => elem.status == "D") ? (
+        GlobalVars.master_deposits.find(
+          (elem) => elem.verification == 1 && elem.status == "D"
+        ) ? (
           GlobalVars.master_deposits
             .filter((item) => item?.verification == 1 && item?.status == "D")
             .map((item2) => (
@@ -37,50 +39,36 @@ const DepositList = observer(() => {
               />
             ))
         ) : (
-          <VStack>
-            <HStack
-              background="linear-gradient(69.76deg, #000000 46.83%, #370101 83.29%)"
-              height={"38px"}
-              width={"257px"}
-              justify={"center"}
-              align={"center"}
-              borderRadius={"14px"}
-            >
-              <Text color={"white"} fontSize={"9px"}>
-                YOU DON’T HAVE ANY ACTIVE DEPOSITS YET
-              </Text>
-              {
-                <svg
-                  width="9"
-                  height="10"
-                  viewBox="0 0 9 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <ellipse
-                    cx="4.5"
-                    cy="4.54653"
-                    rx="4.5"
-                    ry="4.54653"
-                    fill="#D10000"
-                    fill-opacity="0.5"
-                  />
-                </svg>
-              }
-            </HStack>
-
-            <Button
-              backgroundColor={"rgba(20,20,20,1)"}
-              padding={"5px 10px"}
-              borderRadius={"10px"}
-              marginTop={"10px"}
-              onClick={() => navigate("/master_deposit1")}
-            >
-              <Text color={"white"} fontSize={"9px"}>
-                ACTIVATE DEPOSIT
-              </Text>
-            </Button>
-          </VStack>
+          <HStack
+            background="linear-gradient(69.76deg, #000000 46.83%, #370101 83.29%)"
+            height={"38px"}
+            width={"257px"}
+            justify={"center"}
+            align={"center"}
+            borderRadius={"14px"}
+            marginTop={"76px"}
+          >
+            <Text color={"white"} fontSize={"9px"}>
+              YOU DON’T HAVE ANY ACTIVE DEPOSITS YET
+            </Text>
+            {
+              <svg
+                width="9"
+                height="10"
+                viewBox="0 0 9 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse
+                  cx="4.5"
+                  cy="4.54653"
+                  rx="4.5"
+                  ry="4.54653"
+                  fill="#ED0E0E"
+                />
+              </svg>
+            }
+          </HStack>
         )}
       </VStack>
     </VStack>

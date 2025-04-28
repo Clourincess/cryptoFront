@@ -4,8 +4,9 @@ import { useStores } from "../store/store_context";
 import { useNavigate } from "react-router";
 
 import tg from "../tg_vars";
+import { observer } from "mobx-react-lite";
 
-const DepositHistory = () => {
+const DepositHistory = observer(() => {
   const [isOpen, setIsOpen] = useState([0, 0]);
   let copyIsOPen = Array.from(isOpen);
 
@@ -260,6 +261,6 @@ const DepositHistory = () => {
       </VStack>
     </VStack>
   );
-};
+});
 
 export default DepositHistory;

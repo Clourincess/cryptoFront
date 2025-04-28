@@ -37,6 +37,7 @@ import CreateMasterAccount from "./pages/create_master_account";
 import DepositHistory from "./pages/deposit_history";
 import MasterDeposit4 from "./pages/master_deposit4";
 import StandartWithdraw3 from "./pages/st_withdraw_3";
+import FaqPage from "./pages/faq_page";
 
 const router = createMemoryRouter([
   { path: "/", element: <Main /> },
@@ -74,6 +75,7 @@ const router = createMemoryRouter([
   { path: "/perehod", element: <PerehodPage /> },
   { path: "/create_premium_acc", element: <CreateMasterAccount /> },
   { path: "/deposit_history", element: <DepositHistory /> },
+  { path: "/faq_page", element: <FaqPage /> },
 ]);
 
 const App = () => {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useStores } from "../store/store_context";
 
 import ColoredComponent from "./colored_component_wrapper";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -30,7 +31,7 @@ const greenArrow = (
   </svg>
 );
 
-const StandartCalc = () => {
+const StandartCalc = observer(() => {
   const [values, setValues] = useState([0, 0]);
   const [result, setResult] = useState(0);
   const { GlobalVars } = useStores();
@@ -133,7 +134,7 @@ const StandartCalc = () => {
             style={{
               fontSize: "9px",
               letterSpacing: "-0.02em",
-              color: "#a8487d",
+              color: "white",
             }}
           >
             CALCULATE
@@ -167,6 +168,6 @@ const StandartCalc = () => {
       </VStack>
     </ColoredComponent>
   );
-};
+});
 
 export default StandartCalc;

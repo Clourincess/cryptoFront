@@ -7,8 +7,9 @@ import tg from "../tg_vars";
 import redact from "../redact";
 import { useEffect } from "react";
 import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
 
-const PerehodPage = () => {
+const PerehodPage = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -20,7 +21,7 @@ const PerehodPage = () => {
   const { GlobalVars } = useStores();
 
   return (
-    <VStack width={"100%"}>
+    <VStack width={"100%"} height={"auto"}>
       <BalanceColored
         width="100%"
         isPerehod={true}
@@ -30,18 +31,33 @@ const PerehodPage = () => {
       />
       {GlobalVars.master_balance?.message ==
       "У данного пользователя отсутствует мастер аккаунт" ? (
-        <Button
-          height={"45px"}
+        <HStack
+          w={"100%"}
           backgroundColor={"rgba(8, 11, 16, 0.6)"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          color={"white"}
-          width={"100%"}
-          borderRadius={"12px"}
-          onClick={() => navigate("/create_premium_acc")}
+          padding={"5px 11px"}
+          justify={"space-between"}
         >
-          Create Premium Account
-        </Button>
+          <Text
+            fontSize={"9px"}
+            background={
+              "linear-gradient(86.54deg, #E19E13 -13.17%, #EA743D -1.61%, #DB5356 9.95%, #B94A70 21.51%, #B44D88 29.9%, #395CF9 39.62%, #00C2FF 52.1%)"
+            }
+            backgroundClip={"text"}
+          >
+            PREMIUM ACCOUNT
+          </Text>
+          <Text
+            fontSize={"9px"}
+            color={"white"}
+            padding={"5px 11px"}
+            background={"rgba(30,30,30,1)"}
+            borderRadius={"20px"}
+            cursor={"pointer"}
+            onClick={() => navigate("/create_premium_acc")}
+          >
+            ACTIVATE
+          </Text>
+        </HStack>
       ) : (
         <MasterBalance
           balance={GlobalVars?.master_balance?.balance || 0}
@@ -52,23 +68,9 @@ const PerehodPage = () => {
         />
       )}
 
-      <HStack
-        backgroundColor={"rgba(8, 11, 16, 0.6)"}
-        w={"100%"}
-        borderRadius={"12px"}
-        height={"128px"}
-        padding={"8px"}
-        align={"flex-start"}
-        cursor={"pointer"}
-        onClick={() => navigate("/deposit_history")}
-      >
-        <Text color={"white"} fontSize={"9px"}>
-          DEPOSIT HISTORY
-        </Text>
-      </HStack>
       <Note text={redact(`SELECT ONE OF THE FOLLOWING ACCOUNTS.`)} />
     </VStack>
   );
-};
+});
 
 export default PerehodPage;

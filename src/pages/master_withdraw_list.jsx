@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import DepositList from "../components/deposit_list";
+import { observer } from "mobx-react-lite";
 
-const MasterWithdrawList = () => {
+const MasterWithdrawList = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -18,6 +19,6 @@ const MasterWithdrawList = () => {
       <DepositList />
     </VStack>
   );
-};
+});
 
 export default MasterWithdrawList;

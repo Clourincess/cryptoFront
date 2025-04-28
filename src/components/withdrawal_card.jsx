@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useStores } from "../store/store_context";
 import { useEffect, useState } from "react";
 import redCIrcle from "./../assets/images/red_circle.svg";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -19,7 +20,7 @@ const arrow = (
   </svg>
 );
 
-const WithdrawalCard = ({ route = "/", standart = true }) => {
+const WithdrawalCard = observer(({ route = "/", standart = true }) => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
 
@@ -68,8 +69,14 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               </HStack>
               <Input
                 placeholder="TYPE HERE"
+                type="text"
                 value={depositAmount}
-                onChange={(e) => setDepositAmount(e.target.value)}
+                onChange={(e) => {
+                  // Оставляем только цифры и точку (для десятичных чисел)
+                  const value = e.target.value.replace(/[^0-9.]/g, "");
+                  // Устанавливаем значение в состояние
+                  setDepositAmount(value);
+                }}
                 style={{
                   backgroundColor: "black",
                   fontSize: "10px",
@@ -80,25 +87,6 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
                   marginLeft: "13px",
                 }}
               />
-              {depositAmount == "" && (
-                <Text
-                  color={"rgba(199, 32, 32, 1)"}
-                  fontSize={"7px"}
-                  marginLeft={"16px"}
-                >
-                  ENTER AMOUNT
-                </Text>
-              )}
-              {Number(depositAmount) >
-                Number(GlobalVars.report_standart?.deposit_sum) && (
-                <Text
-                  color={"rgba(199, 32, 32, 1)"}
-                  fontSize={"7px"}
-                  marginLeft={"16px"}
-                >
-                  THE WITHDRAWAL CANNOT BE MORE THAN THE AMOUNT ON THE BALANCE
-                </Text>
-              )}
             </>
           ) : null}
 
@@ -127,32 +115,14 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
               marginLeft: "13px",
             }}
           />
-          {valletAmount == "" && (
-            <Text
-              color={"rgba(199, 32, 32, 1)"}
-              fontSize={"7px"}
-              marginLeft={"16px"}
-            >
-              ENTER ADDRESS AMOUNT
-            </Text>
-          )}
         </VStack>
         <Button
           borderRadius={"28px"}
           height={"36px"}
           width={"82px"}
-          onClick={() =>
-            // route == "/st_withdraw_3"
-            //   ? navigate(route)
-            //   : route == "/referal_withdraw2"
-            //   ? navigate("/referal_withdraw2")
-            //   : navigate("/master_withdraw3")
-            navigate(route)
-          }
+          onClick={() => navigate(route)}
           background={
-            valletAmount != ""
-              ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
-              : "rgba(199, 32, 32, 1)"
+            "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
           }
           cursor={
             depositAmount == "" || valletAmount == "" ? "no-drop" : "pointer"
@@ -166,6 +136,6 @@ const WithdrawalCard = ({ route = "/", standart = true }) => {
       </HStack>
     </VStack>
   );
-};
+});
 
 export default WithdrawalCard;

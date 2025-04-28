@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import CheckOut from "../components/check_out";
+import { observer } from "mobx-react-lite";
 
-const ReferalWithDraw2 = () => {
+const ReferalWithDraw2 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -25,6 +26,6 @@ const ReferalWithDraw2 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default ReferalWithDraw2;

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router";
 
 import tg from "../tg_vars";
 import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
 
-const MasterDeposit4 = () => {
+const MasterDeposit4 = observer(() => {
   const { GlobalVars } = useStores();
   const navigate = useNavigate();
   const backButton = tg.BackButton;
@@ -82,6 +83,6 @@ const MasterDeposit4 = () => {
       </HStack>
     </VStack>
   );
-};
+});
 
 export default MasterDeposit4;

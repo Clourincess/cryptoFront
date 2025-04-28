@@ -4,8 +4,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
 
-const StandartStats = () => {
+const StandartStats = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -26,6 +27,6 @@ const StandartStats = () => {
       <Note text={"THIS PAGE SHOWS YOUR ACTIVITY IN THE STANDARD BALANCE."} />
     </VStack>
   );
-};
+});
 
 export default StandartStats;

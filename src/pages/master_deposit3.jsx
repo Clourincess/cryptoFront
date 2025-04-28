@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 
 import Congrats from "../components/congrats";
+import { observer } from "mobx-react-lite";
 
-const MasterDeposit3 = () => {
+const MasterDeposit3 = observer(() => {
   const backButton = tg.BackButton;
   backButton.hide();
 
@@ -16,6 +17,6 @@ const MasterDeposit3 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default MasterDeposit3;

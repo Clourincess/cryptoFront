@@ -4,8 +4,9 @@ import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import DepositCard from "../components/deposit_card";
 import WithdrawalCard from "../components/withdrawal_card";
+import { observer } from "mobx-react-lite";
 
-const MasterWithDraw2 = () => {
+const MasterWithDraw2 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -24,6 +25,6 @@ const MasterWithDraw2 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default MasterWithDraw2;

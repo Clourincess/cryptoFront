@@ -6,8 +6,9 @@ import MasterCalc from "../components/master_calc";
 import Note from "../components/note";
 import tg from "../tg_vars";
 import redact from "../redact";
+import { observer } from "mobx-react-lite";
 
-const CalcIncome = () => {
+const CalcIncome = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -17,7 +18,7 @@ const CalcIncome = () => {
     backButton.hide();
   }
   return (
-    <VStack width={"100%"}>
+    <VStack width={"100%"} gap={"8px"}>
       <HStack width="100%" justify={"space-between"}>
         <StandartCalc />
         <MasterCalc />
@@ -30,6 +31,6 @@ const CalcIncome = () => {
       />
     </VStack>
   );
-};
+});
 
 export default CalcIncome;

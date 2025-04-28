@@ -10,8 +10,9 @@ import stats from "./../assets/images/stats.svg";
 import { useStores } from "../store/store_context";
 import redact from "../redact";
 import { keyframes } from "@emotion/react";
+import { observer } from "mobx-react-lite";
 
-const MasterMain = () => {
+const MasterMain = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -37,8 +38,8 @@ const MasterMain = () => {
         marginBottom={"14px"}
       >
         <VStack width={"230px"} justify={"space-between"}>
-          <Box position={"relative"} width={"100%"}>
-            <Box
+          {/* <Box position={"relative"} width={"100%"}> */}
+          {/* <Box
               position="absolute"
               top="0px"
               left="0px"
@@ -48,14 +49,14 @@ const MasterMain = () => {
               background={`radial-gradient(122.06% 115.28% at -22.06% 94.72%, #E38F24 0%, #E38F24 13.41%, #E35A65 37.11%, #C3527F 55.9%, #3A79F2 69.99%, #04B5FC 99.96%)`}
               filter="blur(10px)"
               // animation={`${glowAnimation} 3s ease-in-out infinite`}
-            />
-            <MasterBalance
-              balance={GlobalVars?.master_balance?.balance || 0}
-              width="100%"
-              height="118px"
-              // className={"animated"}
-            />
-          </Box>
+            /> */}
+          <MasterBalance
+            balance={GlobalVars?.master_balance?.balance || 0}
+            width="100%"
+            height="118px"
+            // className={"animated"}
+          />
+          {/* </Box> */}
 
           <HStack width={"100%"}>
             <BlackButtonIcon
@@ -131,6 +132,6 @@ ALL DEPOSITS YOU CREATE WILL BE DISPLAYED HERE.
       </HStack>
     </VStack>
   );
-};
+});
 
 export default MasterMain;

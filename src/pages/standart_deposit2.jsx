@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import CheckOut from "../components/check_out";
+import { observer } from "mobx-react-lite";
 
-const StandartDeposit2 = () => {
+const StandartDeposit2 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.hide();
@@ -16,6 +17,6 @@ const StandartDeposit2 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default StandartDeposit2;

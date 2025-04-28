@@ -1,6 +1,7 @@
 import { HStack, VStack, Text, Button, Image, Stack } from "@chakra-ui/react";
 import stars from "./../assets/images/stars.png";
 import { useNavigate } from "react-router";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -17,7 +18,7 @@ const arrow = (
   </svg>
 );
 
-const Congrats = () => {
+const Congrats = observer(() => {
   const navigate = useNavigate();
   return (
     <VStack
@@ -85,6 +86,6 @@ const Congrats = () => {
       </Button>
     </VStack>
   );
-};
+});
 
 export default Congrats;

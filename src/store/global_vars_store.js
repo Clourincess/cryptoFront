@@ -359,7 +359,7 @@ class GlobalVarsStore {
   };
 
   createWithdrawReferal = async () => {
-    const response = await fetch(`${baseurl}/createWithdravalpReferal`, {
+    const response = await fetch(`${baseurl}/createWithdravalReferal`, {
       method: "POST",
       headers: {
         accept: "application/json",

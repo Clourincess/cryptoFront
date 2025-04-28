@@ -4,8 +4,9 @@ import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import DepositCard from "../components/deposit_card";
 import redact from "../redact";
+import { observer } from "mobx-react-lite";
 
-const StandartDeposit1 = () => {
+const StandartDeposit1 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -26,6 +27,6 @@ ENTER YOUR USDT TRC20 ADDRESS SO THAT WE CAN TRACK THE TRANSACTION.`
       />
     </VStack>
   );
-};
+});
 
 export default StandartDeposit1;

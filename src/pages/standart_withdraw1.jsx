@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import WithdrawalCard from "../components/withdrawal_card";
+import { observer } from "mobx-react-lite";
 
-const StandartWithDraw1 = () => {
+const StandartWithDraw1 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -22,6 +23,6 @@ const StandartWithDraw1 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default StandartWithDraw1;

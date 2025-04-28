@@ -56,21 +56,20 @@ const MasterChoose = observer(() => {
         spacing={"30px"}
         zIndex={1000}
       >
-        <HStack alignSelf={"center"} justify={"center"} position={"relative"}>
+        <HStack align={"center"} justify={"center"} gap={"4px"}>
           <Text fontSize={"9px"} color={"white"}>
             DEPOSIT CARD
           </Text>
-          <Stack position={"absolute"} left={"75px"} top={"4px"}>
+          <Stack>
             <svg
-              width="8"
-              height="8"
-              viewBox="0 0 8 8"
+              width="7"
+              height="7"
+              viewBox="0 0 7 7"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <circle cx="4" cy="4" r="4" fill="#1EB85B" fill-opacity="0.5" />
-              <circle cx="4" cy="4" r="4" fill="#1EB85B" fill-opacity="0.5" />
-              <circle cx="4" cy="4" r="3" fill="#1EB85B" />
+              <circle cx="3.5" cy="3.5" r="3.5" fill="#1EB85B" />
+              <circle cx="3.5" cy="3.5" r="2.625" fill="#1EB85B" />
             </svg>
           </Stack>
         </HStack>

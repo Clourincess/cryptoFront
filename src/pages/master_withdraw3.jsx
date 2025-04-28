@@ -6,8 +6,9 @@ import { useStores } from "../store/store_context";
 
 import redInd from "./../assets/images/red_ind.svg";
 import redArrow from "./../assets/images/red_arrow.svg";
+import { observer } from "mobx-react-lite";
 
-const MasterWithDraw3 = () => {
+const MasterWithDraw3 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -117,6 +118,6 @@ const MasterWithDraw3 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default MasterWithDraw3;

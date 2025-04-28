@@ -11,8 +11,9 @@ import { useEffect, useState } from "react";
 
 import galka from "./../assets/images/galka.svg";
 import { useStores } from "../store/store_context";
+import { observer } from "mobx-react-lite";
 
-const ProfilePage = () => {
+const ProfilePage = observer(() => {
   const navigate = useNavigate();
   const tg = window.Telegram.WebApp;
   const backButton = tg.BackButton;
@@ -422,6 +423,6 @@ const ProfilePage = () => {
       <Note text={"THE MORE POINTS YOU GET, THE HIGHER RANK YOU ATTAIN."} />
     </VStack>
   );
-};
+});
 
 export default ProfilePage;

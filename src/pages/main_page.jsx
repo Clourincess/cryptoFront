@@ -97,6 +97,7 @@ const Main = observer(() => {
           icon={faq}
           iconWidth={"54px"}
           iconHeight={"54px"}
+          route="faq_page"
         />
         <BlackButtonIcon
           text={"ABOUT US"}
@@ -117,10 +118,9 @@ const Main = observer(() => {
             balance={
               GlobalVars.master_balance?.message ==
               "У данного пользователя отсутствует мастер аккаунт"
-                ? GlobalVars?.master_balance?.balance || 0
-                : GlobalVars?.standart_balance?.balance ||
-                  0 + GlobalVars?.master_balance?.balance ||
-                  0
+                ? GlobalVars?.standart_balance?.balance || 0
+                : GlobalVars?.standart_balance?.balance +
+                    GlobalVars?.master_balance?.balance || 0
             }
             onClick={() => navigate("/perehod")}
             width="170px"

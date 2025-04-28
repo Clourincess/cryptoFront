@@ -5,8 +5,9 @@ import { useStores } from "../store/store_context";
 import Stats from "../components/stats";
 import Note from "../components/note";
 import tg from "../tg_vars";
+import { observer } from "mobx-react-lite";
 
-const ReferalStats = () => {
+const ReferalStats = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -22,7 +23,7 @@ const ReferalStats = () => {
       <Stats
         deposited={GlobalVars.referral_program?.count_referal_user || 0}
         generated={GlobalVars.referral_program?.total_profit_referal || 0}
-        withdrawn={GlobalVars.report_standart?.withdrawal_sum || 0}
+        withdrawn={GlobalVars.referral_program?.total_withdraw || 0}
         type={"ref"}
       />
       <Note
@@ -30,6 +31,6 @@ const ReferalStats = () => {
       />
     </VStack>
   );
-};
+});
 
 export default ReferalStats;

@@ -4,7 +4,9 @@ import Note from "../components/note";
 import { useNavigate } from "react-router";
 import tg from "../tg_vars";
 import { useStores } from "../store/store_context";
-const MasterStats = () => {
+import { observer } from "mobx-react-lite";
+
+const MasterStats = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -25,6 +27,6 @@ const MasterStats = () => {
       <Note text={"THIS PAGE DISPLAYS YOUR ACTIVITY IN THE PREMIUM BALANCE."} />
     </VStack>
   );
-};
+});
 
 export default MasterStats;

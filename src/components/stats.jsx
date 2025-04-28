@@ -1,6 +1,7 @@
 import { HStack, VStack, Text, Stack } from "@chakra-ui/react";
+import { observer } from "mobx-react-lite";
 
-const Stats = ({ deposited, generated, withdrawn, type }) => {
+const Stats = observer(({ deposited, generated, withdrawn, type }) => {
   return (
     <VStack
       width={"100%"}
@@ -117,6 +118,6 @@ const Stats = ({ deposited, generated, withdrawn, type }) => {
       </VStack>
     </VStack>
   );
-};
+});
 
 export default Stats;

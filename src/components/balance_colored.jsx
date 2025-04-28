@@ -1,8 +1,9 @@
 import { VStack, HStack, Text, Image } from "@chakra-ui/react";
 import ColoredComponent from "./colored_component_wrapper";
 import usdt_logo from "./../assets/images/usdt_logo.svg";
+import { observer } from "mobx-react-lite";
 
-const BalanceColored = ({
+const BalanceColored = observer(({
   balance,
   width = "178px",
   onClick = () => {},
@@ -41,11 +42,9 @@ const BalanceColored = ({
           <Text fontSize={24} color={"black"}>
             {balance?.toFixed(2) || 0}
           </Text>
-          {!isPerehod && (
-            <Text fontSize={"9px"} color={"black"}>
-              USDT TRC20
-            </Text>
-          )}
+          <Text fontSize={"9px"} color={"black"}>
+            USDT TRC20
+          </Text>
         </VStack>
         <VStack>
           <Image
@@ -58,6 +57,6 @@ const BalanceColored = ({
       </HStack>
     </ColoredComponent>
   );
-};
+});
 
 export default BalanceColored;

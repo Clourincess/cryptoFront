@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { VStack, HStack, Text, Image, Input, Button } from "@chakra-ui/react";
+import { observer } from "mobx-react-lite";
 const arrow = (
   <svg
     width="6"
@@ -14,18 +15,8 @@ const arrow = (
     />
   </svg>
 );
-const greenArrow = (
-  <svg
-    width="8"
-    height="6"
-    viewBox="0 0 8 6"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M4 0L7.4641 6L0.535898 6L4 0Z" fill="#01843D" />
-  </svg>
-);
-const MasterCalc = () => {
+
+const MasterCalc = observer(() => {
   const [values, setValues] = useState([0, 0]);
   const [result, setResult] = useState(0);
   const [hold, setHold] = useState([1.25, 0]);
@@ -207,6 +198,6 @@ const MasterCalc = () => {
       </VStack>
     </VStack>
   );
-};
+});
 
 export default MasterCalc;

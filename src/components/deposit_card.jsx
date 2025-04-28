@@ -2,6 +2,7 @@ import { VStack, HStack, Text, Button, Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { useStores } from "../store/store_context";
 import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 
 const arrow = (
   <svg
@@ -17,7 +18,7 @@ const arrow = (
     />
   </svg>
 );
-const DepositCard = ({ route = "/" }) => {
+const DepositCard = observer(({ route = "/" }) => {
   const navigate = useNavigate();
   const { GlobalVars } = useStores();
 
@@ -83,7 +84,15 @@ const DepositCard = ({ route = "/" }) => {
           <Input
             placeholder="TYPE HERE"
             value={depositAmount}
-            onChange={(e) => setDepositAmount(e.target.value)}
+            onChange={(e) => {
+              let value = e.target.value.replace(/[^0-9.]/g, ""); // Оставляем только цифры и точки
+              // Проверяем, чтобы точка была только одна
+              const dots = value.split(".").length - 1;
+              if (dots > 1) {
+                value = value.slice(0, -1); // Удаляем лишнюю точку
+              }
+              setDepositAmount(value);
+            }}
             style={{
               backgroundColor: "black",
               fontSize: "10px",
@@ -93,15 +102,6 @@ const DepositCard = ({ route = "/" }) => {
               color: "white",
             }}
           />
-          {depositAmount == "" && (
-            <Text
-              color={"rgba(199, 32, 32, 1)"}
-              fontSize={"7px"}
-              marginLeft={"5px"}
-            >
-              ENTER DEPOSIT
-            </Text>
-          )}
           <HStack
             width={"100%"}
             justify={"flex-start"}
@@ -126,15 +126,6 @@ const DepositCard = ({ route = "/" }) => {
               color: "white",
             }}
           />
-          {valletAmount == "" && (
-            <Text
-              color={"rgba(199, 32, 32, 1)"}
-              fontSize={"7px"}
-              marginLeft={"5px"}
-            >
-              ENTER VALLET AMOUNT
-            </Text>
-          )}
         </VStack>
         <Button
           borderRadius={"28px"}
@@ -144,9 +135,7 @@ const DepositCard = ({ route = "/" }) => {
           height={"36px"}
           width={"82px"}
           background={
-            depositAmount != "" && valletAmount != ""
-              ? "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
-              : "rgba(153, 28, 28, 1)"
+            "linear-gradient(44deg, #2ab0d0 0%, #9b71d9 66%, #7f7fd7 100%)"
           }
           disabled={depositAmount == "" || valletAmount == ""}
           onClick={async () => {
@@ -162,6 +151,6 @@ const DepositCard = ({ route = "/" }) => {
       </HStack>
     </VStack>
   );
-};
+});
 
 export default DepositCard;

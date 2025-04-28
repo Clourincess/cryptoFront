@@ -3,8 +3,9 @@ import Note from "../components/note";
 import tg from "../tg_vars";
 import { useNavigate } from "react-router";
 import stars from "./../assets/images/stars.png";
+import { observer } from "mobx-react-lite";
 
-const ReferalCode3 = () => {
+const ReferalCode3 = observer(() => {
   const navigate = useNavigate();
   const backButton = tg.BackButton;
   backButton.show();
@@ -78,6 +79,6 @@ const ReferalCode3 = () => {
       />
     </VStack>
   );
-};
+});
 
 export default ReferalCode3;
