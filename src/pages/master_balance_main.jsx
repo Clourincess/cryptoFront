@@ -30,7 +30,7 @@ const MasterMain = observer(() => {
   `;
 
   return (
-    <VStack width={"100%"} justify={"flex-start"}>
+    <VStack width={"100%"}>
       <HStack
         width={"100%"}
         height={"212px"}

@@ -22,13 +22,8 @@ const StandartMain = observer(() => {
   }
   const { GlobalVars } = useStores();
   return (
-    <VStack width={"100%"} justify={"flex-start"}>
-      <HStack
-        width={"100%"}
-        height={"212px"}
-        align={"flex-start"}
-        marginBottom={"14px"}
-      >
+    <VStack width={"100%"}>
+      <HStack width={"100%"} align={"flex-start"}>
         <VStack width={"230px"} justify={"space-between"}>
           <BalanceColored
             balance={GlobalVars.standart_balance?.balance || 0}

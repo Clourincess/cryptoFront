@@ -40,42 +40,295 @@ import StandartWithdraw3 from "./pages/st_withdraw_3";
 import FaqPage from "./pages/faq_page";
 
 const router = createMemoryRouter([
-  { path: "/", element: <Main /> },
-  { path: "/profile", element: <ProfilePage /> },
-  { path: "/master_main", element: <MasterMain /> },
-  { path: "/master_stats", element: <MasterStats /> },
-  { path: "/standart_main", element: <StandartMain /> },
-  { path: "/standart_stats", element: <StandartStats /> },
-  { path: "/referal_main", element: <ReferalMain /> },
-  { path: "/referal_stats", element: <ReferalStats /> },
-  { path: "/calc_income", element: <CalcIncome /> },
-  { path: "/st_deposit_1", element: <StandartDeposit1 /> },
-  { path: "/st_deposit_2", element: <StandartDeposit2 /> },
-  { path: "/st_deposit_3", element: <StandartDeposit3 /> },
-  { path: "/st_deposit_4", element: <StandartDeposit4 /> },
-  { path: "/st_withdraw_1", element: <StandartWithDraw1 /> },
-  { path: "/st_withdraw_2", element: <StandartWithDraw2 /> },
-  { path: "/st_withdraw_3", element: <StandartWithdraw3 /> },
-  { path: "/master_deposit1", element: <MasterDeposit1 /> },
-  { path: "/master_choose", element: <MasterChoose /> },
-  { path: "/master_deposit2", element: <MasterDeposit2 /> },
-  { path: "/master_deposit3", element: <MasterDeposit3 /> },
-  { path: "/master_deposit4", element: <MasterDeposit4 /> },
-  { path: "/master_withdraw1", element: <MasterWithdrawList /> },
-  { path: "/master_withdraw2", element: <MasterWithDraw2 /> },
-  { path: "/master_withdraw3", element: <MasterWithDraw3 /> },
-  { path: "/master_withdraw4", element: <MasterWithdraw4 /> },
-  { path: "/referal_withdraw1", element: <ReferalWithDraw1 /> },
-  { path: "/referal_withdraw2", element: <ReferalWithDraw2 /> },
-  { path: "/referal_withdraw3", element: <ReferalWithdraw3 /> },
-  { path: "/referal_code1", element: <ReferalCode1 /> },
-  { path: "/referal_code2", element: <ReferalCode2 /> },
-  { path: "/referal_code3", element: <ReferalCode3 /> },
-  { path: "/referal_code4", element: <ReferalCode4 /> },
-  { path: "/perehod", element: <PerehodPage /> },
-  { path: "/create_premium_acc", element: <CreateMasterAccount /> },
-  { path: "/deposit_history", element: <DepositHistory /> },
-  { path: "/faq_page", element: <FaqPage /> },
+  {
+    path: "/",
+    element: (
+      <MainContainerPage>
+        <Main />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <MainContainerPage>
+        <ProfilePage />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_main",
+    element: (
+      <MainContainerPage>
+        <MasterMain />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_stats",
+    element: (
+      <MainContainerPage>
+        <MasterStats />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/standart_main",
+    element: (
+      <MainContainerPage>
+        <StandartMain />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/standart_stats",
+    element: (
+      <MainContainerPage>
+        <StandartStats />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_main",
+    element: (
+      <MainContainerPage>
+        <ReferalMain />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_stats",
+    element: (
+      <MainContainerPage>
+        <ReferalStats />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/calc_income",
+    element: (
+      <MainContainerPage>
+        <CalcIncome />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_deposit_1",
+    element: (
+      <MainContainerPage>
+        <StandartDeposit1 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_deposit_2",
+    element: (
+      <MainContainerPage>
+        <StandartDeposit2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_deposit_3",
+    element: (
+      <MainContainerPage>
+        <StandartDeposit3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_deposit_4",
+    element: (
+      <MainContainerPage>
+        <StandartDeposit4 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_withdraw_1",
+    element: (
+      <MainContainerPage>
+        {" "}
+        <StandartWithDraw1 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_withdraw_2",
+    element: (
+      <MainContainerPage>
+        <StandartWithDraw2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/st_withdraw_3",
+    element: (
+      <MainContainerPage>
+        <StandartWithdraw3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_deposit1",
+    element: (
+      <MainContainerPage>
+        <MasterDeposit1 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_choose",
+    element: (
+      <MainContainerPage>
+        <MasterChoose />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_deposit2",
+    element: (
+      <MainContainerPage>
+        <MasterDeposit2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_deposit3",
+    element: (
+      <MainContainerPage>
+        <MasterDeposit3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_deposit4",
+    element: (
+      <MainContainerPage>
+        <MasterDeposit4 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_withdraw1",
+    element: (
+      <MainContainerPage>
+        <MasterWithdrawList />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_withdraw2",
+    element: (
+      <MainContainerPage>
+        <MasterWithDraw2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_withdraw3",
+    element: (
+      <MainContainerPage>
+        <MasterWithDraw3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/master_withdraw4",
+    element: (
+      <MainContainerPage>
+        <MasterWithdraw4 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_withdraw1",
+    element: (
+      <MainContainerPage>
+        <ReferalWithDraw1 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_withdraw2",
+    element: (
+      <MainContainerPage>
+        <ReferalWithDraw2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_withdraw3",
+    element: (
+      <MainContainerPage>
+        <ReferalWithdraw3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_code1",
+    element: (
+      <MainContainerPage>
+        <ReferalCode1 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_code2",
+    element: (
+      <MainContainerPage>
+        <ReferalCode2 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_code3",
+    element: (
+      <MainContainerPage>
+        <ReferalCode3 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/referal_code4",
+    element: (
+      <MainContainerPage>
+        <ReferalCode4 />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/perehod",
+    element: (
+      <MainContainerPage>
+        <PerehodPage />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/create_premium_acc",
+    element: (
+      <MainContainerPage>
+        <CreateMasterAccount />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/deposit_history",
+    element: (
+      <MainContainerPage>
+        <DepositHistory />
+      </MainContainerPage>
+    ),
+  },
+  {
+    path: "/faq_page",
+    element: (
+      <MainContainerPage>
+        <FaqPage />
+      </MainContainerPage>
+    ),
+  },
 ]);
 
 const App = () => {
@@ -88,11 +341,7 @@ const App = () => {
     tg.expand();
   }
   tg.onEvent("viewportChanged", big);
-  return (
-    <MainContainerPage>
-      <RouterProvider router={router} />;
-    </MainContainerPage>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

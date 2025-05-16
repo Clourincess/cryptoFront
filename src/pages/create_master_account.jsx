@@ -24,7 +24,7 @@ const CreateMasterAccount = observer(() => {
   };
 
   return (
-    <VStack w={"100%"} height={"100vh"}>
+    <VStack w={"100%"}>
       <VStack
         width={"326px"}
         marginTop={"10px"}

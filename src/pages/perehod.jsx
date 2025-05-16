@@ -21,7 +21,7 @@ const PerehodPage = observer(() => {
   const { GlobalVars } = useStores();
 
   return (
-    <VStack width={"100%"} height={"auto"}>
+    <VStack width={"100%"}>
       <BalanceColored
         width="100%"
         isPerehod={true}
