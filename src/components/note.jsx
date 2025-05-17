@@ -1,47 +1,34 @@
-import { HStack, VStack, Text, Image, Box } from "@chakra-ui/react";
+import { HStack, VStack, Text, Image, Stack } from "@chakra-ui/react";
 import lamp from "./../assets/images/lamp.svg";
 import "./styles.css";
-import { keyframes } from "@emotion/react";
 import noteImage from "./../assets/images/IMG_4173 1.png";
-import { observer } from "mobx-react-lite";
+import { useState } from "react";
 
-const Note = observer(({ text, updates = false }) => {
-  const glowAnimation = keyframes`
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
-`;
+const Note = ({ text, updates = false }) => {
+  const [name, setName] = useState("light");
+
   return (
-    <Box position="relative" width={"100%"} height={updates ? "221px" : "auto"}>
-      <Box
-        position="absolute"
-        top="-4px"
-        left="-4px"
-        right="-4px"
-        bottom="-4px"
-        // transform={"skewX(-5deg)"}
-        background={
-          "linear-gradient(90deg, rgba(4,222,120,1) 0%, rgba(32,115,247,1) 100%)"
-          // "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
-        }
-        filter="blur(8px)"
-        // animation={`${glowAnimation} 3s ease-in-out infinite`}
-      />
+    <>
       {!updates ? (
         <HStack
+          zIndex={3}
+          position="relative"
           width={"100%"}
+          className={name}
           background={
             "linear-gradient(90deg, rgba(4,222,120,1) 0%, rgba(32,115,247,1) 100%)"
-            // "radial-gradient(96.88% 172.45% at 1.15% 99.59%, #04DE78 0%, #2073F7 100%)"
           }
           borderRadius={"14px"}
           justify={"space-between"}
           padding={!updates ? "10px 13px" : "11px"}
-          position={"relative"}
           height={updates ? "221px" : "auto"}
           align={"flex-start"}
         >
-          <VStack align={"flex-start"}>
+          <VStack
+            align={"flex-start"}
+            position="relative" // Добавляем на всякий случай
+            zIndex={2}
+          >
             <Text color={"black"} fontSize={9} fontWeight={800}>
               !NOTE
             </Text>
@@ -66,16 +53,17 @@ const Note = observer(({ text, updates = false }) => {
           />
         </HStack>
       ) : (
-        <Image
-          src={noteImage}
+        <Stack
+          className={name}
           height={"221px"}
           w={"100%"}
           position={"relative"}
-          borderRadius={"14px"}
-        />
+          zIndex={1}
+        >
+          <Image src={noteImage} borderRadius={"14px"} />
+        </Stack>
       )}
-    </Box>
+    </>
   );
-});
-
+};
 export default Note;

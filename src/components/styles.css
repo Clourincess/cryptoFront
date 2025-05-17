@@ -1,0 +1,29 @@
+.light::before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(4, 222, 120, 1) 0%,
+    rgba(32, 115, 247, 1) 100%
+  );
+  position: absolute;
+  /* transform: skewX(-5deg); */
+  filter: blur(8px);
+  z-index: -1;
+  border-radius: 14px;
+  animation: anima 3s linear infinite;
+}
+
+@keyframes anima {
+  0% {
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+  }
+  100% {
+    top: -3.8px;
+    bottom: -3.8px;
+    left: -3.8px;
+    right: -3.8px;
+  }
+}

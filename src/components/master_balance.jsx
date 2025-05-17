@@ -23,9 +23,7 @@ const MasterBalance = observer(
         onClick={onClick}
         height={height != "" ? height : "auto"}
         justify={"space-between"}
-        zIndex={2}
-        // borderColor={"white"}
-        // borderWidth={1}
+        zIndex={5}
         position={"relative"}
         className={`${className}`}
       >
